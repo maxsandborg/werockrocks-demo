@@ -1735,16 +1735,14 @@ transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
         }
 
     
-    /* ===== TAB SWITCHER ===== */
-    .guides-tabs { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; max-width:1200px; margin:32px auto 0; padding:0 40px; }
-    .guides-tab { padding:10px 20px; background:#fff; border:1px solid rgba(123,94,167,0.2); border-radius:100px; font-size:13px; font-weight:500; color:#4A4A4A; cursor:pointer; transition:all 0.3s; white-space:nowrap; }
-    .guides-tab:hover { border-color:#7B5EA7; color:#7B5EA7; transform:translateY(-2px); }
-    .guides-tab.active { background:#7B5EA7; color:#fff; border-color:#7B5EA7; box-shadow:0 4px 12px rgba(123,94,167,0.3); }
-    .guides-tab .tab-emoji { margin-right:6px; }
-    .article-full { display:none; }
-    .article-full.tab-active { display:block; }
-    @media(max-width:768px) { .guides-tabs { gap:6px; padding:0 20px; } .guides-tab { padding:8px 14px; font-size:12px; } }
-
+    .guides-tabs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:1200px;margin:32px auto 0;padding:0 40px}
+    .guides-tab{padding:10px 20px;background:#fff;border:1px solid rgba(123,94,167,.2);border-radius:100px;font-size:13px;font-weight:500;color:#4A4A4A;cursor:pointer;transition:all .3s;white-space:nowrap}
+    .guides-tab:hover{border-color:#7B5EA7;color:#7B5EA7;transform:translateY(-2px)}
+    .guides-tab.active{background:#7B5EA7;color:#fff;border-color:#7B5EA7;box-shadow:0 4px 12px rgba(123,94,167,.3)}
+    .guides-tab .tab-emoji{margin-right:6px}
+    .article-full{display:none}
+    .article-full.tab-active{display:block}
+    @media(max-width:768px){.guides-tabs{gap:6px;padding:0 20px}.guides-tab{padding:8px 14px;font-size:12px}}
 </style>
 </head>
 <body>
@@ -1880,7 +1878,7 @@ transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
             <!-- Product 1 -->
             <div class="product-card fade-in">
                 <div class="product-image">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1679395283817-39f56e249ea6?w=300&q=80&fit=crop" alt="Amethyst Cluster">
+                    <img src="https://images.unsplash.com/photo-1679395283817-39f56e249ea6?w=300&q=80&fit=crop" alt="Amethyst Cluster">
                     <div class="product-badge">Bestseller</div>
                 </div>
                 <div class="product-info">
@@ -1893,7 +1891,7 @@ transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
             <!-- Product 2 -->
             <div class="product-card fade-in">
                 <div class="product-image">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1648096422923-6a9344b461d9?w=300&q=80&fit=crop" alt="Rose Quartz Heart">
+                    <img src="https://images.unsplash.com/photo-1648096422923-6a9344b461d9?w=300&q=80&fit=crop" alt="Rose Quartz Heart">
                     <div class="product-badge">New</div>
                 </div>
                 <div class="product-info">
@@ -1906,7 +1904,7 @@ transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
             <!-- Product 3 -->
             <div class="product-card fade-in">
                 <div class="product-image">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1626470408813-f0059745d58b?w=300&q=80&fit=crop" alt="Smoky Quartz Point">
+                    <img src="https://images.unsplash.com/photo-1626470408813-f0059745d58b?w=300&q=80&fit=crop" alt="Smoky Quartz Point">
                     <div class="product-badge">Top Pick</div>
                 </div>
                 <div class="product-info">
@@ -1919,7 +1917,7 @@ transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
             <!-- Product 4 -->
             <div class="product-card fade-in">
                 <div class="product-image">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1614092872241-c9a193f2b4aa?w=300&q=80&fit=crop" alt="Citrine Cluster">
+                    <img src="https://images.unsplash.com/photo-1614092872241-c9a193f2b4aa?w=300&q=80&fit=crop" alt="Citrine Cluster">
                     <div class="product-badge">Bestseller</div>
                 </div>
                 <div class="product-info">
@@ -1932,7 +1930,7 @@ transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
             <!-- Product 5 -->
             <div class="product-card fade-in">
                 <div class="product-image">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1651958505531-02bbfa07c0bb?w=300&q=80&fit=crop" alt="Banded Agate">
+                    <img src="https://images.unsplash.com/photo-1651958505531-02bbfa07c0bb?w=300&q=80&fit=crop" alt="Banded Agate">
                     <div class="product-badge">New</div>
                 </div>
                 <div class="product-info">
@@ -1945,7 +1943,7 @@ transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
             <!-- Product 6 -->
             <div class="product-card fade-in">
                 <div class="product-image">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1771580927643-36aaa2709141?w=300&q=80&fit=crop" alt="Pink Tourmaline">
+                    <img src="https://images.unsplash.com/photo-1771580927643-36aaa2709141?w=300&q=80&fit=crop" alt="Pink Tourmaline">
                     <div class="product-badge">Top Pick</div>
                 </div>
                 <div class="product-info">
@@ -1958,7 +1956,7 @@ transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
             <!-- Product 7 -->
             <div class="product-card fade-in">
                 <div class="product-image">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1760651913929-c5245057815b?w=300&q=80&fit=crop" alt="Pyrite Quartz">
+                    <img src="https://images.unsplash.com/photo-1760651913929-c5245057815b?w=300&q=80&fit=crop" alt="Pyrite Quartz">
                     <div class="product-badge">Bestseller</div>
                 </div>
                 <div class="product-info">
@@ -1971,7 +1969,7 @@ transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
             <!-- Product 8 -->
             <div class="product-card fade-in">
                 <div class="product-image">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1759661284885-61a35cc7d039?w=300&q=80&fit=crop" alt="Mineral Mix">
+                    <img src="https://images.unsplash.com/photo-1759661284885-61a35cc7d039?w=300&q=80&fit=crop" alt="Mineral Mix">
                     <div class="product-badge">New</div>
                 </div>
                 <div class="product-info">
@@ -1986,7 +1984,7 @@ transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
     <!-- THE GEODE FEATURE -->
     <section class="geode-section fade-in" id="geode">
         <div class="geode-image">
-            <img loading="lazy" src="https://images.unsplash.com/photo-1653032948648-d7b0989123e0?w=600&q=80&fit=crop" alt="Brazilian Amethyst Geode">
+            <img src="https://images.unsplash.com/photo-1653032948648-d7b0989123e0?w=600&q=80&fit=crop" alt="Brazilian Amethyst Geode">
         </div>
         <div class="geode-content">
             <h2>1,400 Pounds of Pure Amethyst</h2>
@@ -2030,22 +2028,22 @@ transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
         <h2 class="section-title">Gallery</h2>
         <div class="gallery-grid">
             <div class="gallery-item fade-in">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1654216937627-11728b27bed3?w=500&q=80&fit=crop" alt="Purple Amethyst Crystals">
+                <img src="https://images.unsplash.com/photo-1654216937627-11728b27bed3?w=500&q=80&fit=crop" alt="Purple Amethyst Crystals">
             </div>
             <div class="gallery-item fade-in">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1758275872445-d07581768ab6?w=700&q=80&fit=crop" alt="Amethyst Cluster on Stand">
+                <img src="https://images.unsplash.com/photo-1758275872445-d07581768ab6?w=700&q=80&fit=crop" alt="Amethyst Cluster on Stand">
             </div>
             <div class="gallery-item fade-in">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1764942215890-58454c41d0dc?w=500&q=80&fit=crop" alt="Green Geode">
+                <img src="https://images.unsplash.com/photo-1764942215890-58454c41d0dc?w=500&q=80&fit=crop" alt="Green Geode">
             </div>
             <div class="gallery-item fade-in">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1560427450-00fa9481f01e?w=500&q=80&fit=crop" alt="Mixed Minerals">
+                <img src="https://images.unsplash.com/photo-1560427450-00fa9481f01e?w=500&q=80&fit=crop" alt="Mixed Minerals">
             </div>
             <div class="gallery-item fade-in">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1764942215890-58454c41d0dc?w=700&q=80&fit=crop" alt="Purple Geode">
+                <img src="https://images.unsplash.com/photo-1764942215890-58454c41d0dc?w=700&q=80&fit=crop" alt="Purple Geode">
             </div>
             <div class="gallery-item fade-in">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1550007436-ba84ff7bcb54?w=500&q=80&fit=crop" alt="Crystal Collection">
+                <img src="https://images.unsplash.com/photo-1550007436-ba84ff7bcb54?w=500&q=80&fit=crop" alt="Crystal Collection">
             </div>
         </div>
     </section>
@@ -2079,13 +2077,13 @@ transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
     <section class="about-section fade-in" id="about">
         <div class="about-images">
             <div class="about-image">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1550007436-ba84ff7bcb54?w=800&q=80&fit=crop" alt="We Rock Rocks Store">
+                <img src="https://images.unsplash.com/photo-1550007436-ba84ff7bcb54?w=800&q=80&fit=crop" alt="We Rock Rocks Store">
             </div>
             <div class="about-image">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1643319125503-f9d079d64b9a?w=400&q=80&fit=crop" alt="Crystal Display">
+                <img src="https://images.unsplash.com/photo-1643319125503-f9d079d64b9a?w=400&q=80&fit=crop" alt="Crystal Display">
             </div>
             <div class="about-image">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1679395283817-39f56e249ea6?w=400&q=80&fit=crop" alt="Amethyst Collection">
+                <img src="https://images.unsplash.com/photo-1679395283817-39f56e249ea6?w=400&q=80&fit=crop" alt="Amethyst Collection">
             </div>
         </div>
         <div class="about-content">
@@ -2351,13 +2349,13 @@ transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
     <section class="about-section fade-in" id="about">
         <div class="about-images">
             <div class="about-image">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1550007436-ba84ff7bcb54?w=800&q=80&fit=crop" alt="We Rock Rocks Store">
+                <img src="https://images.unsplash.com/photo-1550007436-ba84ff7bcb54?w=800&q=80&fit=crop" alt="We Rock Rocks Store">
             </div>
             <div class="about-image">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1643319125503-f9d079d64b9a?w=400&q=80&fit=crop" alt="Crystal Display">
+                <img src="https://images.unsplash.com/photo-1643319125503-f9d079d64b9a?w=400&q=80&fit=crop" alt="Crystal Display">
             </div>
             <div class="about-image">
-                <img loading="lazy" src="https://images.unsplash.com/photo-1679395283817-39f56e249ea6?w=400&q=80&fit=crop" alt="Amethyst Collection">
+                <img src="https://images.unsplash.com/photo-1679395283817-39f56e249ea6?w=400&q=80&fit=crop" alt="Amethyst Collection">
             </div>
         </div>
         <div class="about-content">
@@ -2448,26 +2446,19 @@ transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
 
     <section class="articles-container" id="articles-section">
 
-                
-<!-- CRYSTAL ENCYCLOPEDIA TAB SWITCHER -->
-<div style="max-width:1200px; margin:40px auto 0; padding:0 40px; text-align:center;">
-    <div style="width:60px; height:2px; background:#7B5EA7; margin:0 auto 24px;"></div>
-    <h2 style="font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:600; color:#1A1008; margin-bottom:8px;">Crystal Encyclopedia</h2>
-    <p style="color:#4A4A4A; font-size:15px; margin-bottom:24px;">Click a crystal to read the full guide</p>
-</div>
+                <div style="max-width:1200px;margin:40px auto 0;padding:0 40px;text-align:center"><div style="width:60px;height:2px;background:#7B5EA7;margin:0 auto 24px"></div><h2 style="font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:600;color:#1A1008;margin-bottom:8px">Crystal Encyclopedia</h2><p style="color:#4A4A4A;font-size:15px;margin-bottom:24px">Click a crystal to read the full guide</p></div>
 <div class="guides-tabs" id="guides-tabs">
-    <button class="guides-tab" data-article="article-amethyst"><span class="tab-emoji">💜</span>Amethyst</button>
-    <button class="guides-tab" data-article="article-rose-quartz"><span class="tab-emoji">💗</span>Rose Quartz</button>
-    <button class="guides-tab" data-article="article-anxiety"><span class="tab-emoji">🧿</span>Anxiety Relief</button>
-    <button class="guides-tab" data-article="article-cleanse"><span class="tab-emoji">✨</span>Cleansing</button>
-    <button class="guides-tab" data-article="article-citrine"><span class="tab-emoji">💛</span>Citrine</button>
-    <button class="guides-tab" data-article="article-tourmaline"><span class="tab-emoji">🖤</span>Tourmaline</button>
-    <button class="guides-tab" data-article="article-beginners"><span class="tab-emoji">🌟</span>Beginners</button>
-    <button class="guides-tab" data-article="article-selenite"><span class="tab-emoji">🌙</span>Selenite</button>
-    <button class="guides-tab" data-article="article-protection"><span class="tab-emoji">🛡️</span>Protection</button>
-    <button class="guides-tab" data-article="article-love"><span class="tab-emoji">💎</span>Love</button>
+<button class="guides-tab" data-article="article-amethyst"><span class="tab-emoji">💜</span>Amethyst</button>
+<button class="guides-tab" data-article="article-rose-quartz"><span class="tab-emoji">💗</span>Rose Quartz</button>
+<button class="guides-tab" data-article="article-anxiety"><span class="tab-emoji">🧿</span>Anxiety Relief</button>
+<button class="guides-tab" data-article="article-cleanse"><span class="tab-emoji">✨</span>Cleansing</button>
+<button class="guides-tab" data-article="article-citrine"><span class="tab-emoji">💛</span>Citrine</button>
+<button class="guides-tab" data-article="article-tourmaline"><span class="tab-emoji">🖤</span>Tourmaline</button>
+<button class="guides-tab" data-article="article-beginners"><span class="tab-emoji">🌟</span>Beginners</button>
+<button class="guides-tab" data-article="article-selenite"><span class="tab-emoji">🌙</span>Selenite</button>
+<button class="guides-tab" data-article="article-protection"><span class="tab-emoji">🛡️</span>Protection</button>
+<button class="guides-tab" data-article="article-love"><span class="tab-emoji">💎</span>Love</button>
 </div>
-
 <div class="article-full" id="article-amethyst">
           <div class="article-header">
             <span class="article-emoji">💜</span>
@@ -3123,48 +3114,22 @@ transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
 <button class="back-to-top" title="Back to top">↑</button>
 
     
-    
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var tabs = document.querySelectorAll('.guides-tab');
-    var articles = document.querySelectorAll('[id^="article-"]');
-    tabs.forEach(function(tab) {
-        tab.addEventListener('click', function() {
-            var id = this.getAttribute('data-article');
-            var target = document.getElementById(id);
-            var wasActive = this.classList.contains('active');
-            tabs.forEach(function(t){t.classList.remove('active');});
-            articles.forEach(function(a){a.classList.remove('tab-active');});
-            if (!wasActive && target) {
-                this.classList.add('active');
-                target.classList.add('tab-active');
-                setTimeout(function(){target.scrollIntoView({behavior:'smooth',block:'start'});},50);
-            }
-        });
-    });
-    document.querySelectorAll('a[href^="#article-"]').forEach(function(link){
-        link.addEventListener('click',function(e){
-            e.preventDefault();
-            var id=this.getAttribute('href').replace('#','');
-            var tab=document.querySelector('[data-article="'+id+'"]');
-            if(tab)tab.click();
-        });
-    });
-    document.querySelectorAll('.back-link').forEach(function(link){
-        link.addEventListener('click',function(e){
-            e.preventDefault();
-            tabs.forEach(function(t){t.classList.remove('active');});
-            articles.forEach(function(a){a.classList.remove('tab-active');});
-            var g=document.getElementById('guides-tabs');
-            if(g)g.scrollIntoView({behavior:'smooth',block:'center'});
-        });
-    });
-    // Scroll animations
-    var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1});
-    document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el);});
+    <script>
+document.addEventListener('DOMContentLoaded',function(){
+var tabs=document.querySelectorAll('.guides-tab');
+var articles=document.querySelectorAll('[id^="article-"]');
+tabs.forEach(function(t){t.addEventListener('click',function(){
+var id=this.getAttribute('data-article'),el=document.getElementById(id),was=this.classList.contains('active');
+tabs.forEach(function(x){x.classList.remove('active')});
+articles.forEach(function(a){a.classList.remove('tab-active')});
+if(!was&&el){this.classList.add('active');el.classList.add('tab-active');setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'start'})},50)}
+})});
+document.querySelectorAll('a[href^="#article-"]').forEach(function(l){l.addEventListener('click',function(e){e.preventDefault();var tab=document.querySelector('[data-article="'+this.getAttribute('href').replace('#','')+'"]');if(tab)tab.click()})});
+document.querySelectorAll('.back-link').forEach(function(l){l.addEventListener('click',function(e){e.preventDefault();tabs.forEach(function(t){t.classList.remove('active')});articles.forEach(function(a){a.classList.remove('tab-active')});var g=document.getElementById('guides-tabs');if(g)g.scrollIntoView({behavior:'smooth',block:'center'})})});
+var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible')})},{threshold:.1});
+document.querySelectorAll('.fade-up').forEach(function(el){obs.observe(el)});
 });
 </script>
-
 </body>
 
 </html>
