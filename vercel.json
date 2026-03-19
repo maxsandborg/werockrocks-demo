@@ -1,11 +1,13 @@
 {
   "rewrites": [
     { "source": "/werockrocks", "destination": "/werockrocks/index.html" },
-    { "source": "/werockrocks/", "destination": "/werockrocks/index.html" }
+    { "source": "/werockrocks/", "destination": "/werockrocks/index.html" },
+    { "source": "/exoticsmokes", "destination": "/exoticsmokes/index.html" },
+    { "source": "/exoticsmokes/", "destination": "/exoticsmokes/index.html" }
   ],
   "headers": [
     {
-      "source": "/werockrocks/(.*)",
+      "source": "/(werockrocks|exoticsmokes)/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" },
         { "key": "X-Content-Type-Options", "value": "nosniff" }

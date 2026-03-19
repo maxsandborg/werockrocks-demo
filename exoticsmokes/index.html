@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exotic Smokes | Premium Smoke Shop, Hookah Lounge & Kava Bar | Wesley Chapel FL</title>
+  <meta name="description" content="Tampa Bay's ultimate 24/7 smoke shop, hookah lounge & kava bar. Premium cigars, vapes, hookah, kratom, kava & apparel. Locations in Wesley Chapel, Tampa & Clearwater.">
+  <meta name="keywords" content="smoke shop Wesley Chapel, hookah lounge Tampa, kava bar Lutz FL, vape shop 24 hours, premium cigars Wesley Chapel, kratom near me, exotic smoke shop, smoke shop Clearwater, kava bar Tampa Bay, hookah Clearwater FL">
+  <meta property="og:title" content="Exotic Smokes | 24/7 Smoke Shop, Hookah & Kava Bar">
+  <meta property="og:description" content="Tampa Bay's premium 24/7 destination for cigars, vapes, hookah, kava & kratom. Wesley Chapel, Tampa & Clearwater.">
+  <meta property="og:image" content="https://53dcea-3.myshopify.com/cdn/shop/files/Subject.png?v=1700178501&width=600">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --black:#050508;--black-mid:#0a0a12;--black-card:#0f0f1a;
+      --chrome-blue:#00d4ff;--chrome-purple:#8b5cf6;--chrome-teal:#06b6d4;
+      --neon-green:#39ff14;--neon-green-dim:rgba(57,255,20,0.15);--neon-green-glow:rgba(57,255,20,0.4);
+      --chrome-grad:linear-gradient(135deg,#00d4ff,#8b5cf6,#06b6d4);
+      --text-white:#f0f0f5;--text-dim:rgba(240,240,245,0.55);--text-mid:rgba(240,240,245,0.75);
+      --border:rgba(255,255,255,0.06);--border-hover:rgba(57,255,20,0.25);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--black);color:var(--text-white);overflow-x:hidden}
+
+    /* === NAV === */
+    nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(5,5,8,0.88);backdrop-filter:blur(30px) saturate(1.5);border-bottom:1px solid var(--border);padding:0 3rem;display:flex;align-items:center;justify-content:space-between;height:82px;transition:all 0.4s}
+    nav.scrolled{height:68px;background:rgba(5,5,8,0.96)}
+    img.nav-logo{height:62px;filter:drop-shadow(0 0 8px rgba(0,212,255,0.3));object-fit:contain;vertical-align:middle}
+    .nav-links{display:flex;gap:1.6rem;list-style:none;align-items:center}
+    .nav-links a{color:var(--text-dim);text-decoration:none;font-size:0.8rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:all 0.3s}
+    .nav-links a:hover{color:var(--neon-green);text-shadow:0 0 20px var(--neon-green-glow)}
+    .nav-live{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.7rem;color:var(--neon-green);letter-spacing:1px;margin-left:1rem}
+    .nav-live::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--neon-green);box-shadow:0 0 10px var(--neon-green);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 10px var(--neon-green)}50%{opacity:0.4;box-shadow:0 0 3px var(--neon-green)}}
+    .nav-cta{background:var(--neon-green)!important;color:var(--black)!important;padding:0.55rem 1.4rem!important;border-radius:6px;font-weight:800!important;letter-spacing:1px!important;transition:all 0.3s!important}
+    .nav-cta:hover{box-shadow:0 0 30px var(--neon-green-glow)!important;transform:translateY(-1px)!important}
+    .mobile-toggle{display:none;background:none;border:none;cursor:pointer}
+    .mobile-toggle span{display:block;width:22px;height:2px;background:var(--neon-green);margin:5px 0}
+
+    /* === HERO === */
+    .hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;z-index:0}
+    .hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(0.15) saturate(0.8)}
+    .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(135deg,rgba(5,5,8,0.9) 0%,rgba(10,10,18,0.6) 50%,rgba(5,5,8,0.95) 100%)}
+    .hero-noise{position:absolute;inset:0;z-index:1;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    .hero-glow{position:absolute;z-index:1;border-radius:50%;filter:blur(140px);opacity:0.4;animation:breathe 8s ease-in-out infinite alternate}
+    .g1{width:500px;height:500px;background:var(--chrome-blue);top:-15%;left:-5%}
+    .g2{width:400px;height:400px;background:var(--chrome-purple);bottom:-10%;right:5%;animation-delay:4s}
+    .g3{width:250px;height:250px;background:var(--neon-green);top:40%;right:20%;opacity:0.15;animation-delay:2s}
+    @keyframes breathe{from{opacity:0.2;transform:scale(1)}to{opacity:0.45;transform:scale(1.2)}}
+
+    .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;align-items:center;max-width:1200px;margin:0 auto;padding:8rem 3rem 5rem;gap:4rem}
+    .hero-text{}
+    .hero-badge{display:inline-flex;align-items:center;gap:0.6rem;background:var(--neon-green-dim);border:1px solid rgba(57,255,20,0.2);color:var(--neon-green);padding:0.45rem 1.2rem;border-radius:50px;font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:2rem}
+    .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--neon-green);box-shadow:0 0 8px var(--neon-green);animation:pulse 2s infinite}
+    .hero h1{font-family:'Nunito',sans-serif;font-size:clamp(2.8rem,5.5vw,4.5rem);font-weight:900;line-height:1.05;margin-bottom:1.5rem;letter-spacing:-1px}
+    .hero h1 .chrome{background:var(--chrome-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero h1 .glow-text{color:var(--neon-green);text-shadow:0 0 40px var(--neon-green-glow),0 0 80px rgba(57,255,20,0.15)}
+    .hero-sub{font-size:1.1rem;color:var(--text-dim);line-height:1.8;margin-bottom:2.5rem;max-width:480px;font-weight:300}
+    .hero-buttons{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+    .btn-neon{background:var(--neon-green);color:var(--black);padding:1rem 2.2rem;border-radius:8px;font-weight:800;font-size:0.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.6rem;transition:all 0.3s;border:none;cursor:pointer;letter-spacing:0.5px;text-transform:uppercase}
+    .btn-neon:hover{box-shadow:0 0 40px var(--neon-green-glow),0 5px 20px rgba(0,0,0,0.3);transform:translateY(-3px)}
+    .btn-chrome{background:transparent;padding:1rem 2.2rem;border-radius:8px;font-weight:600;font-size:0.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.6rem;border:1px solid rgba(0,212,255,0.3);color:var(--chrome-blue);transition:all 0.3s;letter-spacing:0.5px}
+    .btn-chrome:hover{border-color:var(--chrome-blue);box-shadow:0 0 25px rgba(0,212,255,0.15);background:rgba(0,212,255,0.05)}
+    .hero-tags{display:flex;gap:0.6rem;flex-wrap:wrap}
+    .hero-tag{background:rgba(255,255,255,0.04);border:1px solid var(--border);padding:0.4rem 1rem;border-radius:20px;font-size:0.72rem;color:var(--text-dim);font-weight:500;letter-spacing:0.5px}
+
+    .hero-visual{display:flex;justify-content:center;align-items:center;position:relative}
+    .hero-logo-wrap{position:relative}
+    .hero-logo-wrap img{width:100%;max-width:600px;filter:drop-shadow(0 0 30px rgba(0,212,255,0.3)) drop-shadow(0 0 60px rgba(139,92,246,0.2));animation:floatLogo 6s ease-in-out infinite}
+    @keyframes floatLogo{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-15px) rotate(1deg)}}
+    .hero-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;border:1px solid rgba(0,212,255,0.1);animation:expandRing 4s ease-out infinite}
+    .ring-1{width:350px;height:350px}
+    .ring-2{width:450px;height:450px;animation-delay:1.3s;border-color:rgba(139,92,246,0.08)}
+    .ring-3{width:550px;height:550px;animation-delay:2.6s;border-color:rgba(57,255,20,0.05)}
+    @keyframes expandRing{0%{opacity:0.6;transform:translate(-50%,-50%) scale(0.8)}100%{opacity:0;transform:translate(-50%,-50%) scale(1.3)}}
+
+    /* === SERVICES === */
+    section{padding:6rem 2rem}
+    .container{max-width:1200px;margin:0 auto}
+    .sec-header{text-align:center;max-width:600px;margin:0 auto 4rem}
+    .sec-tag{font-size:0.7rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--neon-green);margin-bottom:0.8rem}
+    .sec-header h2{font-family:'Nunito',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1.1;margin-bottom:1rem}
+    .sec-header p{font-size:1rem;color:var(--text-dim);line-height:1.7}
+
+    .services{background:var(--black-mid)}
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .svc-card{background:var(--black-card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;position:relative;overflow:hidden;transition:all 0.4s}
+    .svc-card:hover{border-color:var(--border-hover);transform:translateY(-5px);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+    .svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--chrome-grad);opacity:0;transition:opacity 0.3s}
+    .svc-card:hover::before{opacity:1}
+    .svc-icon{width:56px;height:56px;border-radius:14px;background:rgba(57,255,20,0.08);border:1px solid rgba(57,255,20,0.15);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1.5rem}
+    .svc-card:nth-child(2) .svc-icon{background:rgba(0,212,255,0.08);border-color:rgba(0,212,255,0.15)}
+    .svc-card:nth-child(3) .svc-icon{background:rgba(139,92,246,0.08);border-color:rgba(139,92,246,0.15)}
+    .svc-card h3{font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:800;margin-bottom:0.8rem}
+    .svc-card p{font-size:0.9rem;color:var(--text-dim);line-height:1.7}
+    .svc-tag{display:inline-block;margin-top:1.2rem;padding:0.3rem 0.8rem;border-radius:20px;font-size:0.65rem;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+    .tag-green{background:var(--neon-green-dim);color:var(--neon-green);border:1px solid rgba(57,255,20,0.2)}
+    .tag-blue{background:rgba(0,212,255,0.1);color:var(--chrome-blue);border:1px solid rgba(0,212,255,0.2)}
+    .tag-purple{background:rgba(139,92,246,0.1);color:var(--chrome-purple);border:1px solid rgba(139,92,246,0.2)}
+
+    /* === PRODUCTS === */
+    .products{background:var(--black)}
+    .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+    .prod-card{background:var(--black-card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.3s;cursor:pointer}
+    .prod-card:hover{border-color:var(--border-hover);transform:translateY(-4px);box-shadow:0 15px 40px rgba(0,0,0,0.4)}
+    .prod-img{height:200px;background:var(--black-mid);overflow:hidden;position:relative}
+    .prod-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
+    .prod-card:hover .prod-img img{transform:scale(1.08)}
+    .prod-badge{position:absolute;top:10px;right:10px;padding:0.25rem 0.6rem;border-radius:4px;font-size:0.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+    .badge-hot{background:var(--neon-green);color:var(--black)}
+    .badge-new{background:var(--chrome-blue);color:var(--black)}
+    .prod-body{padding:1.2rem}
+    .prod-body h4{font-family:'Nunito',sans-serif;font-size:0.95rem;font-weight:800;margin-bottom:0.4rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .prod-body .cat{font-size:0.72rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.6rem}
+    .prod-price{font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:900;color:var(--neon-green)}
+
+    /* === EXPERIENCE === */
+    .experience{background:var(--black-mid);position:relative;overflow:hidden}
+    .exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    .exp-images{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .exp-img{border-radius:16px;overflow:hidden;height:220px}
+    .exp-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;filter:brightness(0.8)}
+    .exp-img:hover img{transform:scale(1.05);filter:brightness(1)}
+    .exp-img:first-child{grid-row:span 2;height:100%}
+    .exp-text h2{font-family:'Nunito',sans-serif;font-size:2.5rem;font-weight:900;margin-bottom:1.5rem;line-height:1.1}
+    .exp-text p{color:var(--text-dim);line-height:1.8;margin-bottom:1.5rem}
+    .exp-features{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+    .exp-feat{display:flex;align-items:center;gap:1rem}
+    .exp-feat-icon{width:40px;height:40px;border-radius:10px;background:var(--neon-green-dim);border:1px solid rgba(57,255,20,0.15);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+    .exp-feat span{font-size:0.9rem;color:var(--text-mid);font-weight:500}
+
+    /* === REVIEWS === */
+    .reviews{background:var(--black)}
+    .review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .rev-card{background:var(--black-card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;transition:all 0.3s;position:relative}
+    .rev-card:hover{border-color:var(--border-hover)}
+    .rev-card::before{content:'\201C';font-family:'Nunito',sans-serif;font-size:5rem;color:rgba(57,255,20,0.08);position:absolute;top:5px;left:20px;line-height:1}
+    .rev-stars{color:var(--neon-green);font-size:0.85rem;letter-spacing:3px;margin-bottom:1.2rem}
+    .rev-card blockquote{color:var(--text-mid);line-height:1.75;font-size:0.92rem;margin-bottom:1.5rem;font-style:italic;position:relative;z-index:1}
+    .rev-author{display:flex;align-items:center;gap:0.8rem}
+    .rev-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--chrome-blue),var(--chrome-purple));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:0.8rem;color:#fff}
+    .rev-name{font-weight:700;font-size:0.82rem}
+    .rev-src{font-size:0.7rem;color:var(--text-dim)}
+
+    /* === LOCATIONS === */
+    .locations{background:var(--black-mid)}
+    .loc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .loc-card{background:var(--black-card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all 0.3s}
+    .loc-card:hover{border-color:var(--border-hover);box-shadow:0 15px 50px rgba(0,0,0,0.4)}
+    .loc-card.primary{border-color:rgba(57,255,20,0.15)}
+    .loc-map{height:200px;overflow:hidden;position:relative}
+    .loc-map img{width:100%;height:100%;object-fit:cover;filter:brightness(0.6) saturate(0.8)}
+    .loc-map-badge{position:absolute;top:12px;left:12px;display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.9rem;border-radius:6px;font-size:0.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+    .loc-map-badge.green{background:var(--neon-green);color:var(--black)}
+    .loc-map-badge.blue{background:var(--chrome-blue);color:var(--black)}
+    .open-24{position:absolute;top:12px;right:12px;background:rgba(5,5,8,0.8);border:1px solid rgba(57,255,20,0.3);color:var(--neon-green);padding:0.3rem 0.8rem;border-radius:20px;font-size:0.65rem;font-weight:700;letter-spacing:1px;display:flex;align-items:center;gap:0.4rem}
+    .open-24::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--neon-green);box-shadow:0 0 8px var(--neon-green);animation:pulse 2s infinite}
+    .loc-body{padding:2rem}
+    .loc-body h3{font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;margin-bottom:1.2rem}
+    .loc-detail{display:flex;align-items:flex-start;gap:0.7rem;margin-bottom:0.7rem;font-size:0.88rem;color:var(--text-dim)}
+    .loc-detail svg{flex-shrink:0;margin-top:2px;color:var(--neon-green)}
+    .loc-btn{display:block;margin-top:1.5rem;text-align:center;padding:0.85rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.85rem;letter-spacing:0.5px;transition:all 0.3s;text-transform:uppercase}
+    .loc-btn.green{background:var(--neon-green);color:var(--black)}
+    .loc-btn.green:hover{box-shadow:0 0 30px var(--neon-green-glow)}
+    .loc-btn.blue{background:transparent;border:1px solid rgba(0,212,255,0.3);color:var(--chrome-blue)}
+    .loc-btn.blue:hover{background:rgba(0,212,255,0.05);border-color:var(--chrome-blue)}
+
+    /* === CTA === */
+    .cta{background:var(--black);text-align:center;padding:6rem 2rem;position:relative;overflow:hidden}
+    .cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:var(--neon-green);border-radius:50%;filter:blur(200px);opacity:0.05}
+    .cta h2{font-family:'Nunito',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;margin-bottom:1rem;position:relative}
+    .cta p{color:var(--text-dim);font-size:1.05rem;margin-bottom:2rem;position:relative}
+
+    /* === FOOTER === */
+    footer{background:var(--black);border-top:1px solid var(--border);padding:4rem 2rem 1.5rem}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;max-width:1200px;margin:0 auto}
+    .footer-brand img{height:50px;margin-bottom:1rem;filter:drop-shadow(0 0 6px rgba(0,212,255,0.2))}
+    .footer-brand p{font-size:0.85rem;color:var(--text-dim);line-height:1.7}
+    footer h4{font-family:'Nunito',sans-serif;font-size:0.75rem;font-weight:800;margin-bottom:1.2rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-mid)}
+    footer ul{list-style:none}
+    footer ul li{margin-bottom:0.6rem}
+    footer ul a{color:var(--text-dim);text-decoration:none;font-size:0.85rem;transition:color 0.3s}
+    footer ul a:hover{color:var(--neon-green)}
+    .footer-bottom{max-width:1200px;margin:3rem auto 0;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:0.78rem;color:var(--text-dim);flex-wrap:wrap;gap:1rem}
+    .footer-age{display:flex;align-items:center;gap:0.5rem;background:rgba(185,0,0,0.1);border:1px solid rgba(185,0,0,0.2);padding:0.3rem 0.8rem;border-radius:6px;font-weight:600;color:#ff4444;font-size:0.72rem}
+
+    /* === MOBILE === */
+    @media(max-width:1024px){
+      .service-grid,.review-grid{grid-template-columns:1fr 1fr}
+      .product-grid{grid-template-columns:repeat(2,1fr)}
+      .loc-grid{grid-template-columns:1fr 1fr}
+      .blog-grid{grid-template-columns:1fr 1fr}
+      .footer-grid{grid-template-columns:2fr 1fr 1fr}
+      .hero-inner{grid-template-columns:1fr;text-align:center}
+      .hero-sub{margin-left:auto;margin-right:auto}
+      .hero-buttons{justify-content:center}
+      .hero-tags{justify-content:center}
+      .hero-visual{margin-top:2rem}
+      .hero-logo-wrap img{max-width:400px}
+      .ring-1,.ring-2,.ring-3{display:none}
+      .nav-links{gap:1rem}
+      .nav-links a{font-size:0.7rem;letter-spacing:1px}
+    }
+    @media(max-width:768px){
+      nav{padding:0 1.5rem}
+      .nav-links{display:none}
+      .mobile-toggle{display:block}
+      .hero-inner{padding:7rem 1.5rem 3rem}
+      .service-grid,.review-grid{grid-template-columns:1fr}
+      .loc-grid{grid-template-columns:1fr}
+      .product-grid{grid-template-columns:1fr 1fr}
+      .exp-grid{grid-template-columns:1fr;gap:2rem}
+      .exp-images{grid-template-columns:1fr 1fr}
+      .exp-img:first-child{grid-row:auto}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+
+    /* === BLOG === */
+    .blog{background:var(--black-mid)}
+    .blog-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .blog-card{background:var(--black-card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all 0.3s;cursor:pointer}
+    .blog-card:hover{border-color:var(--border-hover);transform:translateY(-4px);box-shadow:0 15px 40px rgba(0,0,0,0.4)}
+    .blog-img{height:220px;overflow:hidden;position:relative}
+    .blog-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.5s;filter:brightness(0.7)}
+    .blog-card:hover .blog-img img{transform:scale(1.05);filter:brightness(0.85)}
+    .blog-cat{position:absolute;bottom:12px;left:12px;padding:0.3rem 0.8rem;border-radius:6px;font-size:0.65rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;background:var(--neon-green);color:var(--black)}
+    .blog-body{padding:2rem}
+    .blog-body h3{font-family:'Nunito',sans-serif;font-size:1.2rem;font-weight:800;margin-bottom:0.8rem;line-height:1.3}
+    .blog-body p{font-size:0.88rem;color:var(--text-dim);line-height:1.7;margin-bottom:1.2rem}
+    .blog-meta{font-size:0.72rem;color:var(--text-dim);display:flex;gap:1rem}
+    .blog-read{color:var(--neon-green);font-weight:600;font-size:0.82rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem}
+    @media(max-width:768px){.blog-grid{grid-template-columns:1fr}}
+
+    /* === ARTICLE FULL === */
+    .article-full{background:var(--black);border-top:1px solid var(--border);padding-top:4rem;padding-bottom:2rem}
+    .article-container{max-width:800px;margin:0 auto}
+    .article-container h2{font-family:'Nunito',sans-serif;font-size:2rem;font-weight:900;margin-bottom:1rem;line-height:1.2}
+    .article-container h3{font-family:'Nunito',sans-serif;font-size:1.4rem;font-weight:800;margin:2.5rem 0 1rem;color:var(--chrome-blue)}
+    .article-container p{font-size:1rem;color:var(--text-dim);line-height:1.85;margin-bottom:1.2rem}
+    .article-container ul{list-style:none;margin:1rem 0 1.5rem}
+    .article-container ul li{padding:0.5rem 0;padding-left:1.5rem;position:relative;color:var(--text-dim);font-size:0.95rem;line-height:1.7}
+    .article-container ul li::before{content:'';position:absolute;left:0;top:0.85rem;width:6px;height:6px;border-radius:50%;background:var(--neon-green)}
+    .article-divider{width:60px;height:3px;background:var(--chrome-grad);border-radius:2px;margin:3rem auto}
+
+    .reveal{opacity:0;transform:translateY(35px);transition:all 0.7s cubic-bezier(0.25,0.46,0.45,0.94)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .rd1{transition-delay:0.1s}.rd2{transition-delay:0.2s}.rd3{transition-delay:0.3s}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#"><img class="nav-logo" src="https://53dcea-3.myshopify.com/cdn/shop/files/Subject.png?v=1700178501&width=600" alt="Exotic Smokes logo"></a>
+  <ul class="nav-links">
+    <li><a href="#services">Experience</a></li>
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#locations">Locations</a></li>
+    <li><a href="#blog">Guides</a></li>
+    <li><span class="nav-live">Open 24/7</span></li>
+    <li><a href="https://53dcea-3.myshopify.com/" class="nav-cta" target="_blank">Shop Online</a></li>
+  </ul>
+  <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1559304022-afbf28f53c43?w=1920&q=80" alt="Smoke lounge atmosphere" loading="eager">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-glow g1"></div>
+  <div class="hero-glow g2"></div>
+  <div class="hero-glow g3"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">Open 24 Hours &bull; 7 Days a Week</div>
+      <h1><span class="chrome">Premium Smoke.</span><br><span class="glow-text">Elevated Experience.</span></h1>
+      <p class="hero-sub">Tampa Bay's ultimate destination for premium cigars, vapes, hookah, kava & kratom. Multiple locations across Wesley Chapel, Tampa & Clearwater — all open 24/7.</p>
+      <div class="hero-buttons">
+        <a href="#locations" class="btn-neon">Visit Us &rarr;</a>
+        <a href="https://53dcea-3.myshopify.com/" class="btn-chrome" target="_blank">Shop Online</a>
+      </div>
+      <div class="hero-tags">
+        <span class="hero-tag">Premium Cigars</span>
+        <span class="hero-tag">Vapes & Mods</span>
+        <span class="hero-tag">Hookah Lounge</span>
+        <span class="hero-tag">Kava & Kratom Bar</span>
+        <span class="hero-tag">Apparel</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-logo-wrap">
+        <div class="hero-ring ring-1"></div>
+        <div class="hero-ring ring-2"></div>
+        <div class="hero-ring ring-3"></div>
+        <img src="https://53dcea-3.myshopify.com/cdn/shop/files/Subject.png?v=1700178501&width=600" alt="Exotic Smokes">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="sec-tag">Three Experiences, One Roof</div>
+      <h2>More Than a Smoke Shop</h2>
+      <p>We combined everything you need into one premium 24/7 destination.</p>
+    </div>
+    <div class="service-grid">
+      <div class="svc-card reveal">
+        <div class="svc-icon">&#128684;</div>
+        <h3>Premium Smoke Shop</h3>
+        <p>Hand-picked selection of cigars, vapes, mods, glassware, wraps, accessories & more. From Acid Blondes to RAW papers — we carry it all at the best prices, guaranteed.</p>
+        <span class="svc-tag tag-green">Price Match Guarantee</span>
+      </div>
+      <div class="svc-card reveal rd1">
+        <div class="svc-icon">&#9729;&#65039;</div>
+        <h3>Hookah Lounge</h3>
+        <p>Handcrafted hookahs with premium Al Fakher, Starbuzz & exotic shisha flavors. Sink into the couch, pick your flavor, and unwind in our relaxing lounge atmosphere.</p>
+        <span class="svc-tag tag-blue">Walk-ins Welcome</span>
+      </div>
+      <div class="svc-card reveal rd2">
+        <div class="svc-icon">&#127860;</div>
+        <h3>Kava & Kratom Bar</h3>
+        <p>Freshly prepared kava and kratom drinks in a vibrant, social setting. Whether you're winding down or gearing up — our bar has the perfect blend for your vibe.</p>
+        <span class="svc-tag tag-purple">Community Favorite</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products" id="products">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="sec-tag">Shop Our Selection</div>
+      <h2>Featured Products</h2>
+      <p>Premium brands at unbeatable prices. Shop in-store or online.</p>
+    </div>
+    <div class="product-grid">
+      <div class="prod-card reveal">
+        <div class="prod-img">
+          <img src="https://53dcea-3.myshopify.com/cdn/shop/files/B70DACD5-73AB-42D3-825D-00468CC5FBEC.jpg?v=1739551163&width=400" alt="Acid Blonde Cigar" loading="lazy">
+          <span class="prod-badge badge-hot">Popular</span>
+        </div>
+        <div class="prod-body">
+          <div class="cat">Premium Cigars</div>
+          <h4>Acid Blonde</h4>
+          <div class="prod-price">$12.99</div>
+        </div>
+      </div>
+      <div class="prod-card reveal rd1">
+        <div class="prod-img">
+          <img src="https://53dcea-3.myshopify.com/cdn/shop/files/57EA7479-EE7A-4468-A6B1-070285674D40.jpg?v=1739552369&width=400" alt="Acid Kuba Kuba Cigar" loading="lazy">
+          <span class="prod-badge badge-new">Premium</span>
+        </div>
+        <div class="prod-body">
+          <div class="cat">Premium Cigars</div>
+          <h4>Acid Kuba Kuba</h4>
+          <div class="prod-price">$19.99</div>
+        </div>
+      </div>
+      <div class="prod-card reveal rd2">
+        <div class="prod-img">
+          <img src="https://53dcea-3.myshopify.com/cdn/shop/files/B28ABE7F-DA21-4F1F-95AF-DAE8BC84FF77.jpg?v=1731666330&width=400" alt="Al Fakher Watermelon Mint Hookah" loading="lazy">
+          <span class="prod-badge badge-hot">Best Seller</span>
+        </div>
+        <div class="prod-body">
+          <div class="cat">Hookah Shisha</div>
+          <h4>Al Fakher Watermelon Mint</h4>
+          <div class="prod-price">$49.00</div>
+        </div>
+      </div>
+      <div class="prod-card reveal rd3">
+        <div class="prod-img">
+          <img src="https://53dcea-3.myshopify.com/cdn/shop/files/BC95289D-0590-45A5-920E-B34F6D05C7FD.jpg?v=1739438629&width=400" alt="Spaceman SP40000 Vape" loading="lazy">
+          <span class="prod-badge badge-new">New</span>
+        </div>
+        <div class="prod-body">
+          <div class="cat">Disposable Vapes</div>
+          <h4>Spaceman SP40000</h4>
+          <div class="prod-price">$18.69</div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem" class="reveal">
+      <a href="https://53dcea-3.myshopify.com/" class="btn-chrome" target="_blank">View All Products &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="container">
+    <div class="exp-grid">
+      <div class="exp-images reveal">
+        <div class="exp-img">
+          <img src="https://images.unsplash.com/photo-1517488629431-6a60195e0db4?w=500&h=500&fit=crop" alt="Hookah session" loading="lazy">
+        </div>
+        <div class="exp-img">
+          <img src="https://images.unsplash.com/photo-1527099908998-4000b62cb7c0?w=500&h=250&fit=crop" alt="Premium cigars" loading="lazy">
+        </div>
+        <div class="exp-img">
+          <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=500&h=250&fit=crop" alt="Kava drink" loading="lazy">
+        </div>
+      </div>
+      <div class="exp-text reveal">
+        <div class="sec-tag">The Exotic Experience</div>
+        <h2>Not Your Average<br>Smoke Shop</h2>
+        <p>We created a space where quality meets atmosphere. Whether you're here to pick up your favorite cigar, enjoy a hookah session with friends, or relax with a kava at the bar — Exotic Smokes delivers an experience you won't find anywhere else.</p>
+        <div class="exp-features">
+          <div class="exp-feat">
+            <div class="exp-feat-icon">&#128337;</div>
+            <span><strong>Open 24/7</strong> — Day shift or night owl, we're here</span>
+          </div>
+          <div class="exp-feat">
+            <div class="exp-feat-icon">&#128176;</div>
+            <span><strong>Price Match</strong> — Find it cheaper? We'll beat it</span>
+          </div>
+          <div class="exp-feat">
+            <div class="exp-feat-icon">&#128717;</div>
+            <span><strong>Shop Online</strong> — Can't visit? Order for delivery</span>
+          </div>
+          <div class="exp-feat">
+            <div class="exp-feat-icon">&#128085;</div>
+            <span><strong>Exotic Apparel</strong> — Rep the brand with our clothing line</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="sec-tag">What People Say</div>
+      <h2>5.0 &#9733; Rated on Yelp, Google & Yahoo</h2>
+      <p>170+ happy customers and counting. Here's what our community is saying.</p>
+    </div>
+    <div class="review-grid">
+      <div class="rev-card reveal">
+        <div class="rev-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <blockquote>"A one stop shop — clothes, shoes, sneakers, drinks, snacks and everything you need for your smoking routine. The variety is unreal and staff is super helpful."</blockquote>
+        <div class="rev-author">
+          <div class="rev-avatar">S</div>
+          <div>
+            <div class="rev-name">Sharlene F.</div>
+            <div class="rev-src">Yelp &bull; Wesley Chapel</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-card reveal rd1">
+        <div class="rev-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <blockquote>"Juan and Omar are very knowledgeable and helpful. Best prices in the area, hands down. The kava bar and hookah lounge make this place a whole vibe."</blockquote>
+        <div class="rev-author">
+          <div class="rev-avatar">J</div>
+          <div>
+            <div class="rev-name">Jesse P.</div>
+            <div class="rev-src">Yelp &bull; Wesley Chapel</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-card reveal rd2">
+        <div class="rev-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <blockquote>"Decent THCA flowers and very nice customer service. Staff is fun and helpful — they even gave me a complimentary drink. Open 24 hours is a huge plus."</blockquote>
+        <div class="rev-author">
+          <div class="rev-avatar">T</div>
+          <div>
+            <div class="rev-name">Thomas N.</div>
+            <div class="rev-src">Yahoo &bull; Lutz</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-card reveal">
+        <div class="rev-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <blockquote>"The ambiance is super clean and inviting. Pool table, lounge space, and the kava & kratom drinks are high quality. Omar goes above and beyond every time."</blockquote>
+        <div class="rev-author">
+          <div class="rev-avatar">M</div>
+          <div>
+            <div class="rev-name">Madison M.</div>
+            <div class="rev-src">Google &bull; Tampa</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-card reveal rd1">
+        <div class="rev-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <blockquote>"Great service, knowledgeable staff, and an amazing selection. Prices are among the best in town. If you need anything smoke shop related, YOU WANT TO COME HERE!"</blockquote>
+        <div class="rev-author">
+          <div class="rev-avatar">B</div>
+          <div>
+            <div class="rev-name">Bery T.</div>
+            <div class="rev-src">Yelp &bull; Wesley Chapel</div>
+          </div>
+        </div>
+      </div>
+      <div class="rev-card reveal rd2">
+        <div class="rev-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <blockquote>"Best kava bar in the Tampa Bay area. The drinks are always consistent, the staff remembers your name, and it's become my go-to spot after work. Can't recommend enough."</blockquote>
+        <div class="rev-author">
+          <div class="rev-avatar">R</div>
+          <div>
+            <div class="rev-name">Ryan K.</div>
+            <div class="rev-src">Google &bull; Clearwater</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section class="locations" id="locations">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="sec-tag">Find Us</div>
+      <h2>Tampa Bay's Growing 24/7 Destination</h2>
+      <p>Multiple locations across the Tampa Bay area — all open 24/7. Walk in anytime, we never close.</p>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-card primary reveal">
+        <div class="loc-map">
+          <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700&h=300&fit=crop&sat=-100" alt="Wesley Chapel location" loading="lazy">
+          <span class="loc-map-badge green">Wesley Chapel</span>
+          <div class="open-24">Open 24/7</div>
+        </div>
+        <div class="loc-body">
+          <h3>Wesley Chapel / Lutz</h3>
+          <div class="loc-detail">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>26306 Wesley Chapel Blvd<br>Lutz, FL 33559</span>
+          </div>
+          <div class="loc-detail">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>(813) 428-5168</span>
+          </div>
+          <div class="loc-detail">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Open 24 hours &bull; 7 days a week</span>
+          </div>
+          <a href="https://maps.google.com/?q=Exotic+Smokes+26306+Wesley+Chapel+Blvd+Lutz+FL" class="loc-btn green" target="_blank">Get Directions &rarr;</a>
+        </div>
+      </div>
+      <div class="loc-card reveal rd1">
+        <div class="loc-map">
+          <img src="https://images.unsplash.com/photo-1533293045820-58f3a5cf2992?w=700&h=300&fit=crop&sat=-100" alt="Tampa location" loading="lazy">
+          <span class="loc-map-badge blue">North Tampa</span>
+          <div class="open-24">Open 24/7</div>
+        </div>
+        <div class="loc-body">
+          <h3>North Tampa</h3>
+          <div class="loc-detail">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>15526 N Florida Ave<br>Tampa, FL 33613</span>
+          </div>
+          <div class="loc-detail">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>(813) 321-1079</span>
+          </div>
+          <div class="loc-detail">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Open 24 hours &bull; 7 days a week</span>
+          </div>
+          <a href="https://maps.google.com/?q=Exotic+Smoke+Shop+15526+N+Florida+Ave+Tampa+FL" class="loc-btn blue" target="_blank">Get Directions &rarr;</a>
+        </div>
+      </div>
+      <div class="loc-card reveal rd2">
+        <div class="loc-map">
+          <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=700&h=300&fit=crop&sat=-100" alt="Clearwater location" loading="lazy">
+          <span class="loc-map-badge blue">Clearwater</span>
+          <div class="open-24">Open 24/7</div>
+        </div>
+        <div class="loc-body">
+          <h3>Clearwater</h3>
+          <div class="loc-detail">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>1627 Gulf to Bay Blvd<br>Clearwater, FL 33755</span>
+          </div>
+          <div class="loc-detail">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>(727) 216-6675</span>
+          </div>
+          <div class="loc-detail">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>Open 24 hours &bull; 7 days a week</span>
+          </div>
+          <a href="https://maps.google.com/?q=Exotic+Smokes+1627+Gulf+to+Bay+Blvd+Clearwater+FL" class="loc-btn blue" target="_blank">Get Directions &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="container">
+    <div class="sec-header reveal">
+      <div class="sec-tag">From the Lounge</div>
+      <h2>Guides & Culture</h2>
+      <p>Deep dives into hookah culture, kava science, cigar craftsmanship, and the Tampa Bay smoke scene.</p>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card reveal" onclick="document.getElementById('article-kava').scrollIntoView({behavior:'smooth'})">
+        <div class="blog-img">
+          <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=700&h=300&fit=crop" alt="Kava drink preparation" loading="lazy">
+          <span class="blog-cat">Kava Guide</span>
+        </div>
+        <div class="blog-body">
+          <h3>The Complete Guide to Kava: What It Is, How It Works & Why Tampa Bay Is Obsessed</h3>
+          <p>Everything you need to know about kava — from its South Pacific origins to why kava bars are exploding across Florida. History, effects, varieties, and what to order on your first visit.</p>
+          <div class="blog-meta">
+            <span>12 min read</span>
+            <span>March 2026</span>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card reveal rd1" onclick="document.getElementById('article-hookah').scrollIntoView({behavior:'smooth'})">
+        <div class="blog-img">
+          <img src="https://images.unsplash.com/photo-1517488629431-6a60195e0db4?w=700&h=300&fit=crop" alt="Hookah lounge session" loading="lazy">
+          <span class="blog-cat">Hookah Culture</span>
+        </div>
+        <div class="blog-body">
+          <h3>Hookah 101: A Beginner's Guide to Shisha, Flavors & Lounge Etiquette</h3>
+          <p>New to hookah? This comprehensive guide covers everything from how a hookah works to the best flavor combinations, proper etiquette, and what makes a great hookah lounge experience.</p>
+          <div class="blog-meta">
+            <span>10 min read</span>
+            <span>March 2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE: KAVA GUIDE -->
+<section class="article-full" id="article-kava">
+  <div class="container">
+    <div class="article-container reveal">
+      <div class="sec-tag" style="margin-bottom:1rem">Deep Dive</div>
+      <h2>The Complete Guide to Kava: What It Is, How It Works & Why Tampa Bay Is Obsessed</h2>
+      <p style="color:var(--text-mid);font-size:0.85rem;margin-bottom:2rem">By Exotic Smokes &bull; March 2026 &bull; 12 min read</p>
+
+      <p>Walk into any Exotic Smokes location after 8 PM and you'll notice something: half the seats aren't taken by people smoking — they're taken by people sipping. Kava, the ancient South Pacific root drink, has quietly become one of the biggest draws at our bars. But if you've never tried it, you probably have questions. This guide covers everything.</p>
+
+      <h3>What Exactly Is Kava?</h3>
+      <p>Kava (Piper methysticum) is a plant native to the South Pacific islands — Fiji, Vanuatu, Tonga, and Hawaii. For over 3,000 years, Pacific Islander communities have prepared kava as a ceremonial and social drink. The active compounds, called kavalactones, interact with the brain's GABA receptors to produce a calming, mildly euphoric effect — without impairing cognitive function the way alcohol does.</p>
+      <p>Think of it as the opposite of coffee: where caffeine amps you up, kava brings you down to a grounded, social, relaxed state. You're clear-headed but loose. Talkative but calm. It's no wonder kava bars are becoming the preferred "third place" for people who want to be social without drinking alcohol.</p>
+
+      <h3>How Does Kava Work?</h3>
+      <p>The 18 kavalactones identified in kava root work synergistically to produce effects that typically onset within 15-20 minutes. The primary mechanisms include GABA-A receptor modulation (producing anxiolytic effects), dopamine pathway interaction (mild mood elevation), and sodium channel modulation (muscle relaxation). Unlike alcohol, kava does not impair motor function or cognitive clarity at normal doses — which is why many people drive to kava bars without concern.</p>
+
+      <h3>Types of Kava You'll Find at Exotic Smokes</h3>
+      <ul>
+        <li><strong>Traditional Prep (Shell):</strong> Ground kava root strained through water. Earthy, slightly bitter, authentic. This is how Pacific Islanders have consumed it for millennia. We serve it in coconut shells to honor the tradition.</li>
+        <li><strong>Kava Tea:</strong> A lighter preparation that's easier on the palate for first-timers. Blended with natural flavors to smooth out the earthiness while keeping the full kavalactone profile.</li>
+        <li><strong>Kava Smoothies & Blends:</strong> Our most popular option for newcomers — kava blended with tropical fruits, chocolate, or peanut butter. The flavors mask the root taste completely while delivering the same relaxation.</li>
+        <li><strong>Kratom Options:</strong> We also carry kratom drinks — a different plant entirely (Mitragyna speciosa from Southeast Asia) that offers energizing effects at low doses and relaxation at higher doses. Our bartenders can help you navigate the differences.</li>
+      </ul>
+
+      <h3>What to Expect on Your First Visit</h3>
+      <p>First-timers at our kava bar usually notice a slight numbing of the lips and tongue within 5-10 minutes — this is completely normal and comes from the kavalactones. Within 20 minutes, most people describe a wave of calm settling in. Conversations flow easier. Tension in the shoulders melts away. The ambient music sounds better. You'll understand why our regulars come back 3-4 times a week.</p>
+      <p>We recommend starting with a single shell of traditional kava or one of our flavored blends. Our bartenders are trained to guide you through the menu based on what you're looking for — whether that's deep relaxation, social energy, or something in between.</p>
+
+      <h3>Why Tampa Bay Is a Kava Hotspot</h3>
+      <p>Florida has more kava bars per capita than any other state in the US. The Tampa Bay area alone has seen a 300%+ increase in kava establishments over the past five years. The reasons are straightforward: Florida's climate attracts a health-conscious, outdoor-focused population that's increasingly looking for alcohol alternatives. The state's sober-curious movement is massive, and kava fits perfectly — it's social, it's relaxing, it's legal, and there's no hangover.</p>
+      <p>At Exotic Smokes, we've leaned into this by making our kava bar a centerpiece of the experience rather than an afterthought. Our Wesley Chapel, Tampa, and Clearwater locations all feature dedicated bar areas with trained kava bartenders, comfortable lounge seating, and a curated playlist that sets the right vibe whether you're visiting at 2 PM or 2 AM.</p>
+
+      <div class="article-divider"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLE: HOOKAH GUIDE -->
+<section class="article-full" id="article-hookah">
+  <div class="container">
+    <div class="article-container reveal">
+      <div class="sec-tag" style="margin-bottom:1rem">Deep Dive</div>
+      <h2>Hookah 101: A Beginner's Guide to Shisha, Flavors & Lounge Etiquette</h2>
+      <p style="color:var(--text-mid);font-size:0.85rem;margin-bottom:2rem">By Exotic Smokes &bull; March 2026 &bull; 10 min read</p>
+
+      <p>Hookah has been a social tradition for over 500 years, originating in India and spreading throughout the Middle East, North Africa, and now the entire world. At Exotic Smokes, our hookah lounge is one of the most popular spaces in the building — and for good reason. There's something irreplaceable about sharing a hookah with friends in a comfortable, low-lit setting with good music. If you've never tried it, here's everything you need to know.</p>
+
+      <h3>How Does a Hookah Work?</h3>
+      <p>A hookah (also called shisha, narghile, or waterpipe) consists of several components that work together: the bowl sits on top and holds flavored tobacco (shisha), which is heated by charcoal. Smoke travels down the stem, through water in the base (which cools and filters it), and up through the hose to the mouthpiece. The water filtration is what makes hookah smoke notably smoother and cooler than other smoking methods.</p>
+      <p>At Exotic Smokes, we use premium handcrafted hookahs with high-quality components. Our staff assembles each hookah to order, packing the bowl with the perfect density and managing the heat so you get thick, flavorful clouds from the first pull to the last.</p>
+
+      <h3>Shisha Flavors: What We Carry</h3>
+      <p>Shisha (the flavored tobacco) is where the magic happens. Modern shisha comes in hundreds of flavor profiles, from fruity to minty to creamy to exotic. At Exotic Smokes, we stock the most respected brands in the industry:</p>
+      <ul>
+        <li><strong>Al Fakher:</strong> The world's best-selling shisha brand. Known for consistent quality and classic flavors. Our top sellers are Watermelon Mint, Double Apple, and Grape Mint. Al Fakher is the safe bet for both beginners and experienced smokers.</li>
+        <li><strong>Starbuzz:</strong> A premium American brand known for bold, unique flavor combinations. Blue Mist (blueberry mint) and Pirates Cave are customer favorites. Starbuzz tends to produce denser clouds.</li>
+        <li><strong>Fumari:</strong> The "craft beer" of shisha — known for exceptionally juicy, sweet flavors. White Gummy Bear and Ambrosia are legendary in the hookah community.</li>
+        <li><strong>Tangiers:</strong> The advanced smoker's choice. Tangiers uses a unique packing method and delivers incredibly bold, long-lasting flavor sessions. Not for beginners, but beloved by hookah enthusiasts.</li>
+      </ul>
+
+      <h3>Best Flavor Combinations</h3>
+      <p>One of the best parts of hookah culture is mixing flavors to create custom blends. Here are some combinations our staff recommends for beginners:</p>
+      <ul>
+        <li><strong>Watermelon Mint + Grape:</strong> A refreshing, fruity blend that's universally loved. The mint adds coolness without overpowering the fruit.</li>
+        <li><strong>Double Apple + Mint:</strong> The classic Middle Eastern combination. Anise-forward with a clean menthol finish. This is the most traditional hookah flavor in the world.</li>
+        <li><strong>Blueberry + Vanilla:</strong> A creamy, dessert-like experience. Sweet and smooth, great for evening sessions.</li>
+        <li><strong>Peach + Lemon:</strong> Bright and tangy. Perfect for daytime sessions when you want something light and energizing.</li>
+      </ul>
+
+      <h3>Hookah Lounge Etiquette</h3>
+      <p>Whether you're visiting Exotic Smokes or any hookah lounge, there are a few unwritten rules that show respect for the culture and make the experience better for everyone:</p>
+      <ul>
+        <li><strong>Don't light cigarettes from the hookah coals.</strong> This is considered disrespectful in hookah culture and can also be a safety issue.</li>
+        <li><strong>Set the hose down, don't pass it directly.</strong> When you're done with your turn, place the hose on the table rather than handing it mouthpiece-first to someone else.</li>
+        <li><strong>Don't blow smoke in people's faces.</strong> Basic respect applies in lounge settings too. Exhale upward or to the side.</li>
+        <li><strong>Tip your hookah attendant.</strong> At Exotic Smokes, our staff assembles, manages, and maintains your hookah throughout the session. If you enjoyed the experience, a tip is appreciated.</li>
+        <li><strong>Relax and take your time.</strong> A hookah session typically lasts 45-90 minutes. This isn't a rush-through experience — it's meant to be savored with conversation and good company.</li>
+      </ul>
+
+      <h3>Why Exotic Smokes' Hookah Lounge Is Different</h3>
+      <p>Most smoke shops that offer hookah treat it as a side feature — a few hookahs tucked into a corner. At Exotic Smokes, we've built dedicated lounge spaces designed specifically for the hookah experience. Comfortable seating, ambient lighting, curated playlists, and attentive staff who manage your coals and flavor throughout the session. Whether you're coming with a group of friends on a Friday night or stopping by solo for a quiet session after work at 3 AM, the experience is consistent and premium.</p>
+      <p>All three of our locations — Wesley Chapel, Tampa, and Clearwater — feature full hookah lounges open 24/7. Walk-ins are always welcome, no reservation needed.</p>
+
+      <div class="article-divider"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2 class="reveal">Ready to Experience <span style="color:var(--neon-green)">Exotic?</span></h2>
+  <p class="reveal">Walk in anytime — day or night. Multiple locations across Tampa Bay, always open.</p>
+  <div class="reveal" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+    <a href="#locations" class="btn-neon">Find a Location &rarr;</a>
+    <a href="https://53dcea-3.myshopify.com/" class="btn-chrome" target="_blank">Shop Online</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="https://53dcea-3.myshopify.com/cdn/shop/files/Subject.png?v=1700178501&width=600" alt="Exotic Smokes">
+      <p>Tampa Bay's premier 24/7 smoke shop, hookah lounge & kava bar. Multiple locations serving the Wesley Chapel, Tampa & Clearwater communities.</p>
+    </div>
+    <div>
+      <h4>Experience</h4>
+      <ul>
+        <li><a href="#services">Smoke Shop</a></li>
+        <li><a href="#services">Hookah Lounge</a></li>
+        <li><a href="#services">Kava & Kratom Bar</a></li>
+        <li><a href="https://53dcea-3.myshopify.com/" target="_blank">Online Store</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Locations</h4>
+      <ul>
+        <li><a href="#locations">Wesley Chapel / Lutz</a></li>
+        <li><a href="#locations">North Tampa</a></li>
+        <li><a href="#locations">Clearwater</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Connect</h4>
+      <ul>
+        <li><a href="https://instagram.com/exoticsmokesofficial" target="_blank">Instagram</a></li>
+        <li><a href="tel:+18134285168">Call Wesley Chapel</a></li>
+        <li><a href="tel:+18133211079">Call Tampa</a></li>
+        <li><a href="tel:+17272166675">Call Clearwater</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 Exotic Smokes. All rights reserved.</span>
+    <div class="footer-age">&#9888;&#65039; 21+ Only &mdash; Age Verification Required</div>
+  </div>
+</footer>
+
+<!-- STRUCTURED DATA -->
+<script type="application/ld+json">
+[{
+  "@context":"https://schema.org","@type":"Store",
+  "name":"Exotic Smokes - Wesley Chapel",
+  "description":"Premium 24/7 smoke shop, hookah lounge, and kava bar in Wesley Chapel / Lutz, Florida. Cigars, vapes, hookah, kratom, kava, and apparel.",
+  "url":"https://53dcea-3.myshopify.com",
+  "telephone":"(813) 428-5168",
+  "priceRange":"$$",
+  "image":"https://53dcea-3.myshopify.com/cdn/shop/files/Subject.png?v=1700178501&width=600",
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"12","bestRating":"5"},
+  "address":{"@type":"PostalAddress","streetAddress":"26306 Wesley Chapel Blvd","addressLocality":"Lutz","addressRegion":"FL","postalCode":"33559","addressCountry":"US"},
+  "openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}
+},{
+  "@context":"https://schema.org","@type":"Store",
+  "name":"Exotic Smokes - Tampa",
+  "description":"Premium 24/7 smoke shop, hookah lounge, and kava bar in North Tampa, Florida.",
+  "telephone":"(813) 321-1079",
+  "address":{"@type":"PostalAddress","streetAddress":"15526 N Florida Ave","addressLocality":"Tampa","addressRegion":"FL","postalCode":"33613","addressCountry":"US"},
+  "openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}
+},{
+  "@context":"https://schema.org","@type":"Store",
+  "name":"Exotic Smokes - Clearwater",
+  "description":"Premium 24/7 smoke shop, hookah lounge, and kava bar in Clearwater, Florida.",
+  "telephone":"(727) 216-6675",
+  "address":{"@type":"PostalAddress","streetAddress":"1627 Gulf to Bay Blvd","addressLocality":"Clearwater","addressRegion":"FL","postalCode":"33755","addressCountry":"US"},
+  "openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}
+}]
+</script>
+
+<!-- SCRIPTS -->
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50)});
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+const s=document.createElement('style');s.textContent=`.nav-links.show{display:flex!important;position:fixed;top:82px;left:0;right:0;background:rgba(5,5,8,0.98);flex-direction:column;padding:2rem;gap:1.5rem;border-bottom:1px solid var(--border);z-index:999}`;document.head.appendChild(s);
+</script>
+
+</body>
+</html>
