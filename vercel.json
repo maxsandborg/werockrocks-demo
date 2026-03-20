@@ -11,11 +11,17 @@
     { "source": "/tasty-ramen", "destination": "/tasty-ramen/index.html" },
     { "source": "/tasty-ramen/", "destination": "/tasty-ramen/index.html" },
     { "source": "/rebellious-hippie", "destination": "/rebellious-hippie/index.html" },
-    { "source": "/rebellious-hippie/", "destination": "/rebellious-hippie/index.html" }
+    { "source": "/rebellious-hippie/", "destination": "/rebellious-hippie/index.html" },
+    { "source": "/laceleaf-medspa", "destination": "/laceleaf-medspa/index.html" },
+    { "source": "/laceleaf-medspa/", "destination": "/laceleaf-medspa/index.html" },
+    { "source": "/structured-fitness", "destination": "/structured-fitness/index.html" },
+    { "source": "/structured-fitness/", "destination": "/structured-fitness/index.html" },
+    { "source": "/jts-pressure-washing", "destination": "/jts-pressure-washing/index.html" },
+    { "source": "/jts-pressure-washing/", "destination": "/jts-pressure-washing/index.html" }
   ],
   "headers": [
     {
-      "source": "/(werockrocks|exoticsmokes|peppajak|blushwineroom|tasty-ramen|rebellious-hippie)/(.*)",
+      "source": "/(werockrocks|exoticsmokes|peppajak|blushwineroom|tasty-ramen|rebellious-hippie|laceleaf-medspa|structured-fitness|jts-pressure-washing)/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" },
         { "key": "X-Content-Type-Options", "value": "nosniff" }

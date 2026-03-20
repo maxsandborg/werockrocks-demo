@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JT's Pressure Washing | Wesley Chapel, FL | 5-Star Rated</title>
+<meta name="description" content="Wesley Chapel's #1 rated pressure washing company. Driveways, house washing, roof cleaning, pool decks, paver sealing. Serving Wesley Chapel, Land O' Lakes, Lutz & New Tampa. Call (813) 213-0499.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --blue: #0066cc;
+    --blue-bright: #0ea5e9;
+    --orange: #f97316;
+    --orange-dark: #ea580c;
+    --white: #ffffff;
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-900: #0f172a;
+    --green: #22c55e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--gray-900); overflow-x: hidden; }
+  h1,h2,h3,h4 { font-family: 'Barlow Condensed', sans-serif; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(10,22,40,0.97); backdrop-filter: blur(10px);
+    padding: 0 24px; height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: all 0.3s;
+  }
+  .nav-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.5rem; font-weight: 900; color: #fff; text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo span { color: var(--orange); }
+  .nav-logo-icon {
+    width: 38px; height: 38px; background: var(--orange);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 28px; list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.8); text-decoration: none;
+    font-size: 0.9rem; font-weight: 500; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta {
+    background: var(--orange); color: #fff !important;
+    padding: 10px 22px; border-radius: 6px; font-weight: 700 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--orange-dark) !important; }
+  .nav-phone { color: var(--blue-bright) !important; font-weight: 700 !important; }
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    padding: 5px; background: none; border: none;
+  }
+  .hamburger span {
+    display: block; width: 24px; height: 2px; background: #fff;
+    transition: all 0.3s;
+  }
+  .mobile-menu {
+    display: none; position: fixed; top: 68px; left: 0; right: 0;
+    background: var(--navy); padding: 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    z-index: 999;
+  }
+  .mobile-menu.open { display: flex; flex-direction: column; gap: 16px; }
+  .mobile-menu a {
+    color: rgba(255,255,255,0.85); text-decoration: none;
+    font-size: 1.1rem; font-weight: 500; padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .mobile-menu-cta {
+    background: var(--orange) !important; color: #fff !important;
+    padding: 14px 20px !important; border-radius: 8px; text-align: center;
+    border: none !important; font-weight: 700 !important;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; position: relative; display: flex; align-items: center;
+    background: var(--navy);
+    padding: 100px 24px 60px;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80');
+    background-size: cover; background-position: center;
+    opacity: 0.18;
+  }
+  .hero-bg-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(10,22,40,0.98) 0%, rgba(10,22,40,0.75) 60%, rgba(14,165,233,0.15) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(249,115,22,0.15); border: 1px solid rgba(249,115,22,0.35);
+    color: var(--orange); padding: 6px 14px; border-radius: 100px;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 900;
+    line-height: 0.95; color: #fff; margin-bottom: 24px;
+    text-transform: uppercase; letter-spacing: -0.01em;
+  }
+  .hero-title .accent { color: var(--orange); display: block; }
+  .hero-title .blue-accent { color: var(--blue-bright); }
+  .hero-sub {
+    font-size: 1.1rem; color: rgba(255,255,255,0.72); line-height: 1.7;
+    margin-bottom: 36px; max-width: 500px;
+  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 40px; }
+  .btn-primary {
+    background: var(--orange); color: #fff; padding: 16px 32px;
+    border-radius: 8px; font-weight: 700; font-size: 1rem; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    transition: all 0.2s; box-shadow: 0 4px 24px rgba(249,115,22,0.4);
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(249,115,22,0.5); }
+  .btn-secondary {
+    background: transparent; color: #fff; padding: 16px 32px;
+    border-radius: 8px; font-weight: 600; font-size: 1rem; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 2px solid rgba(255,255,255,0.3); transition: all 0.2s;
+  }
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.08); }
+  .hero-stats {
+    display: flex; gap: 28px; flex-wrap: wrap;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2.2rem; font-weight: 900; color: #fff; display: block;
+  }
+  .hero-stat-num .orange { color: var(--orange); }
+  .hero-stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* BEFORE/AFTER HERO VISUAL */
+  .hero-visual { position: relative; }
+  .ba-container {
+    position: relative; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5); aspect-ratio: 4/3;
+    cursor: col-resize; user-select: none;
+  }
+  .ba-before, .ba-after {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+  }
+  .ba-before {
+    background-image: url('https://images.unsplash.com/photo-1558618047-f4e943db89c0?w=800&q=80');
+    filter: saturate(0.4) brightness(0.7) sepia(0.3);
+  }
+  .ba-after {
+    background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80');
+    clip-path: inset(0 50% 0 0);
+    transition: clip-path 0.0s;
+  }
+  .ba-handle {
+    position: absolute; top: 0; bottom: 0; left: 50%;
+    width: 3px; background: #fff; transform: translateX(-50%);
+    display: flex; align-items: center; justify-content: center;
+    cursor: col-resize;
+  }
+  .ba-handle-circle {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: #fff; box-shadow: 0 2px 16px rgba(0,0,0,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; color: var(--navy); flex-shrink: 0;
+  }
+  .ba-label-before, .ba-label-after {
+    position: absolute; bottom: 14px;
+    background: rgba(0,0,0,0.65); color: #fff;
+    padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .ba-label-before { left: 14px; }
+  .ba-label-after { right: 14px; color: var(--green); }
+  .hero-visual-caption {
+    text-align: center; margin-top: 14px;
+    color: rgba(255,255,255,0.5); font-size: 0.82rem;
+  }
+  .hero-visual-caption span { color: var(--blue-bright); }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--orange); padding: 18px 24px;
+  }
+  .trust-bar-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: center;
+    gap: 40px; flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 8px;
+    color: #fff; font-weight: 700; font-size: 0.9rem;
+  }
+  .trust-item-icon { font-size: 1.2rem; }
+  .trust-divider { width: 1px; height: 24px; background: rgba(255,255,255,0.3); }
+
+  /* SECTION BASE */
+  section { padding: 90px 24px; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    display: inline-block; font-size: 0.78rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 900;
+    text-transform: uppercase; line-height: 1.05;
+    color: var(--gray-900); margin-bottom: 16px;
+  }
+  .section-sub {
+    font-size: 1.05rem; color: var(--gray-600); max-width: 580px;
+    line-height: 1.7;
+  }
+  .section-header { margin-bottom: 52px; }
+  .section-header.center { text-align: center; }
+  .section-header.center .section-sub { margin: 0 auto; }
+
+  /* SERVICES */
+  .services { background: var(--gray-50); }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .service-card {
+    background: #fff; border-radius: 14px; overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    transition: all 0.3s; cursor: pointer;
+    border: 1px solid var(--gray-200);
+  }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); border-color: var(--orange); }
+  .service-img {
+    height: 190px; background-size: cover; background-position: center;
+    position: relative; overflow: hidden;
+  }
+  .service-img-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(10,22,40,0.7) 0%, transparent 60%);
+  }
+  .service-icon-badge {
+    position: absolute; top: 14px; left: 14px;
+    background: var(--orange); color: #fff;
+    width: 40px; height: 40px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  .service-body { padding: 22px; }
+  .service-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.4rem; font-weight: 800; text-transform: uppercase;
+    color: var(--gray-900); margin-bottom: 8px;
+  }
+  .service-desc { font-size: 0.88rem; color: var(--gray-600); line-height: 1.6; margin-bottom: 16px; }
+  .service-price { font-size: 0.82rem; color: var(--orange); font-weight: 700; margin-bottom: 14px; }
+  .service-link {
+    font-size: 0.88rem; font-weight: 700; color: var(--blue);
+    text-decoration: none; display: inline-flex; align-items: center; gap: 5px;
+    transition: gap 0.2s;
+  }
+  .service-card:hover .service-link { gap: 10px; }
+
+  /* WHY CHOOSE */
+  .why { background: var(--navy); }
+  .why .section-title { color: #fff; }
+  .why .section-sub { color: rgba(255,255,255,0.6); }
+  .why-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+    margin-top: 48px;
+  }
+  .why-card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px; padding: 28px;
+    transition: all 0.3s;
+  }
+  .why-card:hover { background: rgba(249,115,22,0.08); border-color: rgba(249,115,22,0.3); }
+  .why-icon {
+    width: 52px; height: 52px; border-radius: 12px;
+    background: rgba(249,115,22,0.15); border: 1px solid rgba(249,115,22,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 18px;
+  }
+  .why-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.3rem; font-weight: 800; color: #fff; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .why-desc { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.65; }
+
+  /* HOW IT WORKS */
+  .how { background: #fff; }
+  .steps {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;
+    position: relative; margin-top: 52px;
+  }
+  .steps::before {
+    content: '';
+    position: absolute; top: 28px; left: calc(16.66% + 20px); right: calc(16.66% + 20px);
+    height: 2px; background: var(--gray-200);
+  }
+  .step { text-align: center; }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--orange); color: #fff;
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1.6rem; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px; position: relative; z-index: 1;
+    box-shadow: 0 4px 20px rgba(249,115,22,0.4);
+  }
+  .step-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.3rem; font-weight: 800; text-transform: uppercase;
+    color: var(--gray-900); margin-bottom: 10px;
+  }
+  .step-desc { font-size: 0.9rem; color: var(--gray-600); line-height: 1.6; }
+
+  /* QUOTE CALCULATOR */
+  .calculator { background: var(--gray-50); }
+  .calc-wrapper {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+  }
+  .calc-left .section-title { margin-bottom: 20px; }
+  .calc-bullets { list-style: none; margin-top: 28px; }
+  .calc-bullets li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 0.95rem; color: var(--gray-700); margin-bottom: 14px; line-height: 1.5;
+  }
+  .calc-bullets li::before {
+    content: '✓'; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--green); color: #fff; font-size: 0.7rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+  }
+  .calc-card {
+    background: #fff; border-radius: 18px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+    padding: 36px; border: 1px solid var(--gray-200);
+  }
+  .calc-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.6rem; font-weight: 900; text-transform: uppercase;
+    color: var(--gray-900); margin-bottom: 28px;
+  }
+  .form-group { margin-bottom: 20px; }
+  .form-label { display: block; font-size: 0.82rem; font-weight: 700; color: var(--gray-700); margin-bottom: 7px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .form-select, .form-input {
+    width: 100%; padding: 12px 16px; border: 1.5px solid var(--gray-200);
+    border-radius: 8px; font-size: 0.95rem; color: var(--gray-900);
+    background: #fff; outline: none; transition: border-color 0.2s;
+    appearance: none;
+  }
+  .form-select:focus, .form-input:focus { border-color: var(--orange); }
+  .size-btns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .size-btn {
+    padding: 10px 8px; border: 1.5px solid var(--gray-200); border-radius: 8px;
+    background: #fff; cursor: pointer; font-size: 0.8rem; font-weight: 600;
+    color: var(--gray-700); transition: all 0.2s; text-align: center;
+  }
+  .size-btn:hover, .size-btn.active {
+    border-color: var(--orange); background: rgba(249,115,22,0.06); color: var(--orange);
+  }
+  .calc-result {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3a5c 100%);
+    border-radius: 12px; padding: 24px; margin-top: 20px;
+    text-align: center; display: none;
+  }
+  .calc-result.show { display: block; animation: fadeInUp 0.4s ease; }
+  .calc-result-label { font-size: 0.78rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .calc-result-range {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2.8rem; font-weight: 900; color: var(--orange);
+  }
+  .calc-result-note { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 8px; }
+  .calc-result-cta {
+    display: block; margin-top: 18px;
+    background: var(--orange); color: #fff; padding: 12px 24px;
+    border-radius: 8px; font-weight: 700; font-size: 0.9rem; text-decoration: none;
+    transition: background 0.2s;
+  }
+  .calc-result-cta:hover { background: var(--orange-dark); }
+  .calc-btn {
+    width: 100%; padding: 15px; background: var(--orange); color: #fff;
+    border: none; border-radius: 8px; font-size: 1rem; font-weight: 700;
+    cursor: pointer; margin-top: 8px; transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+  .calc-btn:hover { background: var(--orange-dark); transform: translateY(-1px); }
+
+  /* GALLERY */
+  .gallery { background: var(--gray-900); }
+  .gallery .section-title { color: #fff; }
+  .gallery .section-sub { color: rgba(255,255,255,0.55); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 220px);
+    gap: 12px; margin-top: 48px;
+  }
+  .gallery-item {
+    border-radius: 10px; overflow: hidden; position: relative;
+    transition: transform 0.3s; cursor: pointer;
+  }
+  .gallery-item:hover { transform: scale(1.02); }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-item:nth-child(1) { grid-column: span 2; }
+  .gallery-item:nth-child(4) { grid-column: span 2; }
+  .gallery-img {
+    width: 100%; height: 100%;
+    background-size: cover; background-position: center;
+  }
+  .gallery-overlay {
+    position: absolute; inset: 0;
+    background: rgba(249,115,22,0.7);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s;
+    font-size: 2rem; color: #fff;
+  }
+
+  /* SERVICE AREAS */
+  .areas { background: var(--gray-50); }
+  .areas-intro { max-width: 600px; margin-bottom: 48px; }
+  .areas-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  }
+  .area-card {
+    background: #fff; border-radius: 12px; padding: 22px 24px;
+    border: 1.5px solid var(--gray-200); display: flex; align-items: center; gap: 14px;
+    transition: all 0.2s;
+  }
+  .area-card:hover { border-color: var(--orange); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .area-pin {
+    width: 40px; height: 40px; background: rgba(249,115,22,0.1);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+  }
+  .area-name {
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem;
+    font-weight: 800; text-transform: uppercase; color: var(--gray-900);
+  }
+  .area-sub { font-size: 0.78rem; color: var(--gray-600); }
+
+  /* SEASONAL DEALS */
+  .deals {
+    background: linear-gradient(135deg, #0a1628 0%, #0f2545 100%);
+    padding: 70px 24px;
+  }
+  .deals-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+  }
+  .deal-card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px; padding: 32px; position: relative; overflow: hidden;
+    transition: all 0.3s;
+  }
+  .deal-card:hover { border-color: var(--orange); background: rgba(249,115,22,0.06); }
+  .deal-card::before {
+    content: ''; position: absolute; top: -30px; right: -30px;
+    width: 120px; height: 120px; border-radius: 50%;
+    background: rgba(249,115,22,0.08);
+  }
+  .deal-badge {
+    display: inline-block; background: var(--orange); color: #fff;
+    padding: 4px 12px; border-radius: 100px; font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;
+  }
+  .deal-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.7rem; font-weight: 900; color: #fff; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .deal-desc { font-size: 0.9rem; color: rgba(255,255,255,0.62); line-height: 1.65; margin-bottom: 20px; }
+  .deal-discount {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 2rem; font-weight: 900; color: var(--orange); margin-bottom: 16px;
+  }
+  .deal-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--blue-bright); font-weight: 700; font-size: 0.88rem; text-decoration: none;
+  }
+  .deal-header {
+    text-align: center; margin-bottom: 40px;
+  }
+  .deal-header .section-title { color: #fff; }
+  .deal-header .section-sub { color: rgba(255,255,255,0.55); margin: 0 auto; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: #fff; }
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    margin-top: 52px;
+  }
+  .testimonial-card {
+    background: var(--gray-50); border-radius: 14px; padding: 28px;
+    border: 1px solid var(--gray-200); transition: all 0.3s;
+  }
+  .testimonial-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-3px); }
+  .stars { color: #f59e0b; font-size: 0.95rem; margin-bottom: 14px; }
+  .quote-text { font-size: 0.95rem; color: var(--gray-700); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+  .quote-author { display: flex; align-items: center; gap: 12px; }
+  .author-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--orange); color: #fff;
+    font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .author-name { font-weight: 700; font-size: 0.9rem; color: var(--gray-900); }
+  .author-loc { font-size: 0.78rem; color: var(--gray-600); }
+
+  /* CONTACT FORM */
+  .contact { background: var(--gray-50); }
+  .contact-wrapper {
+    display: grid; grid-template-columns: 1fr 1.4fr; gap: 60px; align-items: start;
+  }
+  .contact-info { }
+  .contact-info .section-title { margin-bottom: 20px; }
+  .contact-detail {
+    display: flex; align-items: flex-start; gap: 14px;
+    margin-bottom: 24px;
+  }
+  .contact-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; flex-shrink: 0;
+  }
+  .contact-detail-label { font-size: 0.78rem; color: var(--gray-600); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; margin-bottom: 3px; }
+  .contact-detail-val { font-size: 1rem; font-weight: 700; color: var(--gray-900); }
+  .contact-detail-val a { color: var(--blue); text-decoration: none; }
+  .badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+  .badge {
+    display: flex; align-items: center; gap: 6px;
+    background: #fff; border: 1.5px solid var(--gray-200);
+    padding: 8px 14px; border-radius: 8px;
+    font-size: 0.8rem; font-weight: 700; color: var(--gray-700);
+  }
+  .quote-form {
+    background: #fff; border-radius: 18px; padding: 36px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07); border: 1px solid var(--gray-200);
+  }
+  .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-textarea {
+    width: 100%; padding: 12px 16px; border: 1.5px solid var(--gray-200);
+    border-radius: 8px; font-size: 0.95rem; color: var(--gray-900);
+    background: #fff; outline: none; transition: border-color 0.2s;
+    resize: vertical; font-family: 'Inter', sans-serif; min-height: 100px;
+  }
+  .form-textarea:focus { border-color: var(--orange); }
+  .form-submit {
+    width: 100%; padding: 16px; background: var(--orange); color: #fff;
+    border: none; border-radius: 8px; font-size: 1rem; font-weight: 700;
+    cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .form-submit:hover { background: var(--orange-dark); transform: translateY(-1px); }
+  .form-success {
+    display: none; text-align: center; padding: 28px;
+    background: rgba(34,197,94,0.08); border: 1.5px solid rgba(34,197,94,0.3);
+    border-radius: 12px; margin-top: 16px;
+  }
+  .form-success.show { display: block; animation: fadeInUp 0.4s ease; }
+  .form-success-icon { font-size: 2.5rem; margin-bottom: 10px; }
+  .form-success-msg { font-weight: 700; color: var(--green); font-size: 1.1rem; margin-bottom: 6px; }
+  .form-success-sub { font-size: 0.88rem; color: var(--gray-600); }
+
+  /* FOOTER */
+  footer {
+    background: var(--gray-900); padding: 60px 24px 0;
+    color: rgba(255,255,255,0.6);
+  }
+  .footer-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+    padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.6rem; font-weight: 900; color: #fff; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .footer-brand-logo span { color: var(--orange); }
+  .footer-brand-logo-icon {
+    width: 36px; height: 36px; background: var(--orange); border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+  }
+  .footer-desc { font-size: 0.88rem; line-height: 1.7; margin-bottom: 20px; }
+  .footer-social { display: flex; gap: 10px; }
+  .footer-social a {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7);
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none; font-size: 0.9rem; transition: all 0.2s;
+  }
+  .footer-social a:hover { background: var(--orange); color: #fff; }
+  .footer-col-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 800; text-transform: uppercase;
+    color: #fff; letter-spacing: 0.05em; margin-bottom: 18px;
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 10px; }
+  .footer-links a {
+    color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.88rem;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--orange); }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 0; font-size: 0.8rem;
+  }
+
+  /* MOBILE STICKY CTA */
+  .mobile-sticky-cta {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--navy); border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 12px 16px; z-index: 500;
+    gap: 10px;
+  }
+  .mobile-sticky-cta a {
+    flex: 1; padding: 14px; border-radius: 8px; text-align: center;
+    font-weight: 700; font-size: 0.95rem; text-decoration: none;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  .msc-call { background: var(--blue); color: #fff; }
+  .msc-quote { background: var(--orange); color: #fff; }
+
+  /* ZELLYFI BADGE */
+  .zellyfi-badge {
+    position: fixed; bottom: 24px; right: 20px; z-index: 600;
+    background: var(--navy); border: 1.5px solid rgba(255,255,255,0.15);
+    border-radius: 12px; padding: 10px 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    text-align: center; max-width: 160px;
+    transition: transform 0.2s;
+  }
+  .zellyfi-badge:hover { transform: scale(1.03); }
+  .zellyfi-badge-label { font-size: 0.65rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
+  .zellyfi-badge-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem; font-weight: 900; color: var(--orange); margin-bottom: 6px;
+  }
+  .zellyfi-badge-cta {
+    display: block; background: var(--orange); color: #fff;
+    padding: 5px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 700;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .zellyfi-badge-cta:hover { background: var(--orange-dark); }
+
+  /* ANIMATIONS */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+    .gallery-item:nth-child(1), .gallery-item:nth-child(4) { grid-column: span 1; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  }
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .hero-content { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { order: -1; }
+    .why-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .steps::before { display: none; }
+    .calc-wrapper { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .contact-wrapper { grid-template-columns: 1fr; }
+    .areas-grid { grid-template-columns: repeat(2, 1fr); }
+    .deals-inner { grid-template-columns: 1fr; }
+    .form-grid-2 { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    .services-grid { grid-template-columns: 1fr; }
+    .trust-bar-inner { gap: 20px; }
+    .trust-divider { display: none; }
+    .mobile-sticky-cta { display: flex; }
+    .zellyfi-badge { bottom: 90px; right: 12px; }
+    section { padding: 64px 20px; }
+  }
+  @media (max-width: 480px) {
+    .areas-grid { grid-template-columns: 1fr; }
+    .size-btns { grid-template-columns: repeat(2, 1fr); }
+    .hero-btns { flex-direction: column; }
+    .hero-btns .btn-primary, .hero-btns .btn-secondary { text-align: center; justify-content: center; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .gallery-grid .gallery-item { height: 150px; }
+    .gallery-item:nth-child(1), .gallery-item:nth-child(4) { grid-column: span 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">💧</div>
+    JT's <span>Pressure Washing</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#calculator">Get a Quote</a></li>
+    <li><a href="#areas">Service Areas</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="tel:8132130499" class="nav-phone">📞 (813) 213-0499</a></li>
+    <li><a href="#contact" class="nav-cta">Free Quote</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMobileMenu()">Services</a>
+  <a href="#calculator" onclick="closeMobileMenu()">Get a Quote</a>
+  <a href="#areas" onclick="closeMobileMenu()">Service Areas</a>
+  <a href="#testimonials" onclick="closeMobileMenu()">Reviews</a>
+  <a href="tel:8132130499">📞 (813) 213-0499</a>
+  <a href="#contact" class="mobile-menu-cta" onclick="closeMobileMenu()">Get Your Free Quote →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="hero-badge">⭐ 5.0 Stars · Wesley Chapel's Top-Rated</div>
+      <h1 class="hero-title">
+        Wesley Chapel's<br>
+        <span class="accent">Power Wash</span>
+        <span class="blue-accent">Pros.</span>
+      </h1>
+      <p class="hero-sub">
+        Florida's humidity, mold, and HOA deadlines stop here. JT's delivers same-day service, jaw-dropping results, and a satisfaction guarantee — backed by 50+ five-star reviews across Wesley Chapel and Tampa Bay.
+      </p>
+      <div class="hero-btns">
+        <a href="#calculator" class="btn-primary">⚡ Get Free Quote in 60 Seconds</a>
+        <a href="tel:8132130499" class="btn-secondary">📞 Call Us Now</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num"><span class="orange counter" data-target="500">0</span>+</span>
+          <span class="hero-stat-label">Jobs Done</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num"><span class="orange counter" data-target="50">0</span>+</span>
+          <span class="hero-stat-label">5-Star Reviews</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num"><span class="orange counter" data-target="7">0</span></span>
+          <span class="hero-stat-label">Years Serving Tampa Bay</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num orange">100<span style="font-size:1.4rem">%</span></span>
+          <span class="hero-stat-label">Satisfaction Guarantee</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="ba-container" id="baSlider">
+        <div class="ba-before"></div>
+        <div class="ba-after" id="baAfter"></div>
+        <div class="ba-handle" id="baHandle">
+          <div class="ba-handle-circle">⟺</div>
+        </div>
+        <div class="ba-label-before">BEFORE</div>
+        <div class="ba-label-after">✓ AFTER</div>
+      </div>
+      <p class="hero-visual-caption">← Drag to reveal the transformation · <span>Wesley Chapel driveway</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><span class="trust-item-icon">⭐</span> 5.0 Google Rating</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="trust-item-icon">🛡️</span> Fully Licensed & Insured</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="trust-item-icon">⚡</span> Same-Day Service Available</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="trust-item-icon">🌿</span> Eco-Friendly Solutions</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="trust-item-icon">✅</span> 100% Satisfaction Guaranteed</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><span class="trust-item-icon">📅</span> Serving Wesley Chapel Since 2017</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-label">What We Clean</span>
+      <h2 class="section-title">Complete Exterior Cleaning<br>For Every Surface</h2>
+      <p class="section-sub">From algae-covered driveways to HOA-required house washes — we handle it all with professional-grade equipment and eco-safe solutions.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1558618047-f4e943db89c0?w=600&q=75')">
+          <div class="service-img-overlay"></div>
+          <div class="service-icon-badge">🏠</div>
+        </div>
+        <div class="service-body">
+          <div class="service-name">House Washing</div>
+          <p class="service-desc">Soft wash treatment that blasts away mold, mildew, algae, and dirt from your home's exterior — safe for all siding types. Perfect for HOA compliance.</p>
+          <div class="service-price">Starting from $249</div>
+          <a href="#calculator" class="service-link">Get a Quote →</a>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1563453392212-326f5e854473?w=600&q=75')">
+          <div class="service-img-overlay"></div>
+          <div class="service-icon-badge">🚗</div>
+        </div>
+        <div class="service-body">
+          <div class="service-name">Driveway & Sidewalk</div>
+          <p class="service-desc">High-pressure cleaning that removes oil stains, tire marks, moss, and years of Florida grime. Surface-treated for longer-lasting results.</p>
+          <div class="service-price">Starting from $149</div>
+          <a href="#calculator" class="service-link">Get a Quote →</a>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1600607687644-c7f34b5063c7?w=600&q=75')">
+          <div class="service-img-overlay"></div>
+          <div class="service-icon-badge">🏚️</div>
+        </div>
+        <div class="service-body">
+          <div class="service-name">Roof Cleaning</div>
+          <p class="service-desc">Low-pressure soft wash removes black streaks (Gloeocapsa Magma algae) and extends your roof's life by years. Manufacturer-approved method.</p>
+          <div class="service-price">Starting from $299</div>
+          <a href="#calculator" class="service-link">Get a Quote →</a>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=75')">
+          <div class="service-img-overlay"></div>
+          <div class="service-icon-badge">🏊</div>
+        </div>
+        <div class="service-body">
+          <div class="service-name">Pool Deck & Cage</div>
+          <p class="service-desc">We restore pool decks and screen enclosures to like-new condition — removing algae, oxidation, and calcium deposits. Slip-hazard elimination included.</p>
+          <div class="service-price">Starting from $199</div>
+          <a href="#calculator" class="service-link">Get a Quote →</a>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75')">
+          <div class="service-img-overlay"></div>
+          <div class="service-icon-badge">🌿</div>
+        </div>
+        <div class="service-body">
+          <div class="service-name">Fence & Patio</div>
+          <p class="service-desc">Wood, vinyl, and composite fences restored to original color. Patio pavers cleaned and optionally sealed for lasting protection against Florida weather.</p>
+          <div class="service-price">Starting from $179</div>
+          <a href="#calculator" class="service-link">Get a Quote →</a>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-img" style="background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=75')">
+          <div class="service-img-overlay"></div>
+          <div class="service-icon-badge">🏢</div>
+        </div>
+        <div class="service-body">
+          <div class="service-name">Commercial Properties</div>
+          <p class="service-desc">Storefronts, parking lots, sidewalks, and building exteriors. Flexible scheduling including evenings and weekends. Fleet pricing available.</p>
+          <div class="service-price">Custom Pricing</div>
+          <a href="#contact" class="service-link">Request a Proposal →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="why" id="why">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-label" style="color:var(--blue-bright)">Why JT's</span>
+      <h2 class="section-title" style="color:#fff">The JT's Difference —<br>Our Customers Say It Best</h2>
+      <p class="section-sub">Every 5-star review tells the same story: JT's shows up on time, does exceptional work, and treats your home like their own.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">⚡</div>
+        <div class="why-title">Same-Day Service Available</div>
+        <p class="why-desc">HOA notice? Pre-sale cleaning? We offer same-day and next-day scheduling across Wesley Chapel. Call by noon, we may be there today.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🌿</div>
+        <div class="why-title">Eco-Friendly Cleaning Solutions</div>
+        <p class="why-desc">Our biodegradable cleaning agents are safe for your kids, pets, landscaping, and Wesley Chapel's waterways — powerful on grime, gentle on everything else.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🛡️</div>
+        <div class="why-title">Fully Licensed & Insured</div>
+        <p class="why-desc">We're fully licensed in Florida and carry comprehensive liability insurance. Every job is protected — you're never left holding the bag.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">✅</div>
+        <div class="why-title">100% Satisfaction Guaranteed</div>
+        <p class="why-desc">If you're not completely satisfied with our work, we come back and fix it — no questions, no excuses. That's the JT's promise, every single time.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">📋</div>
+        <div class="why-title">HOA Compliance Experts</div>
+        <p class="why-desc">Got an HOA violation notice or upcoming inspection? We understand Pasco County HOA standards and get your property back into compliance fast.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">🌀</div>
+        <div class="why-title">Post-Storm Hurricane Cleanup</div>
+        <p class="why-desc">After hurricane season passes through Wesley Chapel, we're ready. We clear storm debris, mud, and mold buildup — priority scheduling for storm-affected homes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-inner">
+    <div class="section-header center reveal">
+      <span class="section-label">The Process</span>
+      <h2 class="section-title">Three Steps to a<br>Spotless Property</h2>
+      <p class="section-sub">Getting started is easy. No hassle, no mystery pricing — just professional results delivered with integrity.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div class="step-title">Request Your Free Quote</div>
+        <p class="step-desc">Use our 60-second quote calculator below, call us at (813) 213-0499, or fill out the form. We respond fast — usually within the hour.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <div class="step-title">We Show Up & Get to Work</div>
+        <p class="step-desc">Our licensed, insured crew arrives on time with professional equipment. We walk the property with you and confirm the plan before we start a single spray.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <div class="step-title">You're Amazed. Guaranteed.</div>
+        <p class="step-desc">We do a final walkthrough together. If anything isn't perfect, we fix it on the spot. We don't leave until you're happy — that's the JT's standard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE CALCULATOR -->
+<section class="calculator" id="calculator">
+  <div class="section-inner">
+    <div class="calc-wrapper">
+      <div class="calc-left reveal">
+        <span class="section-label">Instant Pricing</span>
+        <h2 class="section-title">Get Your<br>Price in<br>60 Seconds</h2>
+        <p class="section-sub">No waiting, no callbacks. Select your service and property size to see real pricing for Wesley Chapel & Tampa Bay.</p>
+        <ul class="calc-bullets">
+          <li>Transparent pricing with no hidden fees</li>
+          <li>Final quote locked in before we start</li>
+          <li>Free on-site estimates for large properties</li>
+          <li>Same-day and next-day availability</li>
+          <li>Discounts for bundled services</li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <div class="calc-card">
+          <div class="calc-title">⚡ Instant Quote Calculator</div>
+          <div class="form-group">
+            <label class="form-label">Service Type</label>
+            <select class="form-select" id="calcService">
+              <option value="">— Select a Service —</option>
+              <option value="house">House Washing (Exterior)</option>
+              <option value="driveway">Driveway & Sidewalk</option>
+              <option value="roof">Roof Cleaning</option>
+              <option value="pool">Pool Deck & Screen Cage</option>
+              <option value="fence">Fence & Patio</option>
+              <option value="bundle">Full Property Bundle</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Property Size</label>
+            <div class="size-btns" id="sizeBtns">
+              <button class="size-btn" data-size="small" onclick="selectSize(this,'small')">Small<br><span style="font-weight:400;font-size:0.72rem">Under 1,500 sq ft</span></button>
+              <button class="size-btn" data-size="medium" onclick="selectSize(this,'medium')">Medium<br><span style="font-weight:400;font-size:0.72rem">1,500–2,500 sq ft</span></button>
+              <button class="size-btn" data-size="large" onclick="selectSize(this,'large')">Large<br><span style="font-weight:400;font-size:0.72rem">2,500–3,500 sq ft</span></button>
+              <button class="size-btn" data-size="xlarge" onclick="selectSize(this,'xlarge')">X-Large<br><span style="font-weight:400;font-size:0.72rem">3,500+ sq ft</span></button>
+              <button class="size-btn" data-size="notSure" onclick="selectSize(this,'notSure')">Not Sure<br><span style="font-weight:400;font-size:0.72rem">We'll estimate</span></button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Additional Notes (optional)</label>
+            <input class="form-input" type="text" placeholder="e.g. heavy mold, HOA deadline, specific areas..." id="calcNotes">
+          </div>
+          <button class="calc-btn" onclick="calculateQuote()">Calculate My Price Estimate →</button>
+          <div class="calc-result" id="calcResult">
+            <div class="calc-result-label">Estimated Price Range</div>
+            <div class="calc-result-range" id="calcRange">$0 – $0</div>
+            <div class="calc-result-note">Final price confirmed on-site. Most jobs fall within this range.</div>
+            <a href="#contact" class="calc-result-cta">Lock In This Quote — Book Now →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="section-inner">
+    <div class="section-header center reveal">
+      <span class="section-label" style="color:var(--blue-bright)">Our Work</span>
+      <h2 class="section-title">Real Results.<br>Real Wesley Chapel Homes.</h2>
+      <p class="section-sub">Every surface tells a story. Here's what JT's delivers — dramatic transformations across driveways, roofs, pool decks, and more.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <div class="gallery-img" style="background-image:url('https://images.unsplash.com/photo-1558618047-f4e943db89c0?w=800&q=75')"></div>
+        <div class="gallery-overlay">✨</div>
+      </div>
+      <div class="gallery-item reveal">
+        <div class="gallery-img" style="background-image:url('https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=75')"></div>
+        <div class="gallery-overlay">✨</div>
+      </div>
+      <div class="gallery-item reveal">
+        <div class="gallery-img" style="background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=75')"></div>
+        <div class="gallery-overlay">✨</div>
+      </div>
+      <div class="gallery-item reveal">
+        <div class="gallery-img" style="background-image:url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=75')"></div>
+        <div class="gallery-overlay">✨</div>
+      </div>
+      <div class="gallery-item reveal">
+        <div class="gallery-img" style="background-image:url('https://images.unsplash.com/photo-1563453392212-326f5e854473?w=600&q=75')"></div>
+        <div class="gallery-overlay">✨</div>
+      </div>
+      <div class="gallery-item reveal">
+        <div class="gallery-img" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=75')"></div>
+        <div class="gallery-overlay">✨</div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:36px;">
+      <a href="#contact" class="btn-primary" style="display:inline-flex;">Get Your Home Looking Like This →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREAS -->
+<section class="areas" id="areas">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-label">We Come to You</span>
+      <h2 class="section-title">Proudly Serving<br>Tampa Bay & Pasco County</h2>
+      <p class="section-sub">Based in Wesley Chapel, we serve communities across Pasco and Hillsborough Counties. No travel fees within our service zone.</p>
+    </div>
+    <div class="areas-grid">
+      <div class="area-card reveal">
+        <div class="area-pin">📍</div>
+        <div>
+          <div class="area-name">Wesley Chapel</div>
+          <div class="area-sub">Our Home Base · No Travel Fee</div>
+        </div>
+      </div>
+      <div class="area-card reveal">
+        <div class="area-pin">📍</div>
+        <div>
+          <div class="area-name">Land O' Lakes</div>
+          <div class="area-sub">Pasco County · Same-Day Available</div>
+        </div>
+      </div>
+      <div class="area-card reveal">
+        <div class="area-pin">📍</div>
+        <div>
+          <div class="area-name">Lutz</div>
+          <div class="area-sub">Hillsborough / Pasco Border</div>
+        </div>
+      </div>
+      <div class="area-card reveal">
+        <div class="area-pin">📍</div>
+        <div>
+          <div class="area-name">New Tampa</div>
+          <div class="area-sub">Hillsborough County</div>
+        </div>
+      </div>
+      <div class="area-card reveal">
+        <div class="area-pin">📍</div>
+        <div>
+          <div class="area-name">Zephyrhills</div>
+          <div class="area-sub">East Pasco County</div>
+        </div>
+      </div>
+      <div class="area-card reveal">
+        <div class="area-pin">📍</div>
+        <div>
+          <div class="area-name">San Antonio, FL</div>
+          <div class="area-sub">Pasco County</div>
+        </div>
+      </div>
+      <div class="area-card reveal">
+        <div class="area-pin">📍</div>
+        <div>
+          <div class="area-name">Odessa</div>
+          <div class="area-sub">Hillsborough County</div>
+        </div>
+      </div>
+      <div class="area-card reveal">
+        <div class="area-pin">📍</div>
+        <div>
+          <div class="area-name">Brandon</div>
+          <div class="area-sub">Hillsborough County</div>
+        </div>
+      </div>
+      <div class="area-card reveal">
+        <div class="area-pin">📍</div>
+        <div>
+          <div class="area-name">Tampa Bay Area</div>
+          <div class="area-sub">Call to Confirm Your Area</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEASONAL DEALS -->
+<div class="deals">
+  <div class="deal-header reveal">
+    <span class="section-label" style="color:var(--blue-bright)">Limited Time Offers</span>
+    <h2 class="section-title" style="color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:clamp(2.2rem,4vw,3.2rem);font-weight:900;text-transform:uppercase;">Seasonal Specials<br>for Wesley Chapel</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.6);max-width:520px;margin:0 auto;">Florida weather is tough on your home. We make it easy to stay ahead — and affordable to do it right.</p>
+  </div>
+  <div class="deals-inner">
+    <div class="deal-card reveal">
+      <div class="deal-badge">🌸 Spring Special · Limited Time</div>
+      <div class="deal-title">Spring Deep Clean Package</div>
+      <p class="deal-desc">Full exterior wash + driveway + walkways. Clear out a full winter of algae, mildew, and pollen before your HOA's spring inspection. Book before April 30th.</p>
+      <div class="deal-discount">Save 15% — Bundle & Book Today</div>
+      <a href="#contact" class="deal-link">Claim This Offer →</a>
+    </div>
+    <div class="deal-card reveal">
+      <div class="deal-badge">🌀 Pre-Season · Book Now</div>
+      <div class="deal-title">Pre-Hurricane Season Package</div>
+      <p class="deal-desc">Clean gutters, roof, and all exterior surfaces before the June–November storm season hits. Remove debris buildup now to prevent storm-related damage.</p>
+      <div class="deal-discount">Priority Scheduling · Book Before June 1st</div>
+      <a href="#contact" class="deal-link">Reserve Your Slot →</a>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-inner">
+    <div class="section-header center reveal">
+      <span class="section-label">What Customers Say</span>
+      <h2 class="section-title">50+ Five-Star Reviews<br>Across Wesley Chapel</h2>
+      <p class="section-sub">Don't take our word for it — here's what your neighbors are saying about JT's Pressure Washing.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="quote-text">"JT's showed up the next morning after I called. My driveway looked brand new — 10 years of stains gone in two hours. The crew was professional, friendly, and left the property spotless. Absolutely worth every penny."</p>
+        <div class="quote-author">
+          <div class="author-avatar">MR</div>
+          <div>
+            <div class="author-name">Mike R.</div>
+            <div class="author-loc">Wesley Chapel, FL · Driveway & Sidewalk</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="quote-text">"I had an HOA violation notice and JT's came out same day. They did the house washing so thoroughly — even got the black streaks off my roof that I didn't even mention. The HOA inspector was impressed. Highly recommend!"</p>
+        <div class="quote-author">
+          <div class="author-avatar">SK</div>
+          <div>
+            <div class="author-name">Sarah K.</div>
+            <div class="author-loc">Land O' Lakes, FL · House Washing + Roof</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="quote-text">"My pool deck looked like it hadn't been cleaned in years — green algae everywhere and super slippery. JT's transformed it. They sealed the pavers too and now it looks better than when we bought the house. Great value!"</p>
+        <div class="quote-author">
+          <div class="author-avatar">DL</div>
+          <div>
+            <div class="author-name">David L.</div>
+            <div class="author-loc">New Tampa, FL · Pool Deck & Paver Sealing</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="quote-text">"Been using JT's twice a year for three years. Florida mold doesn't stand a chance. Pricing is fair, they're always on time, and my house consistently gets compliments from neighbors. They're my go-to — period."</p>
+        <div class="quote-author">
+          <div class="author-avatar">TM</div>
+          <div>
+            <div class="author-name">Teresa M.</div>
+            <div class="author-loc">Wesley Chapel, FL · Recurring Customer</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="quote-text">"After Hurricane Idalia, my entire backyard patio and fence were covered in mud and debris. I called JT's on a Sunday and they were out Monday morning. Unbelievable responsiveness. Everything looked perfect when they were done."</p>
+        <div class="quote-author">
+          <div class="author-avatar">JB</div>
+          <div>
+            <div class="author-name">James B.</div>
+            <div class="author-loc">Zephyrhills, FL · Post-Storm Cleanup</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="quote-text">"I manage a strip mall in Wesley Chapel. JT's has been handling our storefront, parking lot, and sidewalks quarterly for over a year. Always professional, always great results. I've referred them to two other property managers already."</p>
+        <div class="quote-author">
+          <div class="author-avatar">CP</div>
+          <div>
+            <div class="author-name">Carlos P.</div>
+            <div class="author-loc">Wesley Chapel, FL · Commercial Client</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="#contact" class="btn-primary" style="display:inline-flex;">Join 50+ Happy Customers — Get a Free Quote →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-wrapper">
+      <div class="contact-info reveal">
+        <span class="section-label">Get in Touch</span>
+        <h2 class="section-title">Ready for a<br>Spotless Home?</h2>
+        <p style="font-size:0.95rem;color:var(--gray-600);line-height:1.7;margin-bottom:32px;">Fill out the form and we'll reach out within the hour. Prefer to talk? Call or text us directly — we're real people who answer.</p>
+        <div class="contact-detail">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-detail-label">Phone / Text</div>
+            <div class="contact-detail-val"><a href="tel:8132130499">(813) 213-0499</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-detail-label">Email</div>
+            <div class="contact-detail-val"><a href="mailto:JT.PressureWashing17@gmail.com">JT.PressureWashing17@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-detail-label">Based In</div>
+            <div class="contact-detail-val">Wesley Chapel, FL 33543</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <div class="contact-detail-label">Hours</div>
+            <div class="contact-detail-val">Mon–Sat: 7am–7pm<br><span style="font-size:0.85rem;color:var(--gray-600)">Sun: Emergency service available</span></div>
+          </div>
+        </div>
+        <div class="badges">
+          <div class="badge">🛡️ Licensed & Insured</div>
+          <div class="badge">⭐ 5.0 Stars</div>
+          <div class="badge">✅ Satisfaction Guaranteed</div>
+          <div class="badge">📅 Since 2017</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="quote-form">
+          <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:1.7rem;font-weight:900;text-transform:uppercase;color:var(--gray-900);margin-bottom:24px;">Get Your Free Quote</h3>
+          <form id="quoteForm" onsubmit="submitForm(event)">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">First Name*</label>
+                <input class="form-input" type="text" placeholder="John" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Last Name*</label>
+                <input class="form-input" type="text" placeholder="Smith" required>
+              </div>
+            </div>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Phone*</label>
+                <input class="form-input" type="tel" placeholder="(813) 555-0000" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <input class="form-input" type="email" placeholder="john@email.com">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Property Address*</label>
+              <input class="form-input" type="text" placeholder="123 Main St, Wesley Chapel, FL" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Service(s) Needed*</label>
+              <select class="form-select" required>
+                <option value="">— Select a Service —</option>
+                <option>House Washing</option>
+                <option>Driveway & Sidewalk</option>
+                <option>Roof Cleaning</option>
+                <option>Pool Deck & Screen Cage</option>
+                <option>Fence & Patio</option>
+                <option>Paver Sealing</option>
+                <option>Commercial Property</option>
+                <option>Full Property Bundle</option>
+                <option>Post-Storm Cleanup</option>
+              </select>
+            </div>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Preferred Date</label>
+                <input class="form-input" type="date">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Best Time to Call</label>
+                <select class="form-select">
+                  <option>Morning (7am–12pm)</option>
+                  <option>Afternoon (12pm–5pm)</option>
+                  <option>Evening (5pm–7pm)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Additional Notes</label>
+              <textarea class="form-textarea" placeholder="Any details about your property, specific problem areas, HOA requirements, or other info that would help us give you an accurate quote..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">
+              🚀 Send My Free Quote Request
+            </button>
+          </form>
+          <div class="form-success" id="formSuccess">
+            <div class="form-success-icon">🎉</div>
+            <div class="form-success-msg">Quote Request Received!</div>
+            <div class="form-success-sub">We'll reach out within the hour. For urgent needs, call us directly at <strong>(813) 213-0499</strong>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-logo">
+        <div class="footer-brand-logo-icon">💧</div>
+        JT's <span>Pressure</span> Washing
+      </div>
+      <p class="footer-desc">Wesley Chapel's most trusted pressure washing and soft washing company. Serving Pasco & Hillsborough Counties since 2017 with 5-star results and a 100% satisfaction guarantee.</p>
+      <div class="footer-social">
+        <a href="#" title="Facebook">f</a>
+        <a href="#" title="Google">G</a>
+        <a href="#" title="Nextdoor">N</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Services</div>
+      <ul class="footer-links">
+        <li><a href="#services">House Washing</a></li>
+        <li><a href="#services">Driveway Cleaning</a></li>
+        <li><a href="#services">Roof Cleaning</a></li>
+        <li><a href="#services">Pool Deck & Cage</a></li>
+        <li><a href="#services">Fence & Patio</a></li>
+        <li><a href="#services">Paver Sealing</a></li>
+        <li><a href="#services">Commercial</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Service Areas</div>
+      <ul class="footer-links">
+        <li><a href="#areas">Wesley Chapel</a></li>
+        <li><a href="#areas">Land O' Lakes</a></li>
+        <li><a href="#areas">Lutz</a></li>
+        <li><a href="#areas">New Tampa</a></li>
+        <li><a href="#areas">Zephyrhills</a></li>
+        <li><a href="#areas">San Antonio, FL</a></li>
+        <li><a href="#areas">Brandon</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <ul class="footer-links">
+        <li><a href="tel:8132130499">📞 (813) 213-0499</a></li>
+        <li><a href="mailto:JT.PressureWashing17@gmail.com">✉️ Email Us</a></li>
+        <li><a href="#contact">📋 Free Quote</a></li>
+        <li style="color:rgba(255,255,255,0.45);font-size:0.88rem;margin-top:16px;">Mon–Sat: 7am–7pm</li>
+        <li style="color:rgba(255,255,255,0.45);font-size:0.88rem;">Emergency service: Sunday</li>
+        <li style="color:rgba(255,255,255,0.45);font-size:0.88rem;margin-top:8px;">Wesley Chapel, FL 33543</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2024 JT's Pressure Washing LLC · Wesley Chapel, FL · All Rights Reserved</div>
+    <div style="color:rgba(255,255,255,0.3);">Licensed & Insured · Serving Tampa Bay Since 2017</div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-sticky-cta" id="mobileStickyCtaBar">
+  <a href="tel:8132130499" class="msc-call">📞 Call Now</a>
+  <a href="#contact" class="msc-quote">⚡ Get Free Quote</a>
+</div>
+
+<!-- ZELLYFI BADGE -->
+<div class="zellyfi-badge">
+  <div class="zellyfi-badge-label">Demo built by</div>
+  <div class="zellyfi-badge-name">Zellyfi</div>
+  <a href="https://zellyfi.com" target="_blank" class="zellyfi-badge-cta">Get In Touch →</a>
+</div>
+
+<script>
+// ========================
+// BEFORE/AFTER SLIDER
+// ========================
+(function() {
+  const slider = document.getElementById('baSlider');
+  const after = document.getElementById('baAfter');
+  const handle = document.getElementById('baHandle');
+  let isDragging = false;
+
+  function setPosition(x) {
+    const rect = slider.getBoundingClientRect();
+    let pct = ((x - rect.left) / rect.width) * 100;
+    pct = Math.min(Math.max(pct, 5), 95);
+    after.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+    handle.style.left = pct + '%';
+  }
+
+  slider.addEventListener('mousedown', (e) => { isDragging = true; setPosition(e.clientX); });
+  slider.addEventListener('touchstart', (e) => { isDragging = true; setPosition(e.touches[0].clientX); }, {passive:true});
+  document.addEventListener('mousemove', (e) => { if (isDragging) setPosition(e.clientX); });
+  document.addEventListener('touchmove', (e) => { if (isDragging) setPosition(e.touches[0].clientX); }, {passive:true});
+  document.addEventListener('mouseup', () => isDragging = false);
+  document.addEventListener('touchend', () => isDragging = false);
+
+  // Set initial position
+  after.style.clipPath = 'inset(0 50% 0 0)';
+})();
+
+// ========================
+// HAMBURGER MENU
+// ========================
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+  const spans = hamburger.querySelectorAll('span');
+  if (mobileMenu.classList.contains('open')) {
+    spans[0].style.transform = 'rotate(45deg) translate(5px,5px)';
+    spans[1].style.opacity = '0';
+    spans[2].style.transform = 'rotate(-45deg) translate(5px,-5px)';
+  } else {
+    spans[0].style.transform = '';
+    spans[1].style.opacity = '';
+    spans[2].style.transform = '';
+  }
+});
+function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+
+// ========================
+// COUNTER ANIMATIONS
+// ========================
+function animateCounters() {
+  document.querySelectorAll('.counter').forEach(el => {
+    const target = parseInt(el.dataset.target);
+    const duration = 1800;
+    const step = target / (duration / 16);
+    let current = 0;
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current);
+    }, 16);
+  });
+}
+
+// ========================
+// SCROLL REVEALS
+// ========================
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Counter animation on hero visibility
+const heroObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) { animateCounters(); heroObserver.disconnect(); }
+  });
+}, { threshold: 0.3 });
+const heroText = document.querySelector('.hero-text');
+if (heroText) heroObserver.observe(heroText);
+
+// ========================
+// QUOTE CALCULATOR
+// ========================
+let selectedSize = '';
+function selectSize(btn, size) {
+  document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedSize = size;
+}
+
+const pricing = {
+  house:    { small:[249,349], medium:[349,479], large:[449,599], xlarge:[599,799], notSure:[249,599] },
+  driveway: { small:[149,199], medium:[179,249], large:[229,319], xlarge:[299,399], notSure:[149,399] },
+  roof:     { small:[299,399], medium:[399,499], large:[499,649], xlarge:[649,849], notSure:[299,849] },
+  pool:     { small:[199,279], medium:[249,349], large:[299,429], xlarge:[399,549], notSure:[199,549] },
+  fence:    { small:[179,249], medium:[219,299], large:[279,379], xlarge:[349,479], notSure:[179,479] },
+  bundle:   { small:[499,699], medium:[699,949], large:[899,1199], xlarge:[1199,1599], notSure:[499,1599] },
+};
+
+function calculateQuote() {
+  const service = document.getElementById('calcService').value;
+  if (!service) { alert('Please select a service type.'); return; }
+  if (!selectedSize) { alert('Please select a property size.'); return; }
+  const range = pricing[service][selectedSize];
+  const resultEl = document.getElementById('calcResult');
+  const rangeEl = document.getElementById('calcRange');
+  rangeEl.textContent = '$' + range[0].toLocaleString() + ' – $' + range[1].toLocaleString();
+  resultEl.classList.add('show');
+  resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ========================
+// FORM SUBMISSION
+// ========================
+function submitForm(e) {
+  e.preventDefault();
+  document.getElementById('quoteForm').style.display = 'none';
+  document.getElementById('formSuccess').classList.add('show');
+}
+
+// ========================
+// NAV SCROLL EFFECT
+// ========================
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('mainNav');
+  if (window.scrollY > 60) {
+    nav.style.boxShadow = '0 4px 24px rgba(0,0,0,0.3)';
+  } else {
+    nav.style.boxShadow = 'none';
+  }
+});
+
+// ========================
+// MOBILE STICKY CTA
+// ========================
+const stickyBar = document.getElementById('mobileStickyCtaBar');
+if (window.innerWidth <= 768) {
+  stickyBar.style.display = 'flex';
+}
+window.addEventListener('resize', () => {
+  stickyBar.style.display = window.innerWidth <= 768 ? 'flex' : 'none';
+});
+</script>
+</body>
+</html>

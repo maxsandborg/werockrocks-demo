@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Structured Fitness Inc | Elite Personal Training | Wesley Chapel, FL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#080808;
+  --dark:#111111;
+  --dark2:#1a1a1a;
+  --dark3:#222222;
+  --red:#E31E24;
+  --red2:#ff2d2d;
+  --gold:#C9A84C;
+  --white:#ffffff;
+  --gray:#999999;
+  --light:#e0e0e0;
+  --font-display:'Bebas Neue',sans-serif;
+  --font-body:'Montserrat',sans-serif;
+}
+html{scroll-behavior:smooth}
+body::before{content:'';position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),#ff6b35,var(--red));z-index:9999;background-size:200% 100%;animation:brandLine 4s linear infinite}
+@keyframes brandLine{0%{background-position:0% 0%}100%{background-position:200% 0%}}
+body{background:var(--black);color:var(--white);font-family:var(--font-body);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;outline:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:72px;transition:all .3s ease}
+nav.scrolled{background:rgba(8,8,8,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(227,30,36,.2)}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo-mark{width:42px;height:42px;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:22px;letter-spacing:0;color:#fff;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)}
+.nav-logo-text{font-family:var(--font-display);font-size:20px;letter-spacing:2px;line-height:1}
+.nav-logo-text span{display:block;font-family:var(--font-body);font-size:9px;font-weight:600;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-top:2px}
+.nav-links{display:flex;align-items:center;gap:32px}
+.nav-links a{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--light);transition:color .2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--red);transition:width .2s}
+.nav-links a:hover{color:#fff}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--red);color:#fff;padding:10px 22px;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;transition:all .2s;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%)}
+.nav-cta:hover{background:var(--red2);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;padding:4px}
+.hamburger span{display:block;width:26px;height:2px;background:#fff;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:flex;position:fixed;top:72px;left:0;right:0;bottom:0;background:rgba(8,8,8,.98);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:32px;transform:translateX(100%);transition:transform .35s ease;pointer-events:none}
+.mobile-menu.open{transform:translateX(0);pointer-events:all}
+.mobile-menu a{font-family:var(--font-display);font-size:36px;letter-spacing:4px;color:var(--light);transition:color .2s}
+.mobile-menu a:hover{color:var(--red)}
+.mobile-menu .mob-cta{background:var(--red);color:#fff;padding:14px 40px;font-size:14px;font-weight:800;letter-spacing:2px;margin-top:16px}
+
+/* HERO */
+#hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,8,8,.93) 40%,rgba(8,8,8,.65) 70%,rgba(8,8,8,.35) 100%)}
+.hero-bg::before{content:'';position:absolute;inset:0;z-index:1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4;pointer-events:none}
+.hero-content{position:relative;z-index:1;max-width:1300px;margin:0 auto;padding:0 5%;width:100%}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;margin-bottom:24px;opacity:0;animation:fadeUp .7s .3s forwards}
+.hero-tag-dot{width:8px;height:8px;background:var(--red);border-radius:50%;animation:pulse 2s infinite}
+.hero-tag span{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red)}
+.hero-title{font-family:var(--font-display);font-size:clamp(64px,9vw,130px);line-height:.9;margin-bottom:28px;opacity:0;animation:fadeUp .7s .5s forwards}
+.hero-title em{font-style:normal;color:var(--red);display:block}
+.hero-sub{font-size:clamp(15px,2vw,18px);font-weight:400;color:var(--light);max-width:520px;line-height:1.7;margin-bottom:40px;opacity:0;animation:fadeUp .7s .7s forwards}
+.hero-sub strong{color:#fff;font-weight:700}
+.hero-btns{display:flex;flex-wrap:wrap;gap:16px;opacity:0;animation:fadeUp .7s .9s forwards}
+.btn-primary{background:var(--red);color:#fff;padding:16px 36px;font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;transition:all .25s;display:inline-flex;align-items:center;gap:10px;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%)}
+.btn-primary:hover{background:var(--red2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(227,30,36,.4)}
+.btn-primary svg{width:16px;height:16px;transition:transform .2s}
+.btn-primary:hover svg{transform:translateX(4px)}
+.btn-outline{background:transparent;color:#fff;padding:15px 36px;font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;border:2px solid rgba(255,255,255,.3);transition:all .25s;display:inline-flex;align-items:center;gap:10px}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.05);transform:translateY(-2px)}
+.hero-stats{position:absolute;bottom:0;left:0;right:0;z-index:1;background:rgba(8,8,8,.8);backdrop-filter:blur(8px);border-top:1px solid rgba(227,30,36,.3);display:flex}
+.hero-stat{flex:1;padding:20px 24px;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
+.hero-stat:last-child{border-right:none}
+.hero-stat-num{font-family:var(--font-display);font-size:clamp(28px,4vw,42px);color:var(--red);line-height:1}
+.hero-stat-label{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-top:4px}
+.scroll-hint{position:absolute;bottom:110px;right:5%;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s 1.5s forwards}
+.scroll-hint span{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gray);writing-mode:vertical-rl}
+.scroll-line{width:1px;height:60px;background:linear-gradient(to bottom,var(--red),transparent);animation:scrollDown 1.5s infinite}
+
+/* TRUST BAR */
+#trust{background:var(--dark2);border-bottom:1px solid rgba(255,255,255,.06)}
+.trust-inner{max-width:1300px;margin:0 auto;padding:28px 5%;display:flex;flex-wrap:wrap;gap:0;justify-content:space-between;align-items:center}
+.trust-item{display:flex;align-items:center;gap:14px;padding:12px 20px}
+.trust-icon{width:44px;height:44px;background:rgba(227,30,36,.1);border:1px solid rgba(227,30,36,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.trust-icon svg{width:20px;height:20px;color:var(--red)}
+.trust-text-num{font-family:var(--font-display);font-size:28px;color:#fff;line-height:1}
+.trust-text-label{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray)}
+.trust-divider{width:1px;height:48px;background:rgba(255,255,255,.08)}
+
+/* SECTION STYLES */
+section{padding:100px 0}
+.section-inner{max-width:1300px;margin:0 auto;padding:0 5%}
+.section-tag{display:inline-flex;align-items:center;gap:10px;margin-bottom:16px}
+.section-tag span{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red)}
+.section-tag::before{content:'';display:block;width:24px;height:2px;background:var(--red)}
+.section-title{font-family:var(--font-display);font-size:clamp(40px,6vw,72px);line-height:.95;margin-bottom:20px}
+.section-title em{font-style:normal;color:var(--red)}
+.section-sub{font-size:16px;font-weight:400;color:var(--gray);max-width:560px;line-height:1.7;margin-bottom:60px}
+.section-header-row{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:60px;gap:40px}
+.section-header-row .section-sub{margin-bottom:0}
+
+/* PROGRAMS */
+#programs{background:var(--dark)}
+.programs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06)}
+.program-card{background:var(--dark);padding:40px 32px;position:relative;overflow:hidden;transition:all .3s;cursor:pointer}
+.program-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.program-card:hover{background:var(--dark2)}
+.program-card:hover::before{transform:scaleX(1)}
+.program-icon{width:52px;height:52px;margin-bottom:24px;position:relative}
+.program-icon svg{width:52px;height:52px;color:var(--red);opacity:.9}
+.program-card h3{font-family:var(--font-display);font-size:26px;letter-spacing:1px;margin-bottom:14px;line-height:1}
+.program-card p{font-size:14px;color:var(--gray);line-height:1.7;margin-bottom:20px}
+.program-benefits{list-style:none;margin-bottom:24px}
+.program-benefits li{font-size:12px;color:var(--light);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:8px;font-weight:500}
+.program-benefits li::before{content:'';width:6px;height:6px;background:var(--red);flex-shrink:0;clip-path:polygon(50% 0%,100% 50%,50% 100%,0% 50%)}
+.program-link{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:8px;transition:gap .2s}
+.program-card:hover .program-link{gap:14px}
+.program-num{position:absolute;top:20px;right:24px;font-family:var(--font-display);font-size:72px;color:rgba(255,255,255,.03);line-height:1}
+
+/* TRANSFORMATIONS */
+#transformations{background:var(--black)}
+.transform-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px}
+.filter-btn{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--gray);padding:9px 22px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:all .2s}
+.filter-btn.active,.filter-btn:hover{background:var(--red);border-color:var(--red);color:#fff}
+.transform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.transform-card{background:var(--dark);overflow:hidden;position:relative;cursor:pointer;transition:transform .3s}
+.transform-card:hover{transform:translateY(-6px)}
+.transform-imgs{display:grid;grid-template-columns:1fr 1fr;gap:2px;position:relative}
+.transform-imgs img{width:100%;height:200px;object-fit:cover;filter:saturate(.7)}
+.transform-badge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--red);color:#fff;font-size:9px;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:6px 10px;z-index:2;white-space:nowrap}
+.transform-info{padding:20px}
+.transform-name{font-size:14px;font-weight:700;margin-bottom:4px}
+.transform-meta{font-size:11px;color:var(--red);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.transform-quote{font-size:13px;color:var(--gray);line-height:1.6;font-style:italic}
+.transform-tag{display:inline-block;background:rgba(227,30,36,.1);border:1px solid rgba(227,30,36,.3);color:var(--red);font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;margin-top:12px}
+
+/* TRAINER */
+#trainer{background:var(--dark)}
+.trainer-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.trainer-img-wrap{position:relative}
+.trainer-img-wrap img{width:100%;height:600px;object-fit:cover;object-position:top}
+.trainer-badge{position:absolute;bottom:32px;left:-24px;background:var(--red);padding:20px 28px;max-width:260px}
+.trainer-badge-title{font-family:var(--font-display);font-size:18px;letter-spacing:1px;margin-bottom:4px}
+.trainer-badge-sub{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.trainer-certs{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0}
+.cert-tag{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);color:var(--gold);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 12px}
+.trainer-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.06);margin:32px 0}
+.trainer-stat{background:var(--dark);padding:20px}
+.trainer-stat-num{font-family:var(--font-display);font-size:36px;color:var(--red);line-height:1;margin-bottom:4px}
+.trainer-stat-label{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray)}
+.trainer-quote{font-size:18px;font-weight:300;color:var(--light);line-height:1.7;font-style:italic;border-left:3px solid var(--red);padding-left:24px;margin-top:32px}
+
+/* APPROACH */
+#approach{background:var(--black);overflow:hidden}
+.approach-steps{display:flex;gap:0;position:relative;margin-top:20px}
+.approach-steps::before{content:'';position:absolute;top:40px;left:5%;right:5%;height:2px;background:linear-gradient(to right,var(--red),transparent)}
+.approach-step{flex:1;padding:0 20px;position:relative;text-align:center}
+.step-num{width:80px;height:80px;background:var(--dark2);border:2px solid var(--red);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-family:var(--font-display);font-size:32px;color:var(--red);position:relative;z-index:1;transition:all .3s}
+.approach-step:hover .step-num{background:var(--red);color:#fff;transform:scale(1.1)}
+.step-icon{font-size:28px;line-height:1}
+.step-title{font-family:var(--font-display);font-size:22px;letter-spacing:1px;margin-bottom:10px}
+.step-desc{font-size:13px;color:var(--gray);line-height:1.6}
+
+/* FREE ASSESSMENT CTA */
+#assessment{background:linear-gradient(135deg,#0a0a0a 0%,var(--dark2) 50%,#0a0a0a 100%);position:relative;overflow:hidden;border-top:1px solid rgba(227,30,36,.2);border-bottom:1px solid rgba(227,30,36,.2)}
+#assessment::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(227,30,36,.08) 0%,transparent 70%)}
+.assessment-inner{max-width:900px;margin:0 auto;padding:100px 5%;text-align:center}
+.assessment-tag{color:var(--gold);font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;display:block}
+.assessment-title{font-family:var(--font-display);font-size:clamp(48px,7vw,90px);line-height:.95;margin-bottom:28px}
+.assessment-title em{font-style:normal;color:var(--red)}
+.assessment-sub{font-size:17px;color:var(--light);max-width:580px;margin:0 auto 48px;line-height:1.7}
+.assessment-perks{display:flex;justify-content:center;flex-wrap:wrap;gap:24px;margin-bottom:48px}
+.perk{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--light)}
+.perk svg{color:var(--gold);width:18px;height:18px;flex-shrink:0}
+.urgency{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-top:20px;animation:pulse-text 2s infinite}
+
+/* TESTIMONIALS */
+#testimonials{background:var(--dark)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testimonial-card{background:var(--dark2);padding:36px;border:1px solid rgba(255,255,255,.06);position:relative;transition:all .3s}
+.testimonial-card:hover{border-color:rgba(227,30,36,.3);transform:translateY(-4px)}
+.testimonial-card::before{content:'"';position:absolute;top:16px;right:24px;font-family:Georgia,serif;font-size:80px;color:rgba(227,30,36,.15);line-height:1}
+.stars{display:flex;gap:3px;margin-bottom:20px}
+.stars svg{width:16px;height:16px;color:#f5c518;fill:#f5c518}
+.testimonial-text{font-size:15px;color:var(--light);line-height:1.7;margin-bottom:24px;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:14px}
+.author-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--red)}
+.author-name{font-size:14px;font-weight:700}
+.author-meta{font-size:11px;color:var(--red);font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.featured-testimonial{grid-column:1/-1;background:linear-gradient(135deg,var(--dark2),var(--dark3));border:1px solid rgba(227,30,36,.2);padding:48px;display:flex;gap:40px;align-items:center}
+.featured-testimonial .testimonial-text{font-size:20px;margin-bottom:0;font-weight:300;flex:1}
+
+/* FACILITY */
+#facility{background:var(--black)}
+.facility-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:auto auto;gap:4px}
+.facility-img{overflow:hidden;cursor:pointer}
+.facility-img img{width:100%;height:220px;object-fit:cover;transition:transform .4s}
+.facility-img:hover img{transform:scale(1.06)}
+.facility-img.wide{grid-column:span 2}
+.facility-img.wide img{height:448px}
+
+/* PRICING */
+#pricing{background:var(--dark)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);margin-bottom:48px}
+.pricing-card{background:var(--dark);padding:48px 36px;position:relative;transition:all .3s}
+.pricing-card.featured{background:var(--dark2);border:1px solid var(--red)}
+.pricing-card.featured::before{content:'MOST POPULAR';position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-size:9px;font-weight:800;letter-spacing:3px;padding:6px 20px}
+.pricing-type{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+.pricing-name{font-family:var(--font-display);font-size:32px;letter-spacing:1px;margin-bottom:8px}
+.pricing-price{font-family:var(--font-display);font-size:64px;line-height:1;color:#fff;margin-bottom:4px}
+.pricing-price span{font-family:var(--font-body);font-size:14px;font-weight:600;color:var(--gray);vertical-align:super;font-size:18px}
+.pricing-per{font-size:11px;color:var(--gray);font-weight:600;letter-spacing:1px;margin-bottom:32px}
+.pricing-features{list-style:none;margin-bottom:36px}
+.pricing-features li{font-size:13px;color:var(--light);padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:10px}
+.pricing-features li svg{width:15px;height:15px;color:var(--red);flex-shrink:0}
+.pricing-note{text-align:center;font-size:13px;color:var(--gray);font-style:italic}
+.pricing-note strong{color:var(--gold);font-style:normal}
+
+/* BOOKING FORM */
+#booking{background:var(--black)}
+.booking-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.booking-info h2{font-family:var(--font-display);font-size:clamp(40px,5vw,64px);line-height:.95;margin-bottom:24px}
+.booking-hours{margin-top:40px}
+.booking-hours h4{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:20px}
+.hours-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:14px}
+.hours-row .day{color:var(--gray);font-weight:500}
+.hours-row .time{color:var(--light);font-weight:600}
+.booking-form{background:var(--dark2);padding:48px;border:1px solid rgba(255,255,255,.08)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.form-group label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray)}
+.form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:#fff;padding:14px 16px;font-size:14px;font-family:var(--font-body);transition:border-color .2s;-webkit-appearance:none}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.3)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--red);background:rgba(227,30,36,.04)}
+.form-group select option{background:var(--dark2);color:#fff}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-disclaimer{font-size:11px;color:var(--gray);margin-bottom:20px;line-height:1.6}
+
+/* CALCULATOR */
+#calculator{background:var(--dark2);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+.calc-inner{max-width:800px;margin:0 auto;padding:80px 5%}
+.calc-form{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:32px;align-items:end}
+.calc-result{background:var(--dark);border:1px solid rgba(227,30,36,.3);padding:32px;text-align:center;display:none}
+.calc-result.show{display:block;animation:fadeUp .4s forwards}
+.calc-result-program{font-family:var(--font-display);font-size:36px;color:var(--red);margin-bottom:8px}
+.calc-result-sub{font-size:14px;color:var(--gray)}
+
+/* BLOG */
+#blog{background:var(--black)}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.blog-card{background:var(--dark);overflow:hidden;transition:transform .3s}
+.blog-card:hover{transform:translateY(-4px)}
+.blog-img{overflow:hidden}
+.blog-img img{width:100%;height:200px;object-fit:cover;transition:transform .4s}
+.blog-card:hover .blog-img img{transform:scale(1.05)}
+.blog-body{padding:28px}
+.blog-cat{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:12px}
+.blog-title{font-family:var(--font-display);font-size:22px;letter-spacing:.5px;line-height:1.1;margin-bottom:10px}
+.blog-excerpt{font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:20px}
+.blog-meta{font-size:11px;color:var(--gray);display:flex;gap:16px}
+
+/* FAQ */
+#faq{background:var(--dark)}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(255,255,255,.04)}
+.faq-item{background:var(--dark);padding:0}
+.faq-question{width:100%;text-align:left;padding:24px 28px;background:none;color:#fff;font-size:15px;font-weight:600;font-family:var(--font-body);display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;transition:background .2s}
+.faq-question:hover{background:rgba(227,30,36,.05)}
+.faq-question.open{background:rgba(227,30,36,.08);color:var(--red)}
+.faq-icon{width:24px;height:24px;flex-shrink:0;position:relative;transition:transform .3s}
+.faq-icon::before,.faq-icon::after{content:'';position:absolute;background:#fff;transition:all .3s}
+.faq-icon::before{width:12px;height:2px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.faq-icon::after{width:2px;height:12px;top:50%;left:50%;transform:translate(-50%,-50%)}
+.faq-question.open .faq-icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0}
+.faq-question.open .faq-icon::before{background:var(--red)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s}
+.faq-answer.open{max-height:300px;padding-bottom:24px}
+.faq-answer p{font-size:14px;color:var(--gray);line-height:1.7;padding:0 28px}
+
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08)}
+.footer-top{max-width:1300px;margin:0 auto;padding:80px 5% 60px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px}
+.footer-brand p{font-size:14px;color:var(--gray);line-height:1.7;margin-top:20px;max-width:280px}
+.footer-social{display:flex;gap:12px;margin-top:24px}
+.social-btn{width:40px;height:40px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:all .2s;color:var(--gray)}
+.social-btn:hover{background:var(--red);border-color:var(--red);color:#fff}
+.social-btn svg{width:18px;height:18px}
+.footer-col h5{font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:20px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col ul li a{font-size:14px;color:var(--gray);transition:color .2s}
+.footer-col ul li a:hover{color:#fff}
+.footer-contact-item{display:flex;gap:12px;margin-bottom:16px;font-size:14px;color:var(--gray);align-items:flex-start}
+.footer-contact-item svg{width:16px;height:16px;color:var(--red);flex-shrink:0;margin-top:2px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);max-width:1300px;margin:0 auto;padding:24px 5%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-bottom-left{font-size:12px;color:var(--gray)}
+.footer-certs{display:flex;gap:16px;flex-wrap:wrap}
+.cert-badge{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:6px 14px;font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray)}
+
+/* MOBILE CTA */
+.mobile-cta-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:900;background:var(--red);padding:16px 24px;text-align:center;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;border-top:2px solid rgba(255,255,255,.2)}
+
+/* DEMO BADGE */
+.demo-badge{position:fixed;bottom:80px;right:20px;z-index:1000;background:var(--dark2);border:1px solid var(--red);padding:14px 20px;max-width:240px;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.6)}
+.demo-badge p{font-size:11px;color:var(--gray);line-height:1.5;margin-bottom:10px}
+.demo-badge strong{color:#fff;display:block;font-size:12px;margin-bottom:6px}
+.demo-badge a{display:block;background:var(--red);color:#fff;padding:10px;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;transition:background .2s}
+.demo-badge a:hover{background:var(--red2)}
+.demo-badge-close{position:absolute;top:6px;right:8px;background:none;color:var(--gray);font-size:16px;line-height:1;padding:2px 6px}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+@keyframes scrollDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes pulse-text{0%,100%{opacity:1}50%{opacity:.6}}
+@keyframes countUp{from{opacity:0}to{opacity:1}}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+.reveal-delay-5{transition-delay:.5s}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .programs-grid,.pricing-grid{grid-template-columns:repeat(2,1fr)}
+  .approach-steps{flex-direction:column;gap:32px}
+  .approach-steps::before{display:none}
+  .testimonials-grid{grid-template-columns:1fr 1fr}
+  .featured-testimonial{flex-direction:column;gap:20px}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  nav .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .mobile-menu{display:flex}
+  .mobile-cta-bar{display:block}
+  .hero-stats{flex-wrap:wrap}
+  .hero-stat{flex:1 0 50%;border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
+  .programs-grid,.pricing-grid,.transform-grid,.testimonials-grid,.faq-grid,.blog-grid{grid-template-columns:1fr}
+  .trainer-layout,.booking-layout{grid-template-columns:1fr}
+  .trainer-badge{left:0;bottom:0;position:relative}
+  .trainer-img-wrap img{height:400px}
+  .facility-grid{grid-template-columns:1fr 1fr}
+  .facility-img.wide{grid-column:span 2}
+  .footer-top{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .calc-form{grid-template-columns:1fr}
+  .section-header-row{flex-direction:column;align-items:flex-start;gap:16px}
+  .featured-testimonial{grid-column:1}
+  .demo-badge{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <div class="nav-logo-mark">SF</div>
+    <div class="nav-logo-text">STRUCTURED FITNESS
+      <span>Wesley Chapel, FL</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="#programs">Programs</a>
+    <a href="#transformations">Results</a>
+    <a href="#trainer">Your Trainer</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#booking">Contact</a>
+  </div>
+  <a href="#assessment" class="nav-cta btn-primary" style="clip-path:none;padding:10px 22px">Free Assessment</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#programs" class="mob-link">Programs</a>
+  <a href="#transformations" class="mob-link">Results</a>
+  <a href="#trainer" class="mob-link">Your Trainer</a>
+  <a href="#pricing" class="mob-link">Pricing</a>
+  <a href="#booking" class="mob-link">Contact</a>
+  <a href="#assessment" class="mob-cta">Book Free Assessment</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1800&q=80&auto=format&fit=crop" alt="Personal Training Session">
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag">
+      <div class="hero-tag-dot"></div>
+      <span>IFBB Pro-Coached Training · Wesley Chapel, FL</span>
+    </div>
+    <h1 class="hero-title">YOUR BODY.<br><em>YOUR PLAN.</em><br>YOUR RESULTS.</h1>
+    <p class="hero-sub">Train with an <strong>IFBB Professional Bodybuilder & Olympian</strong> with 30+ years of elite coaching experience. Customized programs. Proven results. No compromises.</p>
+    <div class="hero-btns">
+      <a href="#assessment" class="btn-primary">
+        Start Free Assessment
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#transformations" class="btn-outline">See Transformations</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-num" data-count="30">0</div>
+      <div class="hero-stat-label">Years Experience</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num" data-count="500">0</div>
+      <div class="hero-stat-label">Lives Transformed</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num" data-count="49" data-decimal="true">0</div>
+      <div class="hero-stat-label">Google Rating</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">IFBB</div>
+      <div class="hero-stat-label">Pro Olympian Coach</div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div id="trust">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <div class="trust-text-num">NASM · ACE</div>
+        <div class="trust-text-label">Certified & IFBB Pro</div>
+      </div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div>
+        <div class="trust-text-num">Flexible Hours</div>
+        <div class="trust-text-label">5am – 9pm Daily</div>
+      </div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div>
+        <div class="trust-text-num">All Levels</div>
+        <div class="trust-text-label">Beginner to Elite Athlete</div>
+      </div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <div>
+        <div class="trust-text-num">Wesley Chapel</div>
+        <div class="trust-text-label">27325 Wesley Chapel Blvd</div>
+      </div>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="#C9A84C" stroke="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div>
+        <div class="trust-text-num" style="color:var(--gold)">4.9 ★★★★★</div>
+        <div class="trust-text-label">30+ Google Reviews</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div class="section-inner">
+    <div class="section-header-row">
+      <div>
+        <div class="section-tag"><span>What We Offer</span></div>
+        <h2 class="section-title">TRAINING <em>BUILT FOR</em> YOU</h2>
+      </div>
+      <p class="section-sub">Every program is engineered around your body, your goals, and your life. No cookie-cutter routines. No wasted sessions.</p>
+    </div>
+    <div class="programs-grid reveal">
+      <div class="program-card">
+        <div class="program-num">01</div>
+        <div class="program-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.5 6.5h11M6.5 12h11M6.5 17.5h11"/><circle cx="4" cy="6.5" r="1.5" fill="currentColor"/><circle cx="4" cy="12" r="1.5" fill="currentColor"/><circle cx="4" cy="17.5" r="1.5" fill="currentColor"/></svg>
+        </div>
+        <h3>1-ON-1 PERSONAL TRAINING</h3>
+        <p>The ultimate in personalized coaching — every session designed exclusively for your body, goals, and progress pace.</p>
+        <ul class="program-benefits">
+          <li>Fully customized workout design</li>
+          <li>Real-time form correction</li>
+          <li>Progressive overload tracking</li>
+          <li>Flexible scheduling</li>
+        </ul>
+        <div class="program-link">Explore Program <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="program-card">
+        <div class="program-num">02</div>
+        <div class="program-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="7" r="3"/><circle cx="16" cy="7" r="3"/><path d="M3 21v-2a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v2"/></svg>
+        </div>
+        <h3>SMALL GROUP TRAINING</h3>
+        <p>3–6 members max. You get the energy of a group and the attention of private coaching. Best value in Wesley Chapel.</p>
+        <ul class="program-benefits">
+          <li>Maximum 6 clients per session</li>
+          <li>Team accountability & motivation</li>
+          <li>Customized group progressions</li>
+          <li>Competitive pricing</li>
+        </ul>
+        <div class="program-link">Explore Program <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="program-card">
+        <div class="program-num">03</div>
+        <div class="program-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>NUTRITION COACHING</h3>
+        <p>Training is only half the equation. Custom meal plans, macro tracking, and weekly check-ins to lock in lasting results.</p>
+        <ul class="program-benefits">
+          <li>Personalized macro targets</li>
+          <li>Meal plan templates</li>
+          <li>Weekly nutrition check-ins</li>
+          <li>Supplement guidance</li>
+        </ul>
+        <div class="program-link">Explore Program <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="program-card">
+        <div class="program-num">04</div>
+        <div class="program-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>SPORT-SPECIFIC TRAINING</h3>
+        <p>Elite athletic performance development. Trained by an IFBB Olympian who has developed dozens of competitive champions.</p>
+        <ul class="program-benefits">
+          <li>Competition prep (bodybuilding, powerlifting)</li>
+          <li>Speed, agility & explosiveness</li>
+          <li>Sport-specific movement patterns</li>
+          <li>Peak performance periodization</li>
+        </ul>
+        <div class="program-link">Explore Program <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="program-card">
+        <div class="program-num">05</div>
+        <div class="program-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>POST-REHABILITATION</h3>
+        <p>Rebuild strength and confidence after injury. Phil's 30+ years includes extensive work with injured clients and medical referrals.</p>
+        <ul class="program-benefits">
+          <li>Medically-informed programming</li>
+          <li>Gradual, safe progression</li>
+          <li>Coordination with your PT/MD</li>
+          <li>Corrective movement patterns</li>
+        </ul>
+        <div class="program-link">Explore Program <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="program-card">
+        <div class="program-num">06</div>
+        <div class="program-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>CORPORATE WELLNESS</h3>
+        <p>Bring elite fitness to your workplace. Group sessions, wellness challenges, and productivity-boosting programs for teams.</p>
+        <ul class="program-benefits">
+          <li>On-site or virtual delivery</li>
+          <li>Team fitness challenges</li>
+          <li>Employee health assessments</li>
+          <li>Bulk session packages</li>
+        </ul>
+        <div class="program-link">Explore Program <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSFORMATIONS -->
+<section id="transformations">
+  <div class="section-inner">
+    <div class="section-header-row reveal">
+      <div>
+        <div class="section-tag"><span>Real Results</span></div>
+        <h2 class="section-title">CLIENT <em>TRANSFORMATIONS</em></h2>
+      </div>
+      <p class="section-sub">These aren't just before/after photos — they're proof of what happens when elite coaching meets real commitment.</p>
+    </div>
+    <div class="transform-filters reveal">
+      <button class="filter-btn active" data-filter="all">All Results</button>
+      <button class="filter-btn" data-filter="weight-loss">Weight Loss</button>
+      <button class="filter-btn" data-filter="muscle">Muscle & Strength</button>
+      <button class="filter-btn" data-filter="athletic">Athletic Performance</button>
+      <button class="filter-btn" data-filter="rehab">Post-Rehab</button>
+    </div>
+    <div class="transform-grid" id="transformGrid">
+      <div class="transform-card reveal" data-category="weight-loss">
+        <div class="transform-imgs">
+          <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=400&q=80&auto=format&fit=crop" alt="Before">
+          <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=400&q=80&auto=format&fit=crop" alt="After">
+          <div class="transform-badge">BEFORE / AFTER</div>
+        </div>
+        <div class="transform-info">
+          <div class="transform-name">Marcus T.</div>
+          <div class="transform-meta">–52 lbs · 8 Months</div>
+          <div class="transform-quote">"Phil didn't just change my body — he changed how I think about fitness. I've kept it off for 2 years."</div>
+          <div class="transform-tag">Weight Loss</div>
+        </div>
+      </div>
+      <div class="transform-card reveal reveal-delay-1" data-category="muscle">
+        <div class="transform-imgs">
+          <img src="https://images.unsplash.com/photo-1534367507873-d2d7e24c797f?w=400&q=80&auto=format&fit=crop" alt="Before">
+          <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=400&q=80&auto=format&fit=crop" alt="After">
+          <div class="transform-badge">BEFORE / AFTER</div>
+        </div>
+        <div class="transform-info">
+          <div class="transform-name">Denise R.</div>
+          <div class="transform-meta">+18 lbs Lean Muscle · 12 Months</div>
+          <div class="transform-quote">"I came in wanting to 'tone up.' Phil showed me what I was actually capable of. I'm stronger at 44 than I was at 24."</div>
+          <div class="transform-tag">Muscle & Strength</div>
+        </div>
+      </div>
+      <div class="transform-card reveal reveal-delay-2" data-category="athletic">
+        <div class="transform-imgs">
+          <img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=400&q=80&auto=format&fit=crop" alt="Before">
+          <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80&auto=format&fit=crop" alt="After">
+          <div class="transform-badge">BEFORE / AFTER</div>
+        </div>
+        <div class="transform-info">
+          <div class="transform-name">Jordan M.</div>
+          <div class="transform-meta">D3 → D1 Athlete · 18 Months</div>
+          <div class="transform-quote">"Training with Phil at Structured Fitness was the most important investment in my athletic career. Period."</div>
+          <div class="transform-tag">Athletic Performance</div>
+        </div>
+      </div>
+      <div class="transform-card reveal reveal-delay-3" data-category="rehab">
+        <div class="transform-imgs">
+          <img src="https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=400&q=80&auto=format&fit=crop" alt="Before">
+          <img src="https://images.unsplash.com/photo-1616803689943-5601631c7fec?w=400&q=80&auto=format&fit=crop" alt="After">
+          <div class="transform-badge">BEFORE / AFTER</div>
+        </div>
+        <div class="transform-info">
+          <div class="transform-name">Sandra K.</div>
+          <div class="transform-meta">Post-Surgery Recovery · 6 Months</div>
+          <div class="transform-quote">"My surgeon told me I might not lift again. Phil got me back stronger than before my injury."</div>
+          <div class="transform-tag">Post-Rehab</div>
+        </div>
+      </div>
+      <div class="transform-card reveal reveal-delay-4" data-category="weight-loss">
+        <div class="transform-imgs">
+          <img src="https://images.unsplash.com/photo-1549476464-37392f717541?w=400&q=80&auto=format&fit=crop" alt="Before">
+          <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=400&q=80&auto=format&fit=crop" alt="After">
+          <div class="transform-badge">BEFORE / AFTER</div>
+        </div>
+        <div class="transform-info">
+          <div class="transform-name">Chris & Lisa B.</div>
+          <div class="transform-meta">Combined –78 lbs · 10 Months</div>
+          <div class="transform-quote">"We trained together as a couple. The accountability and Phil's system made it impossible to quit."</div>
+          <div class="transform-tag">Weight Loss</div>
+        </div>
+      </div>
+      <div class="transform-card reveal reveal-delay-5" data-category="muscle">
+        <div class="transform-imgs">
+          <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=400&q=80&auto=format&fit=crop" alt="Before">
+          <img src="https://images.unsplash.com/photo-1597452485677-d661670d9640?w=400&q=80&auto=format&fit=crop" alt="After">
+          <div class="transform-badge">BEFORE / AFTER</div>
+        </div>
+        <div class="transform-info">
+          <div class="transform-name">Andre W.</div>
+          <div class="transform-meta">Competition Prep · 16 Weeks</div>
+          <div class="transform-quote">"First time on stage at 42. Phil's competition prep is on another level — I placed 2nd in my class."</div>
+          <div class="transform-tag">Athletic Performance</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINER -->
+<section id="trainer">
+  <div class="section-inner">
+    <div class="trainer-layout">
+      <div class="trainer-img-wrap reveal">
+        <img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?w=700&q=80&auto=format&fit=crop" alt="Phil Clahar - Head Trainer">
+        <div class="trainer-badge">
+          <div class="trainer-badge-title">PHIL "THE JAMAICAN TANK" CLAHAR</div>
+          <div class="trainer-badge-sub">IFBB Pro Bodybuilder & Olympian</div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <div class="section-tag"><span>Your Coach</span></div>
+        <h2 class="section-title">TRAINED BY AN <em>OLYMPIAN</em></h2>
+        <p style="font-size:15px;color:var(--gray);line-height:1.7;margin-bottom:24px">Most personal trainers took a weekend certification course. Phil Clahar competed on the <strong style="color:#fff">IFBB Pro bodybuilding stage as a professional Olympian</strong> and has spent over 30 years in the trenches — training everyone from injured seniors to elite competitive athletes.</p>
+        <p style="font-size:15px;color:var(--gray);line-height:1.7;margin-bottom:28px">His background in martial arts, boxing, free-style wrestling, and competitive bodybuilding means he understands the human body at a level most trainers simply don't reach.</p>
+        <div class="trainer-certs">
+          <div class="cert-tag">IFBB Pro</div>
+          <div class="cert-tag">Olympian</div>
+          <div class="cert-tag">NASM Certified</div>
+          <div class="cert-tag">Nutrition Coach</div>
+          <div class="cert-tag">Martial Arts</div>
+          <div class="cert-tag">30+ Years</div>
+        </div>
+        <div class="trainer-stats">
+          <div class="trainer-stat">
+            <div class="trainer-stat-num">30+</div>
+            <div class="trainer-stat-label">Years Coaching</div>
+          </div>
+          <div class="trainer-stat">
+            <div class="trainer-stat-num">500+</div>
+            <div class="trainer-stat-label">Clients Transformed</div>
+          </div>
+          <div class="trainer-stat">
+            <div class="trainer-stat-num">IFBB</div>
+            <div class="trainer-stat-label">Pro Status</div>
+          </div>
+          <div class="trainer-stat">
+            <div class="trainer-stat-num">4.9★</div>
+            <div class="trainer-stat-label">Google Rating</div>
+          </div>
+        </div>
+        <blockquote class="trainer-quote">"I've trained everyone from teenagers who want to play college ball, to seniors rebuilding after surgery, to competitors stepping on stage for the first time. The goal is always the same: get you where you want to go — and then take you further."</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE STRUCTURED APPROACH -->
+<section id="approach">
+  <div class="section-inner">
+    <div style="text-align:center;max-width:600px;margin:0 auto 80px" class="reveal">
+      <div class="section-tag" style="justify-content:center"><span>The Process</span></div>
+      <h2 class="section-title">THE STRUCTURED <em>APPROACH</em></h2>
+      <p style="font-size:15px;color:var(--gray);line-height:1.7">Every client goes through the same proven 5-step system that has produced consistent results for 30+ years.</p>
+    </div>
+    <div class="approach-steps">
+      <div class="approach-step reveal">
+        <div class="step-num"><div class="step-icon">🎯</div></div>
+        <div class="step-title">ASSESSMENT</div>
+        <p class="step-desc">Body composition analysis, movement screening, injury history review, and goal-setting deep dive.</p>
+      </div>
+      <div class="approach-step reveal reveal-delay-1">
+        <div class="step-num"><div class="step-icon">📋</div></div>
+        <div class="step-title">PROGRAM DESIGN</div>
+        <p class="step-desc">A fully customized training program built around your body, schedule, and specific goals — not a template.</p>
+      </div>
+      <div class="approach-step reveal reveal-delay-2">
+        <div class="step-num"><div class="step-icon">💪</div></div>
+        <div class="step-title">PROGRESSIVE TRAINING</div>
+        <p class="step-desc">Systematic overload with real-time coaching, form correction, and intensity management for maximum gains.</p>
+      </div>
+      <div class="approach-step reveal reveal-delay-3">
+        <div class="step-num"><div class="step-icon">📊</div></div>
+        <div class="step-title">RESULTS TRACKING</div>
+        <p class="step-desc">Regular measurements, progress photos, and performance benchmarks so you see exactly how far you've come.</p>
+      </div>
+      <div class="approach-step reveal reveal-delay-4">
+        <div class="step-num"><div class="step-icon">🔄</div></div>
+        <div class="step-title">ADAPTATION</div>
+        <p class="step-desc">Programs evolve as you do. No plateaus. No staleness. Continuous challenge keeps results coming indefinitely.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FREE ASSESSMENT CTA -->
+<section id="assessment">
+  <div class="assessment-inner reveal">
+    <span class="assessment-tag">⚡ Limited Spots Available This Month</span>
+    <h2 class="assessment-title">START WITH A <em>FREE</em> FITNESS ASSESSMENT</h2>
+    <p class="assessment-sub">A 60-minute deep dive into your body, your goals, and your plan. Zero pressure. Zero cost. Pure value — from an IFBB Pro Olympian.</p>
+    <div class="assessment-perks">
+      <div class="perk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Body Composition Analysis
+      </div>
+      <div class="perk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Movement Screening
+      </div>
+      <div class="perk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Goal-Setting Session
+      </div>
+      <div class="perk">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Custom Program Preview
+      </div>
+    </div>
+    <a href="#booking" class="btn-primary" style="display:inline-flex;font-size:13px;padding:18px 48px">
+      Claim Your Free Assessment
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+    <p class="urgency">🔥 Only 4 assessment slots remain this month</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-inner">
+    <div class="section-header-row reveal">
+      <div>
+        <div class="section-tag"><span>Client Stories</span></div>
+        <h2 class="section-title">WHAT CLIENTS <em>SAY</em></h2>
+      </div>
+      <p class="section-sub">Don't take our word for it. Here's what happens when real people commit to the Structured Fitness system.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="featured-testimonial reveal">
+        <blockquote class="testimonial-text">"I've been to a lot of trainers over the years. Phil is on a completely different level. His understanding of the human body — from a competitive standpoint, a rehabilitation standpoint, a weight loss standpoint — is unmatched. He's the most knowledgeable fitness professional I've ever worked with, and he genuinely cares about your results."</blockquote>
+        <div>
+          <div class="stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <div class="author-name">Michael V. — Wesley Chapel</div>
+          <div class="author-meta">Client for 3 Years</div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testimonial-text">"Phil worked with my son who had a severe knee injury. He was patient, methodical, and incredibly knowledgeable. My son is now back playing football stronger than ever."</p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80&auto=format&fit=crop&faces=1" alt="" class="author-avatar">
+          <div>
+            <div class="author-name">Robert H.</div>
+            <div class="author-meta">Post-Rehab Client</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-1">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testimonial-text">"Lost 40 pounds with Phil. The accountability was unlike anything I'd experienced. He doesn't let you make excuses — but he also celebrates every single win. Best investment I've made in myself."</p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80&auto=format&fit=crop&faces=1" alt="" class="author-avatar">
+          <div>
+            <div class="author-name">Tamara S.</div>
+            <div class="author-meta">Weight Loss · 40 lbs</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-delay-2">
+        <div class="stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="testimonial-text">"As a senior with multiple health issues, I was nervous about personal training. Phil made me feel safe and respected from day one. Two years later I'm off two medications. My doctor is amazed."</p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?w=100&q=80&auto=format&fit=crop&faces=1" alt="" class="author-avatar">
+          <div>
+            <div class="author-name">Eleanor B., 67</div>
+            <div class="author-meta">Senior Fitness Client</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACILITY -->
+<section id="facility">
+  <div class="section-inner" style="margin-bottom:40px">
+    <div class="section-header-row reveal">
+      <div>
+        <div class="section-tag"><span>The Space</span></div>
+        <h2 class="section-title">WORLD-CLASS <em>FACILITY</em></h2>
+      </div>
+      <p class="section-sub">Located inside Anytime Fitness Wesley Chapel — fully equipped, always available, and designed for serious training.</p>
+    </div>
+  </div>
+  <div class="facility-grid reveal">
+    <div class="facility-img wide">
+      <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80&auto=format&fit=crop" alt="Main Training Floor">
+    </div>
+    <div class="facility-img">
+      <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400&q=80&auto=format&fit=crop" alt="Free Weights">
+    </div>
+    <div class="facility-img">
+      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80&auto=format&fit=crop" alt="Training Session">
+    </div>
+    <div class="facility-img">
+      <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=400&q=80&auto=format&fit=crop" alt="Cardio Equipment">
+    </div>
+    <div class="facility-img">
+      <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=400&q=80&auto=format&fit=crop" alt="Strength Training">
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-inner">
+    <div style="text-align:center;max-width:600px;margin:0 auto 60px" class="reveal">
+      <div class="section-tag" style="justify-content:center"><span>Investment</span></div>
+      <h2 class="section-title">TRANSPARENT <em>PRICING</em></h2>
+      <p style="font-size:15px;color:var(--gray);line-height:1.7">Elite coaching, honest pricing. Every package includes your free initial assessment.</p>
+    </div>
+    <div class="pricing-grid reveal">
+      <div class="pricing-card">
+        <div class="pricing-type">Pay Per Session</div>
+        <div class="pricing-name">DROP-IN</div>
+        <div class="pricing-price"><span>$</span>90</div>
+        <div class="pricing-per">per session · 60 minutes</div>
+        <ul class="pricing-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>1-on-1 personal training</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Customized session plan</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Form coaching & corrections</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Flexible scheduling</li>
+        </ul>
+        <a href="#booking" class="btn-outline" style="display:block;text-align:center;border-color:rgba(255,255,255,.2)">Book a Session</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-type">Best Value</div>
+        <div class="pricing-name">10-PACK</div>
+        <div class="pricing-price"><span>$</span>75</div>
+        <div class="pricing-per">per session · saves $150</div>
+        <ul class="pricing-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Everything in Drop-In</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Personalized program design</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Progress tracking & check-ins</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Nutrition guidance included</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Priority scheduling</li>
+        </ul>
+        <a href="#booking" class="btn-primary" style="display:block;text-align:center;clip-path:none">Start Your 10-Pack</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-type">Serious Commitment</div>
+        <div class="pricing-name">MONTHLY</div>
+        <div class="pricing-price"><span>$</span>65</div>
+        <div class="pricing-per">per session · 3x/week minimum</div>
+        <ul class="pricing-features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Everything in 10-Pack</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Full nutrition coaching</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Monthly body composition scans</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Text/call access to Phil</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Guaranteed results or free month</li>
+        </ul>
+        <a href="#booking" class="btn-outline" style="display:block;text-align:center;border-color:rgba(255,255,255,.2)">Inquire About Monthly</a>
+      </div>
+    </div>
+    <p class="pricing-note">All packages include your <strong>FREE initial fitness assessment</strong> ($150 value). Group training and corporate wellness pricing available on request. <a href="#booking" style="color:var(--red)">Contact us</a> for custom quotes.</p>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section id="calculator">
+  <div class="calc-inner reveal">
+    <div style="text-align:center;margin-bottom:48px">
+      <div class="section-tag" style="justify-content:center"><span>Find Your Program</span></div>
+      <h2 class="section-title" style="font-size:clamp(36px,5vw,60px)">WHAT PROGRAM IS <em>RIGHT FOR YOU?</em></h2>
+    </div>
+    <div class="calc-form">
+      <div class="form-group">
+        <label>Your Primary Goal</label>
+        <select id="calcGoal">
+          <option value="">Select your goal</option>
+          <option value="weight-loss">Lose Weight & Burn Fat</option>
+          <option value="muscle">Build Muscle & Strength</option>
+          <option value="athletic">Athletic Performance</option>
+          <option value="rehab">Post-Injury Recovery</option>
+          <option value="general">General Fitness & Health</option>
+          <option value="competition">Competition Prep</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Experience Level</label>
+        <select id="calcExp">
+          <option value="">Select experience</option>
+          <option value="beginner">Beginner (0–1 year)</option>
+          <option value="intermediate">Intermediate (1–3 years)</option>
+          <option value="advanced">Advanced (3+ years)</option>
+          <option value="athlete">Competitive Athlete</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>&nbsp;</label>
+        <button class="btn-primary" id="calcBtn" onclick="runCalc()" style="clip-path:none;width:100%;justify-content:center">Find My Program →</button>
+      </div>
+    </div>
+    <div class="calc-result" id="calcResult">
+      <div id="calcProgram" class="calc-result-program"></div>
+      <div id="calcSub" class="calc-result-sub"></div>
+      <a href="#booking" class="btn-primary" style="display:inline-flex;margin-top:20px;clip-path:none">Book Free Assessment</a>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section id="booking">
+  <div class="section-inner">
+    <div class="booking-layout">
+      <div class="reveal">
+        <div class="section-tag"><span>Get Started</span></div>
+        <h2 style="font-family:var(--font-display);font-size:clamp(40px,5vw,64px);line-height:.95;margin-bottom:24px">BOOK YOUR<br><em style="font-style:normal;color:var(--red)">FREE SESSION</em></h2>
+        <p style="font-size:15px;color:var(--gray);line-height:1.7;max-width:420px">Fill out this form and Phil will personally reach out within 24 hours to schedule your free fitness assessment. No sales pressure. No commitment required.</p>
+        <div class="booking-hours">
+          <h4>Studio Hours</h4>
+          <div class="hours-row"><span class="day">Monday – Friday</span><span class="time">5:00 AM – 9:00 PM</span></div>
+          <div class="hours-row"><span class="day">Saturday</span><span class="time">6:00 AM – 6:00 PM</span></div>
+          <div class="hours-row"><span class="day">Sunday</span><span class="time">7:00 AM – 2:00 PM</span></div>
+        </div>
+        <div style="margin-top:40px;padding:24px;background:rgba(227,30,36,.06);border:1px solid rgba(227,30,36,.2)">
+          <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:8px">📍 Location</div>
+          <div style="font-size:14px;color:var(--light);line-height:1.7">Inside Anytime Fitness<br>27325 Wesley Chapel Blvd<br>Wesley Chapel, FL 33543</div>
+          <div style="margin-top:16px;font-size:14px;color:var(--light)">📞 <a href="tel:8134828945" style="color:var(--red)">(813) 482-8945</a></div>
+        </div>
+      </div>
+      <div class="booking-form reveal reveal-delay-2">
+        <h3 style="font-family:var(--font-display);font-size:28px;letter-spacing:1px;margin-bottom:32px">CLAIM YOUR FREE ASSESSMENT</h3>
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="Marcus"></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Johnson"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@email.com"></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="(813) 555-0100"></div>
+        </div>
+        <div class="form-group">
+          <label>Primary Goal</label>
+          <select>
+            <option>Weight Loss & Body Composition</option>
+            <option>Build Muscle & Strength</option>
+            <option>Athletic Performance</option>
+            <option>Post-Injury Recovery</option>
+            <option>General Health & Fitness</option>
+            <option>Competition Prep</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Experience Level</label>
+            <select>
+              <option>Beginner</option>
+              <option>Intermediate</option>
+              <option>Advanced</option>
+              <option>Competitive Athlete</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Preferred Time</label>
+            <select>
+              <option>Early Morning (5–8am)</option>
+              <option>Morning (8am–12pm)</option>
+              <option>Afternoon (12–5pm)</option>
+              <option>Evening (5–9pm)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Anything Phil Should Know?</label>
+          <textarea placeholder="Injuries, health conditions, specific goals, questions..."></textarea>
+        </div>
+        <p class="form-disclaimer">By submitting this form, you agree to be contacted by Structured Fitness Inc regarding your free assessment. We never share your information.</p>
+        <button class="btn-primary" style="width:100%;justify-content:center;padding:18px;clip-path:none;font-size:13px" onclick="formSubmit(this)">
+          Book My Free Assessment →
+        </button>
+        <div id="formSuccess" style="display:none;margin-top:20px;padding:20px;background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.3);text-align:center;color:#4CAF50;font-weight:600;font-size:14px">
+          ✅ Done! Phil will reach out within 24 hours to schedule your session.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-inner">
+    <div class="section-header-row reveal">
+      <div>
+        <div class="section-tag"><span>From the Training Floor</span></div>
+        <h2 class="section-title">FITNESS <em>KNOWLEDGE</em></h2>
+      </div>
+      <p class="section-sub">Actionable training tips and nutrition strategies from an IFBB Pro with 30 years in the trenches.</p>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card reveal">
+        <div class="blog-img">
+          <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80&auto=format&fit=crop" alt="Nutrition">
+        </div>
+        <div class="blog-body">
+          <div class="blog-cat">Nutrition</div>
+          <h3 class="blog-title">Why Most Diets Fail After 30 Days (And What Actually Works)</h3>
+          <p class="blog-excerpt">The problem isn't willpower — it's unsustainable restriction. Here's the macro strategy Phil uses with every client.</p>
+          <div class="blog-meta"><span>5 min read</span><span>March 2026</span></div>
+        </div>
+      </div>
+      <div class="blog-card reveal reveal-delay-1">
+        <div class="blog-img">
+          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80&auto=format&fit=crop" alt="Training">
+        </div>
+        <div class="blog-body">
+          <div class="blog-cat">Training Science</div>
+          <h3 class="blog-title">Progressive Overload: The Only Principle That Actually Builds Muscle</h3>
+          <p class="blog-excerpt">If you're not tracking progressive overload, you're leaving 40% of your gains on the table. Here's how to do it right.</p>
+          <div class="blog-meta"><span>4 min read</span><span>February 2026</span></div>
+        </div>
+      </div>
+      <div class="blog-card reveal reveal-delay-2">
+        <div class="blog-img">
+          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80&auto=format&fit=crop" alt="Recovery">
+        </div>
+        <div class="blog-body">
+          <div class="blog-cat">Recovery</div>
+          <h3 class="blog-title">Training After 40: How to Build More Muscle With Less Injury Risk</h3>
+          <p class="blog-excerpt">Your 40s and 50s can be your strongest years. But training smart looks different than training young.</p>
+          <div class="blog-meta"><span>6 min read</span><span>January 2026</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div style="text-align:center;max-width:600px;margin:0 auto 60px" class="reveal">
+      <div class="section-tag" style="justify-content:center"><span>Questions</span></div>
+      <h2 class="section-title">COMMON <em>QUESTIONS</em></h2>
+    </div>
+    <div class="faq-grid" id="faqGrid"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo">
+        <div class="nav-logo-mark" style="width:52px;height:52px;font-size:26px">SF</div>
+        <div class="nav-logo-text" style="font-size:22px">STRUCTURED FITNESS
+          <span>Wesley Chapel, FL</span>
+        </div>
+      </div>
+      <p>Elite personal training coached by IFBB Pro Bodybuilder & Olympian Phil Clahar. 30+ years of transformations in Wesley Chapel, FL.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/teamclahar/" target="_blank" class="social-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://www.facebook.com/teamclahar/" target="_blank" class="social-btn" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="tel:8134828945" class="social-btn" aria-label="Phone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8a16 16 0 0 0 6 6l.84-.84a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Programs</h5>
+      <ul>
+        <li><a href="#programs">1-on-1 Training</a></li>
+        <li><a href="#programs">Small Group</a></li>
+        <li><a href="#programs">Nutrition Coaching</a></li>
+        <li><a href="#programs">Sport-Specific</a></li>
+        <li><a href="#programs">Post-Rehab</a></li>
+        <li><a href="#programs">Corporate Wellness</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#transformations">Transformations</a></li>
+        <li><a href="#trainer">Meet Phil</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#assessment">Free Assessment</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#blog">Training Tips</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Contact</h5>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>27325 Wesley Chapel Blvd, Wesley Chapel, FL 33543</span>
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8a16 16 0 0 0 6 6l.84-.84a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <a href="tel:8134828945" style="color:var(--red)">(813) 482-8945</a>
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:phil@structuredfitnessinc.com" style="color:var(--red)">phil@structuredfitnessinc.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-left">
+      © 2026 Structured Fitness Inc · Wesley Chapel, FL · All rights reserved
+    </div>
+    <div class="footer-certs">
+      <div class="cert-badge">IFBB Pro</div>
+      <div class="cert-badge">NASM Certified</div>
+      <div class="cert-badge">ACE Certified</div>
+      <div class="cert-badge">Wesley Chapel, FL</div>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE CTA BAR -->
+<a href="#booking" class="mobile-cta-bar">🔥 Book Your Free Assessment — Limited Spots</a>
+
+<!-- DEMO BADGE -->
+<div class="demo-badge" id="demoBadge">
+  <button class="demo-badge-close" onclick="document.getElementById('demoBadge').style.display='none'">×</button>
+  <strong>This is a Zellyfi Demo</strong>
+  <p>Custom-built to show what your fitness brand could look like.</p>
+  <a href="https://zellyfi.com" target="_blank">Want this for your gym? →</a>
+</div>
+
+<script>
+// NAV SCROLL
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);
+});
+
+// HAMBURGER
+const ham=document.getElementById('hamburger');
+const mob=document.getElementById('mobileMenu');
+ham.addEventListener('click',()=>{
+  ham.classList.toggle('open');
+  mob.classList.toggle('open');
+  document.body.style.overflow=mob.classList.contains('open')?'hidden':'';
+});
+document.querySelectorAll('.mob-link,.mob-cta').forEach(a=>{
+  a.addEventListener('click',()=>{
+    ham.classList.remove('open');
+    mob.classList.remove('open');
+    document.body.style.overflow='';
+  });
+});
+
+// SCROLL REVEAL
+const revealObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObserver.unobserve(e.target)}});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+
+// COUNTER ANIMATION
+const counterObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target;
+      const target=parseInt(el.dataset.count);
+      const isDecimal=el.dataset.decimal==='true';
+      let current=0;
+      const step=target/50;
+      const timer=setInterval(()=>{
+        current+=step;
+        if(current>=target){current=target;clearInterval(timer)}
+        el.textContent=isDecimal?(current/10).toFixed(1)+'★':Math.round(current)+(target===30?'+':target===500?'+':'');
+      },30);
+      counterObserver.unobserve(el);
+    }
+  });
+},{threshold:0.5});
+document.querySelectorAll('[data-count]').forEach(el=>counterObserver.observe(el));
+
+// TRANSFORMATION FILTER
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter=btn.dataset.filter;
+    document.querySelectorAll('.transform-card').forEach(card=>{
+      if(filter==='all'||card.dataset.category===filter){
+        card.style.display='block';
+        card.style.animation='fadeUp .4s forwards';
+      }else{
+        card.style.display='none';
+      }
+    });
+  });
+});
+
+// FAQ DATA
+const faqs=[
+  {q:'Do I need prior fitness experience?',a:'Absolutely not. Phil has trained complete beginners to competitive athletes for 30+ years. Your first session starts with an assessment to understand exactly where you are and where you want to go.'},
+  {q:'How long are training sessions?',a:'Standard sessions are 60 minutes. Competition prep and specialized programs may run 75–90 minutes. Every minute is productive — no filler, no waiting around.'},
+  {q:'What results can I realistically expect?',a:'Most clients see measurable changes in 4–6 weeks with consistent training. Significant transformation typically happens in 12–16 weeks. Phil\'s 4.9-star reputation is built on delivering real, lasting results.'},
+  {q:'What should I wear and bring?',a:'Comfortable athletic wear and supportive training shoes. Bring water, a towel, and your goals. Everything else is provided.'},
+  {q:'Do you offer virtual training?',a:'Yes — Phil offers virtual training sessions via video call, with full program design and check-ins. Perfect for travel or if you prefer to train at home.'},
+  {q:'How is Structured Fitness different from a regular gym?',a:'You get the direct attention of an IFBB Pro Olympian with 30 years of experience — not a 22-year-old with a weekend certification. Every program is built specifically for your body and goals.'},
+  {q:'What if I have an injury or medical condition?',a:'This is Phil\'s specialty. He has extensive experience with post-surgical clients, chronic conditions, and injury rehabilitation. He can coordinate with your medical team to create a safe, effective program.'},
+  {q:'Is nutrition coaching included?',a:'Basic nutrition guidance is included in all packages. Full meal planning, macro tracking, and weekly nutrition coaching is available as an add-on or included in the monthly membership.'},
+];
+const faqGrid=document.getElementById('faqGrid');
+faqs.forEach((f,i)=>{
+  const item=document.createElement('div');
+  item.className='faq-item';
+  item.innerHTML=`<button class="faq-question" onclick="toggleFaq(this)"><span>${f.q}</span><span class="faq-icon"></span></button><div class="faq-answer"><p>${f.a}</p></div>`;
+  faqGrid.appendChild(item);
+});
+function toggleFaq(btn){
+  const ans=btn.nextElementSibling;
+  const isOpen=btn.classList.contains('open');
+  document.querySelectorAll('.faq-question.open').forEach(b=>{b.classList.remove('open');b.nextElementSibling.classList.remove('open')});
+  if(!isOpen){btn.classList.add('open');ans.classList.add('open')}
+}
+
+// CALCULATOR
+const calcData={
+  'weight-loss':{'beginner':'1-on-1 Training + Nutrition Coaching','intermediate':'1-on-1 Training + Nutrition Coaching','advanced':'Small Group + Nutrition','athlete':'Sport-Specific Training'},
+  'muscle':{'beginner':'1-on-1 Personal Training','intermediate':'1-on-1 Personal Training','advanced':'1-on-1 or Small Group','athlete':'Sport-Specific Training'},
+  'athletic':{'beginner':'1-on-1 Personal Training','intermediate':'Sport-Specific Training','advanced':'Sport-Specific Training','athlete':'Competition Prep Program'},
+  'rehab':{'beginner':'Post-Rehabilitation Program','intermediate':'Post-Rehabilitation Program','advanced':'Post-Rehab + Strength Building','athlete':'Athletic Rehab Program'},
+  'general':{'beginner':'1-on-1 Personal Training','intermediate':'Small Group Training','advanced':'Small Group Training','athlete':'1-on-1 Custom Program'},
+  'competition':{'beginner':'1-on-1 + Competition Prep','intermediate':'Competition Prep Program','advanced':'Full Competition Prep','athlete':'Elite Competition Coaching'}
+};
+const calcSubs={
+  'weight-loss':'Focus on progressive cardio, compound lifts, and sustainable nutrition — proven to deliver lasting fat loss.',
+  'muscle':'Structured progressive overload with precise nutrition targets to maximize hypertrophy at any level.',
+  'athletic':'Sport-specific movement patterns, explosive training, and performance periodization from an actual Olympian.',
+  'rehab':'Safe, medically-informed progression designed to rebuild strength while protecting the injured area.',
+  'general':'Balanced programming covering strength, cardio, mobility — the foundation of lifelong fitness.',
+  'competition':'Full competition prep including peaking, nutrition, and posing/presentation coaching.'
+};
+function runCalc(){
+  const goal=document.getElementById('calcGoal').value;
+  const exp=document.getElementById('calcExp').value;
+  if(!goal||!exp){alert('Please select both a goal and experience level.');return;}
+  const program=calcData[goal][exp];
+  const sub=calcSubs[goal];
+  document.getElementById('calcProgram').textContent=program;
+  document.getElementById('calcSub').textContent=sub+' Click below to start with a free assessment.';
+  const result=document.getElementById('calcResult');
+  result.classList.add('show');
+  result.style.display='block';
+  result.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+// FORM SUBMIT
+function formSubmit(btn){
+  btn.textContent='Sending...';
+  btn.disabled=true;
+  setTimeout(()=>{
+    btn.style.display='none';
+    document.getElementById('formSuccess').style.display='block';
+  },1200);
+}
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const target=document.querySelector(a.getAttribute('href'));
+    if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth'})}
+  });
+});
+</script>
+</body>
+</html>
