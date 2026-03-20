@@ -3,11 +3,17 @@
     { "source": "/werockrocks", "destination": "/werockrocks/index.html" },
     { "source": "/werockrocks/", "destination": "/werockrocks/index.html" },
     { "source": "/exoticsmokes", "destination": "/exoticsmokes/index.html" },
-    { "source": "/exoticsmokes/", "destination": "/exoticsmokes/index.html" }
+    { "source": "/exoticsmokes/", "destination": "/exoticsmokes/index.html" },
+    { "source": "/peppajak", "destination": "/peppajak/index.html" },
+    { "source": "/peppajak/", "destination": "/peppajak/index.html" },
+    { "source": "/blushwineroom", "destination": "/blushwineroom/index.html" },
+    { "source": "/blushwineroom/", "destination": "/blushwineroom/index.html" },
+    { "source": "/tasty-ramen", "destination": "/tasty-ramen/index.html" },
+    { "source": "/tasty-ramen/", "destination": "/tasty-ramen/index.html" }
   ],
   "headers": [
     {
-      "source": "/(werockrocks|exoticsmokes)/(.*)",
+      "source": "/(werockrocks|exoticsmokes|peppajak|blushwineroom|tasty-ramen)/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" },
         { "key": "X-Content-Type-Options", "value": "nosniff" }

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PeppaJak | Bold Burgers, Wings & Tenders | Wesley Chapel FL</title>
+  <meta name="description" content="PeppaJak at The KRATE — bold, crave-worthy burgers, crispy wings & tenders in Wesley Chapel. Fresh hand-patted Angus beef, signature sauces & legendary flavor.">
+  <meta name="keywords" content="PeppaJak Wesley Chapel, burgers KRATE, wings Wesley Chapel, best burgers Tampa, chicken tenders Wesley Chapel, fast food Wesley Chapel FL">
+  <meta property="og:title" content="PeppaJak | Bold Burgers, Wings & Tenders">
+  <meta property="og:description" content="Fresh hand-patted burgers, crispy wings & tenders at The KRATE in Wesley Chapel, FL.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --black:#0a0806;--black-warm:#110e0a;--card:#1a1510;--card-hover:#221c14;
+      --pepper-red:#c0392b;--pepper-bright:#e74c3c;--ember:#e8734a;--gold:#d4a853;--gold-dim:rgba(212,168,83,0.15);
+      --cream:#faf5eb;--text:#f5f0e5;--text-dim:rgba(245,240,229,0.6);--text-mid:rgba(245,240,229,0.8);
+      --border:rgba(245,240,229,0.07);--border-hover:rgba(212,168,83,0.3);
+      --fire-grad:linear-gradient(135deg,#c0392b,#e8734a,#d4a853);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter',sans-serif;background:var(--black);color:var(--text);overflow-x:hidden}
+
+    /* NAV */
+    nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(10,8,6,0.85);backdrop-filter:blur(30px) saturate(1.4);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:72px;transition:all 0.4s}
+    nav.scrolled{height:62px;background:rgba(10,8,6,0.97)}
+    .nav-brand{display:flex;align-items:center;gap:0.8rem}
+    .nav-logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;background:var(--fire-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.5px}
+    .nav-logo-dot{color:var(--pepper-red);-webkit-text-fill-color:var(--pepper-red)}
+    .nav-links{display:flex;gap:1.4rem;list-style:none;align-items:center}
+    .nav-links a{color:var(--text-dim);text-decoration:none;font-size:0.75rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:all 0.3s}
+    .nav-links a:hover{color:var(--gold)}
+    .nav-cta{background:var(--pepper-red)!important;color:var(--text)!important;padding:0.5rem 1.3rem!important;border-radius:6px;font-weight:700!important;transition:all 0.3s!important;text-decoration:none;font-size:0.75rem;letter-spacing:1px;text-transform:uppercase;display:inline-block}
+    .nav-cta:hover{background:var(--pepper-bright)!important;box-shadow:0 0 25px rgba(192,57,43,0.4)!important;transform:translateY(-1px)!important}
+    .mobile-toggle{display:none;background:none;border:none;cursor:pointer}
+    .mobile-toggle span{display:block;width:22px;height:2px;background:var(--gold);margin:5px 0;transition:0.3s}
+
+    /* HERO */
+    .hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;z-index:0;background:linear-gradient(160deg,#1a0a05 0%,#0a0806 40%,#110e0a 100%)}
+    .hero-grain{position:absolute;inset:0;z-index:1;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+    .hero-glow{position:absolute;border-radius:50%;filter:blur(120px);z-index:1}
+    .g1{width:500px;height:500px;background:var(--pepper-red);top:-20%;left:-10%;opacity:0.2;animation:drift 10s ease-in-out infinite alternate}
+    .g2{width:350px;height:350px;background:var(--gold);bottom:-15%;right:0;opacity:0.12;animation:drift 8s ease-in-out infinite alternate-reverse}
+    .g3{width:200px;height:200px;background:var(--ember);top:50%;left:40%;opacity:0.08;animation:drift 12s ease-in-out infinite alternate}
+    @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(30px,-20px) scale(1.15)}}
+
+    .hero-inner{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:8rem 2rem 5rem;text-align:center}
+    .hero-badge{display:inline-flex;align-items:center;gap:0.6rem;background:var(--gold-dim);border:1px solid rgba(212,168,83,0.25);color:var(--gold);padding:0.45rem 1.2rem;border-radius:50px;font-size:0.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:2rem}
+    .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+    .hero h1{font-family:'Playfair Display',serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:900;line-height:1.05;margin-bottom:1.5rem;letter-spacing:-2px}
+    .hero h1 .fire{background:var(--fire-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero-sub{font-size:1.15rem;color:var(--text-dim);line-height:1.8;margin:0 auto 2.5rem;max-width:580px;font-weight:300}
+    .hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem}
+    .btn-fire{background:var(--pepper-red);color:#fff;padding:1rem 2.4rem;border-radius:8px;font-weight:800;font-size:0.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.6rem;transition:all 0.3s;border:none;cursor:pointer;letter-spacing:0.5px;text-transform:uppercase}
+    .btn-fire:hover{background:var(--pepper-bright);box-shadow:0 0 40px rgba(192,57,43,0.4);transform:translateY(-3px)}
+    .btn-outline{background:transparent;padding:1rem 2.4rem;border-radius:8px;font-weight:600;font-size:0.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:0.6rem;border:1px solid var(--border-hover);color:var(--gold);transition:all 0.3s;letter-spacing:0.5px}
+    .btn-outline:hover{border-color:var(--gold);background:var(--gold-dim)}
+    .hero-stats{display:flex;gap:2.5rem;justify-content:center;margin-top:1rem}
+    .hero-stat{text-align:center}
+    .hero-stat .num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;background:var(--fire-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero-stat .label{font-size:0.7rem;color:var(--text-dim);letter-spacing:1.5px;text-transform:uppercase;margin-top:0.2rem}
+
+    /* SECTIONS */
+    section{padding:5rem 2rem}
+    .section-tag{display:inline-flex;align-items:center;gap:0.5rem;background:var(--gold-dim);color:var(--gold);padding:0.4rem 1rem;border-radius:20px;font-size:0.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem}
+    .section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;margin-bottom:0.5rem;letter-spacing:-1px}
+    .section-sub{color:var(--text-dim);font-size:1rem;max-width:500px;line-height:1.7}
+    .section-header{text-align:center;margin-bottom:3rem}
+    .section-header .section-sub{margin:0.5rem auto 0}
+
+    /* MENU */
+    #menu{background:var(--black-warm)}
+    .menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto}
+    .menu-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem;transition:all 0.3s;position:relative;overflow:hidden}
+    .menu-card:hover{border-color:var(--border-hover);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+    .menu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--fire-grad);opacity:0;transition:opacity 0.3s}
+    .menu-card:hover::before{opacity:1}
+    .menu-cat{font-size:0.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--pepper-red);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+    .menu-cat-icon{font-size:1.2rem}
+    .menu-item{display:flex;justify-content:space-between;align-items:flex-start;padding:0.8rem 0;border-bottom:1px solid var(--border)}
+    .menu-item:last-child{border-bottom:none}
+    .menu-item-name{font-weight:600;font-size:0.95rem;color:var(--text)}
+    .menu-item-desc{font-size:0.8rem;color:var(--text-dim);margin-top:0.2rem;line-height:1.5}
+    .menu-item-price{font-family:'Playfair Display',serif;font-weight:700;color:var(--gold);font-size:1rem;white-space:nowrap;margin-left:1rem}
+    .menu-popular{display:inline-block;background:rgba(231,76,60,0.15);color:var(--pepper-bright);font-size:0.6rem;font-weight:700;padding:0.15rem 0.5rem;border-radius:4px;letter-spacing:0.5px;text-transform:uppercase;margin-left:0.5rem}
+
+    /* ABOUT / STORY */
+    #about{max-width:900px;margin:0 auto}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+    .about-text p{color:var(--text-dim);line-height:1.9;margin-bottom:1rem;font-size:0.95rem}
+    .about-text p strong{color:var(--text)}
+    .about-features{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+    .about-feat{display:flex;align-items:center;gap:0.6rem;font-size:0.85rem;color:var(--text-mid)}
+    .about-feat-icon{width:32px;height:32px;border-radius:8px;background:var(--gold-dim);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+    .about-visual{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;text-align:center}
+    .about-visual-emoji{font-size:5rem;margin-bottom:1rem;filter:drop-shadow(0 0 30px rgba(192,57,43,0.3))}
+    .about-visual-text{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;margin-bottom:0.5rem}
+    .about-visual-sub{color:var(--text-dim);font-size:0.85rem}
+
+    /* HOURS & LOCATION */
+    #info{background:var(--black-warm)}
+    .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:900px;margin:0 auto}
+    .info-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:2rem}
+    .info-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:1.2rem;display:flex;align-items:center;gap:0.5rem}
+    .hours-row{display:flex;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid var(--border);font-size:0.9rem}
+    .hours-row:last-child{border-bottom:none}
+    .hours-day{color:var(--text-mid);font-weight:500}
+    .hours-time{color:var(--gold);font-weight:600}
+    .info-detail{display:flex;align-items:flex-start;gap:0.8rem;margin-bottom:1.2rem;font-size:0.9rem;color:var(--text-mid);line-height:1.6}
+    .info-detail-icon{font-size:1.2rem;flex-shrink:0;margin-top:0.1rem}
+
+    /* ORDER CTA */
+    .order-cta{text-align:center;padding:5rem 2rem;background:linear-gradient(180deg,var(--black) 0%,var(--black-warm) 100%);position:relative;overflow:hidden}
+    .order-cta::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:var(--pepper-red);opacity:0.06;filter:blur(100px)}
+    .order-cta h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;margin-bottom:1rem;position:relative;z-index:1}
+    .order-cta p{color:var(--text-dim);font-size:1rem;margin-bottom:2rem;position:relative;z-index:1}
+    .order-cta .btn-fire{position:relative;z-index:1;font-size:1rem;padding:1.2rem 3rem}
+
+    /* FOOTER */
+    footer{background:var(--black);border-top:1px solid var(--border);padding:3rem 2rem;text-align:center}
+    .footer-brand{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;background:var(--fire-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem}
+    .footer-addr{color:var(--text-dim);font-size:0.8rem;margin-bottom:1rem;line-height:1.6}
+    .footer-links{display:flex;gap:1.5rem;justify-content:center;margin-bottom:1.5rem}
+    .footer-links a{color:var(--text-dim);text-decoration:none;font-size:0.8rem;transition:color 0.3s}
+    .footer-links a:hover{color:var(--gold)}
+    .footer-copy{color:var(--text-dim);font-size:0.7rem;opacity:0.5}
+    .footer-zellyfi{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border);font-size:0.7rem;color:var(--text-dim);opacity:0.4}
+    .footer-zellyfi a{color:var(--ember);text-decoration:none}
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      nav{padding:0 1rem}
+      .nav-links{display:none;position:fixed;top:72px;left:0;right:0;background:rgba(10,8,6,0.98);flex-direction:column;padding:2rem;gap:1.5rem;border-bottom:1px solid var(--border)}
+      .nav-links.open{display:flex}
+      .mobile-toggle{display:block}
+      .hero-inner{padding:7rem 1.5rem 4rem}
+      .hero h1{font-size:2.8rem}
+      .hero-stats{gap:1.5rem}
+      .hero-stat .num{font-size:1.6rem}
+      .about-grid{grid-template-columns:1fr}
+      .info-grid{grid-template-columns:1fr}
+      .menu-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-brand">
+    <span class="nav-logo">PeppaJak</span>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#info">Hours</a></li>
+    <li><a href="https://www.doordash.com/en-US/store/peppajak-wesley-chapel-34103333/" target="_blank" class="nav-cta">Order Online</a></li>
+  </ul>
+  <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-glow g1"></div>
+  <div class="hero-glow g2"></div>
+  <div class="hero-glow g3"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">Now Open at The KRATE</div>
+    <h1><span class="fire">Bold Flavors,</span><br>Fresh Every Day</h1>
+    <p class="hero-sub">Hand-patted Angus burgers, crispy wings in signature sauces, and golden tenders — crafted fresh to order at The KRATE in Wesley Chapel.</p>
+    <div class="hero-buttons">
+      <a href="https://www.doordash.com/en-US/store/peppajak-wesley-chapel-34103333/" target="_blank" class="btn-fire">Order Delivery &rarr;</a>
+      <a href="#menu" class="btn-outline">View Menu</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">100%</div><div class="label">Angus Beef</div></div>
+      <div class="hero-stat"><div class="num">Fresh</div><div class="label">Never Frozen</div></div>
+      <div class="hero-stat"><div class="num">5+</div><div class="label">Signature Sauces</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="section-header">
+    <div class="section-tag">The Menu</div>
+    <h2 class="section-title">Crave-Worthy Eats</h2>
+    <p class="section-sub">Everything made fresh — burgers hand-patted, wings tossed to order, tenders breaded in-house.</p>
+  </div>
+  <div class="menu-grid">
+
+    <!-- BURGERS -->
+    <div class="menu-card">
+      <div class="menu-cat"><span class="menu-cat-icon">&#x1F354;</span> Burgers</div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-item-name">The Wag (Wagyu Blend) & Fries <span class="menu-popular">Popular</span></div>
+          <div class="menu-item-desc">Premium wagyu blend patty, hand-patted, with American cheese, lettuce, tomato, onions & pickles</div>
+        </div>
+        <div class="menu-item-price">$19.99</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-item-name">The Big Krave (Double) & Fries <span class="menu-popular">Fan Fav</span></div>
+          <div class="menu-item-desc">Double-stacked Angus patties with all the fixings — for when one isn't enough</div>
+        </div>
+        <div class="menu-item-price">$19.99</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-item-name">Classic Angus Burger & Fries</div>
+          <div class="menu-item-desc">100% signature Angus beef, American cheese, lettuce, tomato, onions, pickles</div>
+        </div>
+        <div class="menu-item-price">$14.99</div>
+      </div>
+    </div>
+
+    <!-- WINGS -->
+    <div class="menu-card">
+      <div class="menu-cat"><span class="menu-cat-icon">&#x1F357;</span> Wings</div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-item-name">9pc Hot Buffalo Wings & Fries</div>
+          <div class="menu-item-desc">Crispy bone-in wings tossed in our tangy buffalo sauce</div>
+        </div>
+        <div class="menu-item-price">$19.99</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-item-name">9pc Hot Honey Wings & Fries <span class="menu-popular">Popular</span></div>
+          <div class="menu-item-desc">Sweet heat — our famous hot honey glaze on crispy wings</div>
+        </div>
+        <div class="menu-item-price">$19.99</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-item-name">9pc Lemon Pepper Wings & Fries</div>
+          <div class="menu-item-desc">Bright citrus kick with cracked pepper seasoning</div>
+        </div>
+        <div class="menu-item-price">$19.99</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-item-name">9pc Honey BBQ Wings & Fries</div>
+          <div class="menu-item-desc">Smoky-sweet barbecue glaze, finger-licking good</div>
+        </div>
+        <div class="menu-item-price">$19.99</div>
+      </div>
+    </div>
+
+    <!-- TENDERS -->
+    <div class="menu-card">
+      <div class="menu-cat"><span class="menu-cat-icon">&#x1F414;</span> Tenders & Sides</div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-item-name">6pc Plain Tenders & Fries</div>
+          <div class="menu-item-desc">Hand-breaded chicken tenders, golden fried to perfection</div>
+        </div>
+        <div class="menu-item-price">$17.99</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-item-name">Mac N Cheese Bites</div>
+          <div class="menu-item-desc">Creamy mac & cheese, breaded and fried until crispy</div>
+        </div>
+        <div class="menu-item-price">$10.99</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-item-name">PeppaJak Eggrolls</div>
+          <div class="menu-item-desc">Our signature cheesesteak eggrolls with dipping sauce</div>
+        </div>
+        <div class="menu-item-price">$10.99</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-item-name">Philly Phries</div>
+          <div class="menu-item-desc">Loaded fries with Philly cheesesteak toppings</div>
+        </div>
+        <div class="menu-item-price">$12.99</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-item-name">Fried Mushrooms</div>
+          <div class="menu-item-desc">Battered & fried to golden perfection with ranch</div>
+        </div>
+        <div class="menu-item-price">$8.99</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <div class="section-tag">Our Story</div>
+      <h2 class="section-title">Made Bold, Served Fresh</h2>
+      <div class="about-text">
+        <p>PeppaJak brings <strong>bold, crave-worthy American comfort food</strong> to The KRATE at the Grove in Wesley Chapel. Every burger is hand-patted with 100% Angus beef and cooked to order — never frozen, never rushed.</p>
+        <p>From our signature wagyu blend burgers to our legendary hot honey wings, we're all about <strong>big flavors and fresh ingredients</strong>. Our house-made sauces are what set us apart — each one crafted to bring the perfect balance of heat, sweet, and savory.</p>
+      </div>
+      <div class="about-features">
+        <div class="about-feat"><div class="about-feat-icon">&#x1F525;</div> Signature sauces</div>
+        <div class="about-feat"><div class="about-feat-icon">&#x1F969;</div> 100% Angus beef</div>
+        <div class="about-feat"><div class="about-feat-icon">&#x1F3E0;</div> At The KRATE</div>
+        <div class="about-feat"><div class="about-feat-icon">&#x1F69A;</div> DoorDash delivery</div>
+      </div>
+    </div>
+    <div class="about-visual">
+      <div class="about-visual-emoji">&#x1F525;</div>
+      <div class="about-visual-text">Flavor First</div>
+      <div class="about-visual-sub">Every bite crafted with bold, signature spice</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & LOCATION -->
+<section id="info">
+  <div class="section-header">
+    <div class="section-tag">Visit Us</div>
+    <h2 class="section-title">Hours & Location</h2>
+  </div>
+  <div class="info-grid">
+    <div class="info-card">
+      <h3>&#x1F554; Hours</h3>
+      <div class="hours-row"><span class="hours-day">Monday</span><span class="hours-time">11:30 AM – 8:00 PM</span></div>
+      <div class="hours-row"><span class="hours-day">Tuesday</span><span class="hours-time">11:30 AM – 8:00 PM</span></div>
+      <div class="hours-row"><span class="hours-day">Wednesday</span><span class="hours-time">11:30 AM – 8:00 PM</span></div>
+      <div class="hours-row"><span class="hours-day">Thursday</span><span class="hours-time">11:30 AM – 9:00 PM</span></div>
+      <div class="hours-row"><span class="hours-day">Friday</span><span class="hours-time">11:30 AM – 10:00 PM</span></div>
+      <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">11:30 AM – 10:00 PM</span></div>
+      <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time">11:30 AM – 8:00 PM</span></div>
+    </div>
+    <div class="info-card">
+      <h3>&#x1F4CD; Find Us</h3>
+      <div class="info-detail">
+        <span class="info-detail-icon">&#x1F3E2;</span>
+        <div>The KRATE at the Grove<br>5888 Grand Oro Ln, Suite 112<br>Wesley Chapel, FL 33544</div>
+      </div>
+      <div class="info-detail">
+        <span class="info-detail-icon">&#x1F4DE;</span>
+        <div><a href="tel:8133882032" style="color:var(--gold);text-decoration:none">(813) 388-2032</a></div>
+      </div>
+      <div class="info-detail">
+        <span class="info-detail-icon">&#x1F4E7;</span>
+        <div>Also available on <a href="https://www.doordash.com/en-US/store/peppajak-wesley-chapel-34103333/" target="_blank" style="color:var(--gold);text-decoration:none">DoorDash</a>, <a href="https://www.ubereats.com/store/peppajak-wesley/0dJq2HNXVZ66whtbpnB0OA" target="_blank" style="color:var(--gold);text-decoration:none">Uber Eats</a> & <a href="https://postmates.com/store/peppajak-wesley/0dJq2HNXVZ66whtbpnB0OA" target="_blank" style="color:var(--gold);text-decoration:none">Postmates</a></div>
+      </div>
+      <div style="margin-top:1.5rem">
+        <a href="https://maps.google.com/?q=5888+Grand+Oro+Ln+Wesley+Chapel+FL+33544" target="_blank" class="btn-fire" style="width:100%;justify-content:center;padding:0.8rem">Get Directions &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ORDER CTA -->
+<section class="order-cta">
+  <h2>Ready to <span style="background:var(--fire-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Get Bold?</span></h2>
+  <p>Order delivery or come grab a seat at The KRATE.</p>
+  <a href="https://www.doordash.com/en-US/store/peppajak-wesley-chapel-34103333/" target="_blank" class="btn-fire">Order Now &rarr;</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">PeppaJak</div>
+  <div class="footer-addr">The KRATE at the Grove &bull; 5888 Grand Oro Ln #112 &bull; Wesley Chapel, FL 33544<br>(813) 388-2032</div>
+  <div class="footer-links">
+    <a href="https://www.facebook.com/p/Peppa-Jak-at-The-Krates-Wesley-Chapel-FL-61577242783096/" target="_blank">Facebook</a>
+    <a href="https://www.yelp.com/biz/peppajak-wesley-chapel" target="_blank">Yelp</a>
+    <a href="https://www.doordash.com/en-US/store/peppajak-wesley-chapel-34103333/" target="_blank">DoorDash</a>
+  </div>
+  <div class="footer-copy">&copy; 2025 PeppaJak. All rights reserved.</div>
+  <div class="footer-zellyfi">Demo crafted by <a href="https://zellyfi.com" target="_blank">Zellyfi</a></div>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const el = document.querySelector(a.getAttribute('href'));
+      if (el) {
+        el.scrollIntoView({behavior:'smooth',block:'start'});
+        document.getElementById('navLinks').classList.remove('open');
+      }
+    });
+  });
+
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }});
+  }, {threshold:0.1});
+  document.querySelectorAll('.menu-card, .info-card, .about-grid > div').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

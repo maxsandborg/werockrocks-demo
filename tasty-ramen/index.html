@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tasty Ramen — Wesley Chapel's #1 Ramen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{font-family:'Inter',sans-serif;background:#fff;color:#333;overflow-x:hidden}
+
+/* ===== CSS VARIABLES ===== */
+:root{
+  --red:#d42c2c;
+  --red-dark:#b82222;
+  --red-light:#ff4d4d;
+  --charcoal:#2d2d2d;
+  --dark:#1a1a1a;
+  --warm-gray:#f5f0eb;
+  --cream:#faf7f2;
+  --gold:#c9a84c;
+  --text:#333;
+  --text-light:#666;
+  --white:#fff;
+}
+
+/* ===== SCROLL ANIMATIONS (Gensuke-style waypoints) ===== */
+.reveal{opacity:0;transform:translateY(10%);transition:opacity 0.7s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.7s cubic-bezier(0.25,0.46,0.45,0.94)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-10%);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(10%);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(0.85);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+
+/* Gensuke-style flip animations */
+.reveal-flip{opacity:0;transform:perspective(400px) rotateY(90deg);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal-flip.visible{opacity:1;transform:perspective(400px) rotateY(0deg)}
+.reveal-flipX{opacity:0;transform:perspective(400px) rotateX(90deg);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal-flipX.visible{opacity:1;transform:perspective(400px) rotateX(0deg)}
+
+/* Grow animation */
+.reveal-grow{opacity:0;transform:scaleY(0.5);transform-origin:bottom;transition:opacity 0.6s ease,transform 0.6s cubic-bezier(0.34,1.56,0.64,1)}
+.reveal-grow.visible{opacity:1;transform:scaleY(1)}
+
+/* Stagger children */
+.stagger .reveal:nth-child(1),.stagger .reveal-flip:nth-child(1){transition-delay:0s}
+.stagger .reveal:nth-child(2),.stagger .reveal-flip:nth-child(2){transition-delay:0.15s}
+.stagger .reveal:nth-child(3),.stagger .reveal-flip:nth-child(3){transition-delay:0.3s}
+.stagger .reveal:nth-child(4),.stagger .reveal-flip:nth-child(4){transition-delay:0.45s}
+
+/* Gensuke-style image overlay on hover */
+.img-hover-wrap{position:relative;overflow:hidden;cursor:pointer}
+.img-hover-wrap::after{
+  content:'';position:absolute;inset:0;
+  background:hsla(0,0%,100%,0.9);opacity:0;
+  transition:opacity 0.4s ease;display:flex;align-items:center;justify-content:center;
+}
+.img-hover-wrap:hover::after{opacity:0.85}
+.img-hover-wrap::before{
+  content:'🔍';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.5);
+  z-index:2;font-size:32px;opacity:0;transition:all 0.4s ease;
+}
+.img-hover-wrap:hover::before{opacity:1;transform:translate(-50%,-50%) scale(1)}
+
+/* ===== STICKY NAV ===== */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:16px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:all 0.4s ease;
+  background:transparent;
+}
+.nav.scrolled{
+  background:rgba(255,255,255,0.97);
+  backdrop-filter:blur(12px);
+  box-shadow:0 2px 20px rgba(0,0,0,0.08);
+  padding:12px 40px;
+}
+.nav-logo{
+  font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:24px;
+  color:var(--red);text-decoration:none;
+  display:flex;align-items:center;gap:10px;
+}
+.nav-logo .jp{font-size:14px;color:var(--charcoal);opacity:0.6;font-weight:400}
+.nav.scrolled .nav-logo .jp{color:var(--charcoal)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{
+  text-decoration:none;font-size:13px;font-weight:600;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--charcoal);
+  position:relative;transition:color 0.3s ease;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;
+  background:var(--red);transition:width 0.3s ease;
+}
+.nav-links a:hover{color:var(--red)}
+.nav-links a:hover::after{width:100%}
+.nav-order{
+  padding:10px 24px;background:var(--red);color:#fff;
+  font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  text-decoration:none;border-radius:4px;transition:all 0.3s ease;
+}
+.nav-order:hover{background:var(--red-dark);transform:translateY(-1px)}
+/* Gensuke-style button icon reveal */
+.btn-arrow{
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-arrow::after{
+  content:'→';display:inline-block;opacity:0;margin-left:-12px;
+  transition:all 0.3s ease;
+}
+.btn-arrow:hover::after{opacity:1;margin-left:0}
+
+/* Mobile menu */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001}
+.hamburger span{width:24px;height:2px;background:var(--charcoal);transition:all 0.3s ease}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;min-height:100vh;display:flex;align-items:center;
+  background:var(--white);overflow:hidden;
+}
+/* Dragon/wave decorative SVG background */
+.hero-bg{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:80%;max-width:900px;opacity:0.06;pointer-events:none;
+}
+.hero-content{
+  position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;width:100%;max-width:1300px;margin:0 auto;padding:120px 60px 80px;
+  gap:40px;
+}
+.hero-text{position:relative}
+.hero-tag{
+  display:inline-block;font-size:11px;font-weight:700;letter-spacing:3px;
+  text-transform:uppercase;color:var(--red);margin-bottom:20px;
+  padding:6px 14px;border:1px solid rgba(212,44,44,0.3);border-radius:2px;
+}
+.hero-title{
+  font-family:'Noto Sans JP','Inter',sans-serif;font-weight:900;
+  font-size:clamp(48px,6vw,86px);line-height:0.95;
+  color:var(--charcoal);margin-bottom:24px;text-transform:uppercase;
+  letter-spacing:-1px;
+}
+.hero-title .red-block{
+  display:inline-block;background:var(--red);color:var(--white);
+  padding:4px 16px;margin:4px 0;
+}
+.hero-sub{font-size:16px;color:var(--text-light);line-height:1.7;max-width:440px;margin-bottom:32px}
+.hero-cta{
+  display:inline-block;padding:16px 40px;background:var(--red);color:#fff;
+  font-size:13px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  text-decoration:none;border-radius:4px;transition:all 0.3s ease;
+  box-shadow:0 4px 20px rgba(212,44,44,0.3);
+}
+.hero-cta:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 8px 30px rgba(212,44,44,0.4)}
+
+/* Hero image with Gensuke-style black frame */
+.hero-img-wrap{
+  position:relative;display:flex;justify-content:center;align-items:center;
+}
+.hero-bowl{
+  width:85%;max-width:520px;border-radius:16px;
+  position:relative;z-index:2;
+  animation:floatBowl 4s ease-in-out infinite;
+  object-fit:cover;
+  box-shadow:0 30px 60px rgba(0,0,0,0.25);
+}
+@keyframes floatBowl{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-15px) rotate(1deg)}
+}
+
+/* Hero load-in animation sequence */
+@keyframes heroSlideUp{
+  0%{opacity:0;transform:translateY(30%)}
+  100%{opacity:1;transform:translateY(0)}
+}
+@keyframes heroSlideRight{
+  0%{opacity:0;transform:translateX(-20%)}
+  100%{opacity:1;transform:translateX(0)}
+}
+@keyframes heroBowlIn{
+  0%{opacity:0;transform:scale(0.6) rotate(-10deg)}
+  60%{transform:scale(1.05) rotate(2deg)}
+  100%{opacity:1;transform:scale(1) rotate(0deg)}
+}
+@keyframes heroFrameIn{
+  0%{opacity:0;transform:scale(0.8)}
+  100%{opacity:1;transform:scale(1)}
+}
+@keyframes fadeInSlow{
+  0%{opacity:0}
+  100%{opacity:1}
+}
+.hero-tag{animation:heroSlideRight 0.6s 0.2s both}
+.hero-title{animation:heroSlideUp 0.8s 0.4s both}
+.hero-sub{animation:heroSlideUp 0.7s 0.7s both}
+.hero-cta{animation:heroSlideUp 0.6s 0.9s both}
+.hero-bowl{animation:heroBowlIn 1s 0.5s both cubic-bezier(0.34,1.56,0.64,1)}
+.hero-frame{animation:heroFrameIn 0.8s 0.8s both}
+.hero-bg{animation:fadeInSlow 1.5s 0.3s both}
+
+/* Smooth nav transition */
+@keyframes navSlideDown{
+  0%{transform:translateY(-100%);opacity:0}
+  100%{transform:translateY(0);opacity:1}
+}
+.nav{animation:navSlideDown 0.6s 0.1s both}
+.hero-frame{
+  position:absolute;width:70%;height:80%;border:4px solid var(--charcoal);
+  top:10%;right:5%;z-index:1;
+}
+/* Steam effect */
+.steam{
+  position:absolute;z-index:3;top:5%;left:50%;transform:translateX(-50%);
+  width:60px;height:80px;opacity:0.4;
+}
+.steam span{
+  position:absolute;bottom:0;width:8px;height:8px;
+  background:rgba(255,255,255,0.6);border-radius:50%;
+  animation:steamUp 2.5s ease-in infinite;
+}
+.steam span:nth-child(1){left:10%;animation-delay:0s}
+.steam span:nth-child(2){left:40%;animation-delay:0.5s}
+.steam span:nth-child(3){left:70%;animation-delay:1s}
+@keyframes steamUp{
+  0%{opacity:0;transform:translateY(0) scale(1)}
+  50%{opacity:0.5}
+  100%{opacity:0;transform:translateY(-80px) scale(2)}
+}
+
+/* ===== SIGNATURE RAMEN SPLIT ===== */
+.ramen-split{display:grid;grid-template-columns:1fr 1fr;min-height:600px}
+.ramen-card{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:80px 40px;text-align:center;position:relative;overflow:hidden;
+  transition:all 0.4s ease;
+}
+.ramen-card:hover{transform:scale(1.01)}
+.ramen-card.dark{background:var(--charcoal);color:#fff}
+.ramen-card.warm{background:#e8b4a0;color:var(--charcoal)}
+.ramen-card img{
+  width:320px;height:320px;object-fit:cover;margin-bottom:32px;
+  border-radius:50%;
+  box-shadow:0 20px 50px rgba(0,0,0,0.4);
+  transition:transform 0.6s ease;
+}
+.ramen-card:hover img{transform:scale(1.08) rotate(-3deg)}
+.ramen-card h3{
+  font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:28px;
+  text-transform:uppercase;letter-spacing:4px;margin-bottom:8px;
+}
+.ramen-card .jp-name{
+  font-family:'Noto Sans JP',sans-serif;font-size:14px;opacity:0.5;margin-bottom:16px;
+}
+.ramen-card p{font-size:14px;max-width:380px;line-height:1.7;opacity:0.8;margin-bottom:24px}
+.ramen-card .card-cta{
+  padding:12px 28px;border:2px solid currentColor;font-size:11px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;text-decoration:none;color:inherit;
+  transition:all 0.3s ease;
+}
+.ramen-card.dark .card-cta:hover{background:#fff;color:var(--charcoal)}
+.ramen-card.warm .card-cta:hover{background:var(--charcoal);color:#fff}
+
+/* ===== TRUST BAR ===== */
+.trust{
+  display:flex;justify-content:center;align-items:center;gap:60px;
+  padding:60px 40px;background:var(--cream);
+}
+.trust-item{text-align:center}
+.trust-item .number{
+  font-family:'Playfair Display',serif;font-size:42px;font-weight:900;
+  color:var(--red);line-height:1;margin-bottom:4px;
+}
+.trust-item .label{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--text-light);font-weight:600}
+
+/* ===== ABOUT / STORY ===== */
+.about{
+  display:grid;grid-template-columns:1fr 1fr;min-height:500px;
+  max-width:1300px;margin:0 auto;padding:100px 60px;gap:80px;align-items:center;
+}
+.about-text .section-tag{
+  font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--red);margin-bottom:16px;
+}
+.about-text h2{
+  font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,48px);
+  font-weight:700;line-height:1.15;margin-bottom:20px;color:var(--charcoal);
+}
+.about-text h2 em{font-style:italic;color:var(--red)}
+.about-text p{font-size:15px;line-height:1.8;color:var(--text-light);margin-bottom:16px}
+.about-img{
+  position:relative;border-radius:8px;overflow:hidden;
+}
+.about-img img{width:100%;height:400px;object-fit:cover;border-radius:8px}
+.about-img .accent-border{
+  position:absolute;top:-12px;left:-12px;right:12px;bottom:12px;
+  border:3px solid var(--red);border-radius:8px;z-index:-1;
+}
+
+/* ===== FULL MENU ===== */
+.menu-section{background:var(--charcoal);color:#fff;padding:100px 60px}
+.menu-section .section-tag{
+  text-align:center;font-size:11px;font-weight:700;letter-spacing:3px;
+  text-transform:uppercase;color:var(--red-light);margin-bottom:12px;
+}
+.menu-section h2{
+  text-align:center;font-family:'Playfair Display',serif;
+  font-size:clamp(32px,4vw,48px);font-weight:700;margin-bottom:12px;
+}
+.menu-section .menu-sub{
+  text-align:center;font-size:14px;color:rgba(255,255,255,0.5);margin-bottom:60px;
+}
+
+/* Menu tabs */
+.menu-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:48px;flex-wrap:wrap}
+.menu-tab{
+  padding:10px 24px;font-size:12px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;background:transparent;border:1px solid rgba(255,255,255,0.2);
+  color:rgba(255,255,255,0.6);cursor:pointer;transition:all 0.3s ease;border-radius:3px;
+}
+.menu-tab.active,.menu-tab:hover{background:var(--red);border-color:var(--red);color:#fff}
+
+/* Menu grid */
+.menu-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:24px;max-width:1100px;margin:0 auto;
+}
+.menu-item{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.08);
+  transition:all 0.3s ease;
+}
+.menu-item:hover{padding-left:8px;border-color:var(--red)}
+.menu-item-info h4{
+  font-size:16px;font-weight:700;margin-bottom:4px;
+  font-family:'Noto Sans JP',sans-serif;
+}
+.menu-item-info .jp-small{font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:6px}
+.menu-item-info p{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.5;max-width:280px}
+.menu-item .price{
+  font-family:'Playfair Display',serif;font-size:20px;font-weight:700;
+  color:var(--red-light);white-space:nowrap;margin-left:16px;
+}
+
+/* ===== ORDER CTA BANNER ===== */
+.order-banner{
+  position:relative;padding:100px 60px;text-align:center;
+  background:var(--red);color:#fff;overflow:hidden;
+}
+.order-banner::before{
+  content:'注文';font-family:'Noto Sans JP',sans-serif;font-size:300px;font-weight:900;
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  opacity:0.08;pointer-events:none;white-space:nowrap;
+}
+.order-banner h2{
+  font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,56px);
+  font-weight:700;margin-bottom:16px;position:relative;z-index:2;
+}
+.order-banner p{
+  font-size:16px;opacity:0.85;max-width:500px;margin:0 auto 32px;
+  position:relative;z-index:2;line-height:1.7;
+}
+.order-btn{
+  display:inline-block;padding:18px 48px;background:var(--charcoal);color:#fff;
+  font-size:14px;font-weight:800;letter-spacing:3px;text-transform:uppercase;
+  text-decoration:none;transition:all 0.3s ease;position:relative;z-index:2;
+}
+.order-btn:hover{background:#000;transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.3)}
+
+/* ===== LOCATION / FIND US ===== */
+.location{
+  display:grid;grid-template-columns:1fr 1fr;max-width:1300px;margin:0 auto;
+  padding:100px 60px;gap:80px;align-items:center;
+}
+.location-info .section-tag{
+  font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+  color:var(--red);margin-bottom:16px;
+}
+.location-info h2{
+  font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,42px);
+  font-weight:700;margin-bottom:24px;color:var(--charcoal);
+}
+.info-row{display:flex;gap:16px;align-items:flex-start;margin-bottom:20px}
+.info-icon{
+  width:40px;height:40px;border-radius:50%;background:rgba(212,44,44,0.08);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-size:18px;
+}
+.info-text h4{font-size:14px;font-weight:700;margin-bottom:2px;color:var(--charcoal)}
+.info-text p{font-size:14px;color:var(--text-light);line-height:1.6}
+.location-map{
+  background:var(--warm-gray);border-radius:12px;height:400px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;position:relative;
+}
+.location-map iframe{width:100%;height:100%;border:0;border-radius:12px}
+
+/* ===== FOOTER ===== */
+.footer{background:var(--dark);color:#fff;padding:60px}
+.footer-inner{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;align-items:start;
+}
+.footer-brand{font-family:'Noto Sans JP',sans-serif;font-weight:900;font-size:28px;color:var(--red);margin-bottom:12px}
+.footer-brand .jp{font-size:16px;color:rgba(255,255,255,0.3);font-weight:400;display:block}
+.footer p{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.7;max-width:300px}
+.footer h4{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;color:rgba(255,255,255,0.6)}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:10px}
+.footer-links a{text-decoration:none;color:rgba(255,255,255,0.5);font-size:14px;transition:color 0.3s ease}
+.footer-links a:hover{color:var(--red)}
+.footer-social{display:flex;gap:12px;margin-top:16px}
+.footer-social a{
+  width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);
+  display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);
+  text-decoration:none;font-size:16px;transition:all 0.3s ease;
+}
+.footer-social a:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}
+.footer-bottom{
+  max-width:1100px;margin:32px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,0.3)}
+.footer-bottom .zellyfi{color:var(--gold);text-decoration:none;font-weight:600}
+.footer-bottom .zellyfi:hover{color:var(--red)}
+
+/* ===== GALLERY GRID ===== */
+.gallery .img-hover-wrap{min-height:220px}
+.gallery .img-hover-wrap[style*="grid-row:span 2"]{min-height:452px}
+
+/* ===== MOBILE ===== */
+@media(max-width:900px){
+  .nav-links,.nav-order{display:none}
+  .hamburger{display:flex}
+  .hero-content{grid-template-columns:1fr;text-align:center;padding:140px 30px 60px}
+  .hero-sub{margin:0 auto 32px}
+  .hero-img-wrap{margin-top:40px}
+  .hero-bowl{width:70%}
+  .hero-frame{width:60%;height:70%;right:15%}
+  .ramen-split{grid-template-columns:1fr}
+  .ramen-card img{width:240px;height:240px}
+  .trust{flex-wrap:wrap;gap:30px}
+  .about{grid-template-columns:1fr;padding:60px 30px}
+  .menu-section{padding:60px 30px}
+  .menu-grid{grid-template-columns:1fr}
+  .order-banner{padding:60px 30px}
+  .location{grid-template-columns:1fr;padding:60px 30px}
+  .footer-inner{grid-template-columns:1fr}
+  .gallery div[style*="grid-template-columns"]{grid-template-columns:1fr 1fr !important}
+  .gallery .img-hover-wrap{min-height:180px !important}
+  .gallery .img-hover-wrap[style*="grid-row:span 2"]{min-height:180px !important;grid-row:span 1 !important}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">
+    TASTY RAMEN <span class="jp">美味しいラーメン</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#location">Find Us</a></li>
+  </ul>
+  <a href="https://www.clover.com/online-ordering/tasty-ramen-wesley-chapel" target="_blank" class="nav-order">Order Online</a>
+  <div class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <!-- Decorative Japanese wave/dragon SVG -->
+  <svg class="hero-bg" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M400 50C200 50 100 200 100 300S200 550 400 550S700 400 700 300S600 50 400 50Z" stroke="#d42c2c" stroke-width="1" fill="none" opacity="0.3"/>
+    <circle cx="400" cy="300" r="200" stroke="#d42c2c" stroke-width="0.5" fill="none" opacity="0.2"/>
+    <circle cx="400" cy="300" r="280" stroke="#d42c2c" stroke-width="0.3" fill="none" opacity="0.15"/>
+    <path d="M150 300Q250 100 400 200T650 300" stroke="#d42c2c" stroke-width="0.8" fill="none" opacity="0.2"/>
+    <path d="M150 350Q300 150 400 250T650 350" stroke="#d42c2c" stroke-width="0.5" fill="none" opacity="0.15"/>
+    <!-- Wave pattern -->
+    <path d="M0 400Q100 360 200 400T400 400T600 400T800 400" stroke="#d42c2c" stroke-width="0.5" fill="none" opacity="0.2"/>
+    <path d="M0 420Q100 380 200 420T400 420T600 420T800 420" stroke="#d42c2c" stroke-width="0.5" fill="none" opacity="0.15"/>
+    <!-- Kanji watermark -->
+    <text x="250" y="340" font-family="'Noto Sans JP'" font-size="200" font-weight="900" fill="#d42c2c" opacity="0.04">麺</text>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-text reveal-left">
+      <div class="hero-tag">Wesley Chapel's Finest</div>
+      <h1 class="hero-title">
+        TASTY<br>
+        <span class="red-block">RAMEN</span><br>
+        <span style="font-size:0.55em;letter-spacing:4px;font-weight:700">WESLEY CHAPEL</span>
+      </h1>
+      <p class="hero-sub">Authentic Japanese ramen crafted with passion. Rich tonkotsu broths, hand-pulled noodles, and flavors that take you straight to Tokyo — right here in Wesley Chapel.</p>
+      <a href="https://www.clover.com/online-ordering/tasty-ramen-wesley-chapel" target="_blank" class="hero-cta">Order Online</a>
+    </div>
+    <div class="hero-img-wrap reveal-right">
+      <!-- Ramen bowl placeholder with CSS art -->
+      <div class="steam"><span></span><span></span><span></span></div>
+      <img class="hero-bowl" src="https://s3-media0.fl.yelpcdn.com/bphoto/RvenQsCyex5jS-jEXh9hRA/o.jpg" alt="Tonkotsu Shoyu Ramen at Tasty Ramen" loading="eager">
+      <div class="hero-frame"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SIGNATURE RAMEN SPLIT ===== -->
+<section class="ramen-split">
+  <div class="ramen-card dark reveal-scale">
+    <img src="https://s3-media0.fl.yelpcdn.com/bphoto/sjRAZhpqYRKU9uSjYyXZpw/o.jpg" alt="Tonkotsu Ramen" loading="lazy">
+    <h3>Tonkotsu</h3>
+    <div class="jp-name">豚骨ラーメン</div>
+    <p>Rich, creamy pork bone broth simmered for 18 hours. Topped with chashu, soft-boiled egg, nori, and fresh green onions.</p>
+    <a href="#menu" class="card-cta">View Menu</a>
+  </div>
+  <div class="ramen-card warm reveal-scale">
+    <img src="https://s3-media0.fl.yelpcdn.com/bphoto/_2puWGP2mImRDGQfViA04w/o.jpg" alt="Spicy Miso Ramen" loading="lazy">
+    <h3>Spicy Miso</h3>
+    <div class="jp-name">味噌ラーメン</div>
+    <p>Bold miso broth with our signature spicy blend. Loaded with tender pork, bean sprouts, corn, and a perfectly seasoned soft egg.</p>
+    <a href="#menu" class="card-cta">View Menu</a>
+  </div>
+</section>
+
+<!-- ===== TRUST BAR ===== -->
+<section class="trust stagger">
+  <div class="trust-item reveal-flip">
+    <div class="number" data-count="#1">#1</div>
+    <div class="label">Ramen in Wesley Chapel</div>
+  </div>
+  <div class="trust-item reveal-flip">
+    <div class="number" data-count="4.0">4.0</div>
+    <div class="label">Yelp Rating</div>
+  </div>
+  <div class="trust-item reveal-flip">
+    <div class="number" data-count="60+">60+</div>
+    <div class="label">Five Star Reviews</div>
+  </div>
+  <div class="trust-item reveal-flip">
+    <div class="number" data-count="18h">18h</div>
+    <div class="label">Slow-Simmered Broth</div>
+  </div>
+</section>
+
+<!-- ===== PHOTO GALLERY ===== -->
+<section class="gallery" style="padding:80px 40px;background:var(--white)">
+  <div style="text-align:center;margin-bottom:48px">
+    <div class="section-tag reveal" style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red)">Gallery</div>
+    <h2 class="reveal" style="font-family:'Playfair Display',serif;font-size:clamp(28px,3.5vw,42px);font-weight:700;color:var(--charcoal);margin-top:8px">A Taste of <em style="color:var(--red)">Tasty Ramen</em></h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:1200px;margin:0 auto" class="stagger">
+    <div class="img-hover-wrap reveal" style="grid-row:span 2;border-radius:12px;overflow:hidden">
+      <img src="https://s3-media0.fl.yelpcdn.com/bphoto/HoTiGx4Oash3ItCDYljSsQ/o.jpg" alt="Seafood Ramen" style="width:100%;height:100%;object-fit:cover" loading="lazy">
+    </div>
+    <div class="img-hover-wrap reveal" style="border-radius:12px;overflow:hidden">
+      <img src="https://s3-media0.fl.yelpcdn.com/bphoto/83mDkWIpDLU_scYmxkakeQ/o.jpg" alt="Gyoza" style="width:100%;height:100%;object-fit:cover" loading="lazy">
+    </div>
+    <div class="img-hover-wrap reveal" style="border-radius:12px;overflow:hidden">
+      <img src="https://s3-media0.fl.yelpcdn.com/bphoto/MNB4AbZnMn02AwTLCgVY_g/o.jpg" alt="Ramen Bowl" style="width:100%;height:100%;object-fit:cover" loading="lazy">
+    </div>
+    <div class="img-hover-wrap reveal" style="grid-row:span 2;border-radius:12px;overflow:hidden">
+      <img src="https://s3-media0.fl.yelpcdn.com/bphoto/xMR6X0mjx-m3BG7gmCnFLg/o.jpg" alt="Ramen with Chopsticks" style="width:100%;height:100%;object-fit:cover" loading="lazy">
+    </div>
+    <div class="img-hover-wrap reveal" style="border-radius:12px;overflow:hidden">
+      <img src="https://s3-media0.fl.yelpcdn.com/bphoto/FKVARoBBK1TKCoBH6lqiYw/o.jpg" alt="Tonkotsu Chicken Ramen" style="width:100%;height:100%;object-fit:cover" loading="lazy">
+    </div>
+    <div class="img-hover-wrap reveal" style="border-radius:12px;overflow:hidden">
+      <img src="https://s3-media0.fl.yelpcdn.com/bphoto/oDC-ibbPvt21uxohvwf1mQ/o.jpg" alt="Tasty Ramen Storefront" style="width:100%;height:100%;object-fit:cover" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+  <div class="about-text reveal-left">
+    <div class="section-tag">Our Story</div>
+    <h2>Authentically Japanese.<br><em>In Every Bowl.</em></h2>
+    <p>At Tasty Ramen, we believe great ramen starts with the broth. Our tonkotsu is simmered low and slow for 18 hours, extracting every ounce of rich, collagen-packed flavor from premium pork bones.</p>
+    <p>Located in the heart of Wesley Chapel at KRATE at the Grove, we serve ramen the way it's meant to be — bold, comforting, and crafted with care. From our signature tonkotsu to our fiery spicy miso, every bowl is a journey to Japan.</p>
+  </div>
+  <div class="about-img reveal-right">
+    <img src="https://s3-media0.fl.yelpcdn.com/bphoto/knVxvetczjBLDd5y4IHRJw/o.jpg" alt="Tasty Ramen Interior" loading="lazy">
+    <div class="accent-border"></div>
+  </div>
+</section>
+
+<!-- ===== FULL MENU ===== -->
+<section class="menu-section" id="menu">
+  <div class="section-tag">Our Menu</div>
+  <h2>Crafted With Passion</h2>
+  <p class="menu-sub">美味しいラーメン — Every bowl tells a story</p>
+
+  <div class="menu-tabs">
+    <button class="menu-tab active" onclick="showMenu('ramen', this)">Ramen</button>
+    <button class="menu-tab" onclick="showMenu('hibachi', this)">Hibachi</button>
+    <button class="menu-tab" onclick="showMenu('appetizers', this)">Appetizers</button>
+    <button class="menu-tab" onclick="showMenu('combos', this)">Combos</button>
+  </div>
+
+  <div class="menu-grid" id="menuGrid">
+    <!-- Populated by JS -->
+  </div>
+</section>
+
+<!-- ===== ORDER BANNER ===== -->
+<section class="order-banner">
+  <h2 class="reveal">Order Tasty Ramen<br>Today</h2>
+  <p class="reveal">Skip the wait. Order online for pickup and enjoy Wesley Chapel's best ramen from the comfort of your home.</p>
+  <a href="https://www.clover.com/online-ordering/tasty-ramen-wesley-chapel" target="_blank" class="order-btn reveal">Order Online</a>
+</section>
+
+<!-- ===== LOCATION ===== -->
+<section class="location" id="location">
+  <div class="location-info">
+    <div class="section-tag reveal">Find Us</div>
+    <h2 class="reveal">Visit Tasty Ramen</h2>
+    <div class="info-row reveal">
+      <div class="info-icon">📍</div>
+      <div class="info-text">
+        <h4>Address</h4>
+        <p>5817 Goldview Pkwy, Ste 101<br>Wesley Chapel, FL 33544<br><em style="color:var(--red);font-size:12px">KRATE at the Grove</em></p>
+      </div>
+    </div>
+    <div class="info-row reveal">
+      <div class="info-icon">🕐</div>
+      <div class="info-text">
+        <h4>Hours</h4>
+        <p>Mon – Sat: 11:00 AM – 9:30 PM<br>Sunday: 12:00 PM – 9:00 PM</p>
+      </div>
+    </div>
+    <div class="info-row reveal">
+      <div class="info-icon">📞</div>
+      <div class="info-text">
+        <h4>Phone</h4>
+        <p><a href="tel:+18138037777" style="color:var(--red);text-decoration:none;font-weight:600">(813) 803-7777</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="location-map reveal-scale">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3517.5!2d-82.3557!3d28.2367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDE0JzEyLjEiTiA4MsKwMjEnMjAuNSJX!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">TASTY RAMEN<span class="jp">美味しいラーメン</span></div>
+      <p>Wesley Chapel's favorite ramen spot. Located at KRATE at the Grove, serving authentic Japanese ramen made with love since day one.</p>
+      <div class="footer-social">
+        <a href="#" title="Instagram">📷</a>
+        <a href="#" title="Facebook">📘</a>
+        <a href="#" title="TikTok">🎵</a>
+      </div>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#location">Find Us</a></li>
+        <li><a href="https://www.clover.com/online-ordering/tasty-ramen-wesley-chapel" target="_blank">Order Online</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Hours</h4>
+      <ul class="footer-links">
+        <li><a href="#">Mon-Sat: 11am – 9:30pm</a></li>
+        <li><a href="#">Sun: 12pm – 9pm</a></li>
+        <li><a href="tel:+18138037777">(813) 803-7777</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2026 Tasty Ramen. All rights reserved.</p>
+    <p>Website by <a href="https://zellyfi.com" target="_blank" class="zellyfi">Zellyfi</a></p>
+  </div>
+</footer>
+
+<script>
+// ===== SCROLL REVEAL (Gensuke waypoint-style) =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+}, {threshold: 0.12, rootMargin: '0px 0px -40px 0px'});
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-flip, .reveal-flipX, .reveal-grow').forEach(el => {
+  observer.observe(el);
+});
+
+// ===== NAV SCROLL with smooth transition =====
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  const scrollY = window.scrollY;
+  nav.classList.toggle('scrolled', scrollY > 80);
+
+  // Parallax on hero elements
+  if(scrollY < window.innerHeight){
+    const bowl = document.querySelector('.hero-bowl');
+    const frame = document.querySelector('.hero-frame');
+    const bg = document.querySelector('.hero-bg');
+    if(bowl) bowl.style.transform = `translateY(${scrollY * -0.12}px)`;
+    if(frame) frame.style.transform = `translateY(${scrollY * -0.06}px)`;
+    if(bg) bg.style.transform = `translate(-50%,-50%) scale(${1 + scrollY * 0.0003})`;
+  }
+  lastScroll = scrollY;
+});
+
+// ===== MENU DATA =====
+const menuData = {
+  ramen: [
+    {name:"Tonkotsu Shoyu Ramen", jp:"豚骨醤油", desc:"Rich pork bone broth with soy sauce, chashu pork, soft-boiled egg, nori, green onions", price:"$18"},
+    {name:"Spicy Miso Ramen", jp:"辛味噌", desc:"Bold miso broth with our signature spicy blend, ground pork, bean sprouts, corn, soft egg", price:"$19"},
+    {name:"Seafood Ramen", jp:"海鮮ラーメン", desc:"Shrimp, crab, mussels in a rich seafood broth with vegetables and noodles", price:"$21"},
+    {name:"Tonkatsu Miso Ramen", jp:"味噌カツ", desc:"Crispy tonkatsu cutlet over creamy miso broth with egg, nori, and fresh toppings", price:"$20"},
+    {name:"Veggie Ramen", jp:"野菜ラーメン", desc:"Mushroom-based broth with tofu, seasonal vegetables, corn, and fresh noodles", price:"$16"},
+    {name:"Black Garlic Ramen", jp:"黒にんにく", desc:"Intense black garlic oil over tonkotsu broth, topped with chashu and crispy garlic", price:"$19"},
+  ],
+  hibachi: [
+    {name:"Chicken Hibachi", jp:"鶏肉鉄板焼き", desc:"Grilled chicken with fried rice, vegetables, and signature yum yum sauce", price:"$15"},
+    {name:"Steak Hibachi", jp:"ステーキ鉄板焼き", desc:"Premium steak with fried rice, grilled vegetables, and teriyaki glaze", price:"$18"},
+    {name:"Shrimp Hibachi", jp:"海老鉄板焼き", desc:"Jumbo shrimp with fried rice, zucchini, mushrooms, and yum yum sauce", price:"$17"},
+    {name:"Salmon Hibachi", jp:"鮭鉄板焼き", desc:"Fresh salmon fillet with fried rice, vegetables, and ginger sauce", price:"$18"},
+  ],
+  appetizers: [
+    {name:"Crab Rangoon", jp:"カニクリーム", desc:"Crispy wontons stuffed with cream cheese and crab, served with sweet chili", price:"$8"},
+    {name:"Gyoza", jp:"餃子", desc:"Pan-fried pork dumplings with ponzu dipping sauce", price:"$7"},
+    {name:"Edamame", jp:"枝豆", desc:"Steamed soybeans with sea salt", price:"$6"},
+    {name:"Takoyaki", jp:"たこ焼き", desc:"Crispy octopus balls with bonito flakes and takoyaki sauce", price:"$9"},
+    {name:"Karaage", jp:"唐揚げ", desc:"Japanese-style fried chicken with spicy mayo", price:"$9"},
+  ],
+  combos: [
+    {name:"Ramen + Gyoza Combo", jp:"セット A", desc:"Any ramen bowl with 5-piece gyoza", price:"$24"},
+    {name:"Ramen + Hibachi Combo", jp:"セット B", desc:"Any ramen bowl with your choice of hibachi plate", price:"$30"},
+    {name:"Family Pack", jp:"ファミリーパック", desc:"4 ramen bowls, 2 appetizers, and 4 drinks", price:"$72"},
+    {name:"Date Night Special", jp:"デートセット", desc:"2 ramen bowls, 1 appetizer, and 2 drinks", price:"$42"},
+  ]
+};
+
+// Init menu on load
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.getElementById('menuGrid');
+  grid.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+  // Trigger initial menu
+  menuData['ramen'].forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = 'menu-item';
+    div.style.opacity = '0';
+    div.style.transform = 'translateY(10%)';
+    div.style.transition = `opacity 0.5s ${i * 0.06 + 0.3}s ease, transform 0.5s ${i * 0.06 + 0.3}s ease`;
+    div.innerHTML = `
+      <div class="menu-item-info">
+        <h4>${item.name}</h4>
+        <div class="jp-small">${item.jp}</div>
+        <p>${item.desc}</p>
+      </div>
+      <div class="price">${item.price}</div>
+    `;
+    grid.appendChild(div);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        div.style.opacity = '1';
+        div.style.transform = 'translateY(0)';
+      });
+    });
+  });
+});
+
+// ===== SMOOTH SCROLL for anchor links =====
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e){
+    const href = this.getAttribute('href');
+    if(href === '#') return; // Skip placeholder links
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if(target) target.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+
+// ===== RAMEN CARD hover tilt (Gensuke-style) =====
+document.querySelectorAll('.ramen-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    card.style.transform = `perspective(600px) rotateY(${x * 5}deg) rotateX(${-y * 5}deg) scale(1.02)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'perspective(600px) rotateY(0) rotateX(0) scale(1)';
+  });
+});
+
+// ===== Menu tab smooth transition =====
+function showMenu(cat, btn){
+  document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  const grid = document.getElementById('menuGrid');
+  // Fade out
+  grid.style.opacity = '0';
+  grid.style.transform = 'translateY(10px)';
+  setTimeout(() => {
+    grid.innerHTML = '';
+    menuData[cat].forEach((item, i) => {
+      const div = document.createElement('div');
+      div.className = 'menu-item';
+      div.style.opacity = '0';
+      div.style.transform = 'translateY(10%)';
+      div.style.transition = `opacity 0.5s ${i * 0.06}s ease, transform 0.5s ${i * 0.06}s ease`;
+      div.innerHTML = `
+        <div class="menu-item-info">
+          <h4>${item.name}</h4>
+          <div class="jp-small">${item.jp}</div>
+          <p>${item.desc}</p>
+        </div>
+        <div class="price">${item.price}</div>
+      `;
+      grid.appendChild(div);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          div.style.opacity = '1';
+          div.style.transform = 'translateY(0)';
+        });
+      });
+    });
+    grid.style.opacity = '1';
+    grid.style.transform = 'translateY(0)';
+  }, 200);
+}
+</script>
+
+</body>
+</html>
