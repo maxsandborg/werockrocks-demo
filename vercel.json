@@ -9,11 +9,13 @@
     { "source": "/blushwineroom", "destination": "/blushwineroom/index.html" },
     { "source": "/blushwineroom/", "destination": "/blushwineroom/index.html" },
     { "source": "/tasty-ramen", "destination": "/tasty-ramen/index.html" },
-    { "source": "/tasty-ramen/", "destination": "/tasty-ramen/index.html" }
+    { "source": "/tasty-ramen/", "destination": "/tasty-ramen/index.html" },
+    { "source": "/rebellious-hippie", "destination": "/rebellious-hippie/index.html" },
+    { "source": "/rebellious-hippie/", "destination": "/rebellious-hippie/index.html" }
   ],
   "headers": [
     {
-      "source": "/(werockrocks|exoticsmokes|peppajak|blushwineroom|tasty-ramen)/(.*)",
+      "source": "/(werockrocks|exoticsmokes|peppajak|blushwineroom|tasty-ramen|rebellious-hippie)/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" },
         { "key": "X-Content-Type-Options", "value": "nosniff" }
