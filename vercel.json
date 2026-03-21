@@ -19,11 +19,13 @@
     { "source": "/jts-pressure-washing", "destination": "/jts-pressure-washing/index.html" },
     { "source": "/jts-pressure-washing/", "destination": "/jts-pressure-washing/index.html" },
     { "source": "/maty-noyes", "destination": "/maty-noyes/index.html" },
-    { "source": "/maty-noyes/", "destination": "/maty-noyes/index.html" }
+    { "source": "/maty-noyes/", "destination": "/maty-noyes/index.html" },
+    { "source": "/tacos-el-patron", "destination": "/tacos-el-patron/index.html" },
+    { "source": "/tacos-el-patron/", "destination": "/tacos-el-patron/index.html" }
   ],
   "headers": [
     {
-      "source": "/(werockrocks|exoticsmokes|peppajak|blushwineroom|tasty-ramen|rebellious-hippie|laceleaf-medspa|structured-fitness|jts-pressure-washing|maty-noyes)/(.*)",
+      "source": "/(werockrocks|exoticsmokes|peppajak|blushwineroom|tasty-ramen|rebellious-hippie|laceleaf-medspa|structured-fitness|jts-pressure-washing|maty-noyes|tacos-el-patron)/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" },
         { "key": "X-Content-Type-Options", "value": "nosniff" }

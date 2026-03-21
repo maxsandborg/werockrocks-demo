@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tacos El Patrón | Authentic Mexican Taquería | Wesley Chapel, FL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#F4C249;
+  --gold2:#FFD666;
+  --black:#1a1a1a;
+  --dark:#111111;
+  --cream:#FFF8F0;
+  --cream2:#FFF3E0;
+  --red:#D4342A;
+  --green:#2D6A4F;
+  --white:#ffffff;
+  --gray:#777777;
+  --font-display:'Bebas Neue',sans-serif;
+  --font-body:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--black);font-family:var(--font-body);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;outline:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:72px;background:rgba(26,26,26,.95);backdrop-filter:blur(12px)}
+.nav-logo{display:flex;align-items:center}
+.nav-logo img{height:48px;width:auto}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-links a{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--black);padding:10px 24px;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;border-radius:30px;transition:all .2s}
+.nav-cta:hover{background:var(--gold2);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;padding:4px}
+.hamburger span{display:block;width:26px;height:2px;background:var(--gold);transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:flex;position:fixed;top:72px;left:0;right:0;bottom:0;background:rgba(17,17,17,.98);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:32px;transform:translateX(100%);transition:transform .35s ease;pointer-events:none}
+.mobile-menu.open{transform:translateX(0);pointer-events:all}
+.mobile-menu a{font-family:var(--font-display);font-size:36px;letter-spacing:4px;color:var(--white);transition:color .2s}
+.mobile-menu a:hover{color:var(--gold)}
+
+/* HERO */
+#hero{position:relative;height:100vh;min-height:650px;display:flex;align-items:center;overflow:hidden;background:var(--black)}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.55}
+.hero-content{position:relative;z-index:1;text-align:center;max-width:900px;margin:0 auto;padding:0 5%}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;margin-bottom:20px;background:rgba(244,194,73,.15);border:1px solid rgba(244,194,73,.3);border-radius:30px;padding:8px 20px}
+.hero-tag span{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold)}
+.hero-title{font-family:var(--font-display);font-size:clamp(60px,10vw,140px);line-height:.9;color:var(--white);margin-bottom:24px}
+.hero-title em{font-style:normal;color:var(--gold)}
+.hero-sub{font-size:clamp(15px,2vw,18px);color:rgba(255,255,255,.75);max-width:560px;margin:0 auto 36px;line-height:1.7}
+.hero-btns{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+.btn-gold{background:var(--gold);color:var(--black);padding:14px 36px;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;border-radius:30px;transition:all .25s;display:inline-flex;align-items:center;gap:8px}
+.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(244,194,73,.3)}
+.btn-ghost{background:transparent;color:var(--white);padding:13px 36px;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;border:2px solid rgba(255,255,255,.3);border-radius:30px;transition:all .25s;display:inline-flex;align-items:center;gap:8px}
+.btn-ghost:hover{border-color:var(--white);background:rgba(255,255,255,.05);transform:translateY(-2px)}
+
+/* SCROLLING BANNER */
+.scroll-banner{overflow:hidden;background:var(--gold);padding:14px 0;white-space:nowrap}
+.scroll-banner-track{display:inline-flex;animation:scrollBanner 25s linear infinite}
+.scroll-banner span{font-family:var(--font-display);font-size:18px;letter-spacing:4px;color:var(--black);padding:0 20px}
+.scroll-banner .sep{color:var(--red);font-size:14px}
+@keyframes scrollBanner{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ABOUT / AUTHENTICITY */
+#about{padding:100px 0;background:var(--cream)}
+.about-inner{max-width:1200px;margin:0 auto;padding:0 5%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-text h2{font-family:var(--font-display);font-size:clamp(42px,5vw,72px);line-height:.95;color:var(--black);margin-bottom:20px}
+.about-text h2 em{font-style:normal;color:var(--red)}
+.about-text p{font-size:15px;color:var(--gray);line-height:1.8;margin-bottom:16px}
+.about-text p strong{color:var(--black);font-weight:700}
+.about-badge{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:var(--black);padding:8px 20px;border-radius:30px;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-top:12px}
+.about-img{position:relative}
+.about-img img{border-radius:20px;width:100%;aspect-ratio:4/5;object-fit:cover}
+.about-img-badge{position:absolute;bottom:-20px;right:-20px;background:var(--red);color:var(--white);padding:20px 28px;border-radius:16px;text-align:center}
+.about-img-badge .num{font-family:var(--font-display);font-size:48px;line-height:1}
+.about-img-badge .label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+
+/* LOCATIONS + ORDER SPLIT */
+#locations-order{position:relative;overflow:hidden}
+.lo-split{display:grid;grid-template-columns:1fr 1fr;min-height:600px;position:relative}
+.lo-left{background:var(--green);padding:80px 5% 80px 8%;display:flex;align-items:center;gap:40px;position:relative;overflow:hidden;clip-path:polygon(0 0, 100% 0, 85% 100%, 0 100%);z-index:2}
+.lo-left::before{content:'';position:absolute;top:-80px;right:-60px;width:250px;height:250px;background:rgba(255,255,255,.05);border-radius:50%}
+.lo-left::after{content:'';position:absolute;bottom:-40px;left:30px;width:150px;height:150px;background:rgba(255,255,255,.04);border-radius:50%}
+.lo-right{background:var(--gold);padding:80px 8% 80px 12%;display:flex;align-items:center;gap:40px;flex-direction:row-reverse;position:relative;overflow:hidden;margin-left:-10%}
+.lo-right::before{content:'';position:absolute;bottom:-60px;right:-40px;width:200px;height:200px;background:rgba(0,0,0,.05);border-radius:50%}
+.lo-right::after{content:'';position:absolute;top:20px;left:15%;width:120px;height:120px;background:rgba(0,0,0,.04);border-radius:50%}
+.lo-blob{flex-shrink:0;width:220px;height:260px;border-radius:60% 40% 50% 50% / 50% 60% 40% 50%;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.2)}
+.lo-blob img{width:100%;height:100%;object-fit:cover}
+.lo-content{flex:1;min-width:0}
+.lo-title{font-family:var(--font-display);font-size:clamp(36px,4vw,56px);color:var(--white);margin-bottom:16px;letter-spacing:2px}
+.lo-right .lo-title{color:var(--black)}
+.lo-text{font-size:14px;line-height:1.7;margin-bottom:24px}
+.lo-left .lo-text{color:rgba(255,255,255,.8)}
+.lo-right .lo-text{color:rgba(0,0,0,.7)}
+.btn-white{background:var(--white);color:var(--black);padding:12px 28px;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;border-radius:30px;transition:all .2s;display:inline-flex;align-items:center;gap:8px;width:fit-content}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.15)}
+.btn-dark{background:var(--black);color:var(--white);padding:12px 28px;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;border-radius:30px;transition:all .2s;display:inline-flex;align-items:center;gap:8px;width:fit-content}
+.btn-dark:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.25)}
+
+/* MENU HIGHLIGHTS */
+#menu{padding:100px 0;background:var(--cream);overflow:hidden}
+.menu-header{max-width:1200px;margin:0 auto;padding:0 5%;display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px;flex-wrap:wrap;gap:20px}
+.menu-header h2{font-family:var(--font-display);font-size:clamp(42px,5vw,72px);line-height:.95;color:var(--black)}
+.menu-header h2 em{font-style:normal;color:var(--red)}
+.menu-header p{font-size:14px;color:var(--gray);max-width:350px;line-height:1.7}
+.menu-scroll{display:flex;gap:24px;padding:0 5%;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:20px}
+.menu-scroll::-webkit-scrollbar{display:none}
+.menu-card{flex:0 0 260px;scroll-snap-align:start;background:var(--white);border-radius:16px;overflow:hidden;transition:transform .25s;border:1px solid rgba(0,0,0,.06)}
+.menu-card:hover{transform:translateY(-6px)}
+.menu-card-img{height:200px;overflow:hidden;background:#f0ebe3}
+.menu-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.menu-card:hover .menu-card-img img{transform:scale(1.05)}
+.menu-card-body{padding:20px}
+.menu-card-name{font-family:var(--font-display);font-size:22px;letter-spacing:1px;margin-bottom:4px}
+.menu-card-desc{font-size:12px;color:var(--gray);line-height:1.6;margin-bottom:10px}
+.menu-card-price{font-family:var(--font-display);font-size:24px;color:var(--red)}
+.menu-full-link{text-align:center;margin-top:48px}
+
+/* CATERING CTA */
+#catering{padding:60px 5%}
+.catering-card{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;border-radius:20px;overflow:hidden;min-height:400px}
+.catering-text{background:var(--red);padding:60px 48px;display:flex;flex-direction:column;justify-content:center}
+.catering-text h2{font-family:var(--font-display);font-size:clamp(36px,4vw,56px);color:var(--white);line-height:1;margin-bottom:16px}
+.catering-text p{font-size:14px;color:rgba(255,255,255,.8);line-height:1.7;margin-bottom:28px}
+.catering-img img{width:100%;height:100%;object-fit:cover}
+
+/* PHOTO GALLERY */
+#gallery{padding:80px 0 40px;background:var(--cream)}
+.gallery-grid{display:flex;gap:12px;padding:0 5%;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.gallery-grid::-webkit-scrollbar{display:none}
+.gallery-grid img{flex:0 0 280px;height:280px;object-fit:cover;border-radius:12px;transition:transform .3s}
+.gallery-grid img:hover{transform:scale(1.03)}
+.gallery-social{text-align:center;padding:40px 5% 0;font-size:14px;color:var(--gray)}
+.gallery-social a{color:var(--red);font-weight:700}
+.social-icons{display:flex;justify-content:center;gap:16px;margin-top:16px}
+.social-icons a{width:44px;height:44px;border-radius:50%;background:var(--black);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.social-icons a:hover{background:var(--red);transform:translateY(-2px)}
+.social-icons a svg{width:18px;height:18px;color:var(--white)}
+
+/* SCROLLING BANNER 2 */
+.scroll-banner-2{overflow:hidden;background:var(--red);padding:14px 0;white-space:nowrap;margin-top:60px}
+.scroll-banner-2 .scroll-banner-track span{color:var(--white)}
+.scroll-banner-2 .scroll-banner-track .sep{color:var(--gold)}
+
+/* FAQ */
+#faq{padding:100px 0;background:var(--cream);position:relative}
+.faq-inner{max-width:900px;margin:0 auto;padding:0 5%}
+.faq-header{text-align:center;margin-bottom:60px}
+.faq-header h2{font-family:var(--font-display);font-size:clamp(42px,5vw,64px);line-height:.95;color:var(--black);margin-bottom:12px}
+.faq-header h2 em{font-style:normal;color:var(--red)}
+.faq-header p{font-size:14px;color:var(--gray);line-height:1.7}
+.faq-item{border-bottom:1px solid rgba(0,0,0,.1)}
+.faq-question{width:100%;background:none;text-align:left;padding:24px 0;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-display);font-size:22px;letter-spacing:1px;color:var(--black);cursor:pointer;transition:color .2s}
+.faq-question:hover{color:var(--red)}
+.faq-icon{width:28px;height:28px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s;font-size:18px;color:var(--black);font-weight:300}
+.faq-question.open .faq-icon{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-answer.open{max-height:200px}
+.faq-answer p{font-size:14px;color:var(--gray);line-height:1.8;padding-bottom:24px}
+
+/* FOOTER */
+footer{background:var(--black);padding:80px 5% 40px;color:var(--white)}
+.footer-top{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer-brand .nav-logo{margin-bottom:16px}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.7;max-width:300px;margin-bottom:20px}
+.footer-col h5{font-family:var(--font-display);font-size:18px;letter-spacing:2px;margin-bottom:16px;color:var(--gold)}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{font-size:13px;color:rgba(255,255,255,.6);transition:color .2s}
+.footer-col a:hover{color:var(--gold)}
+.footer-hours .hours-row{display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.6);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.footer-hours .day{font-weight:600;color:rgba(255,255,255,.8)}
+.footer-bottom{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:28px;flex-wrap:wrap;gap:16px}
+.footer-bottom-left{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:1px}
+.footer-certs{display:flex;gap:12px}
+.footer-certs .cert{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);padding:6px 14px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5)}
+
+/* MOBILE CTA */
+.mobile-cta-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:998;background:var(--gold);color:var(--black);text-align:center;padding:14px;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+
+/* DEMO BADGE */
+.demo-badge{position:fixed;bottom:20px;right:20px;z-index:9999;background:var(--black);color:var(--white);padding:16px 20px;border-radius:12px;border:1px solid rgba(244,194,73,.3);font-size:12px;max-width:240px;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+.demo-badge strong{display:block;color:var(--gold);font-size:13px;margin-bottom:4px}
+.demo-badge p{color:rgba(255,255,255,.7);line-height:1.5;margin:4px 0 8px}
+.demo-badge a{color:var(--gold);font-weight:700;font-size:11px;letter-spacing:1px;text-transform:uppercase}
+.demo-badge-close{position:absolute;top:8px;right:12px;background:none;color:rgba(255,255,255,.4);font-size:18px;cursor:pointer;border:none}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:all .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.15s}
+.reveal-delay-2{transition-delay:.3s}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .about-inner{grid-template-columns:1fr;gap:40px}
+  .about-img{order:-1}
+  .lo-split{grid-template-columns:1fr}
+  .lo-left{clip-path:none;padding:60px 8%;flex-direction:column;text-align:center;align-items:center}
+  .lo-right{margin-left:0;padding:60px 8%;flex-direction:column;text-align:center;align-items:center}
+  .lo-blob{width:180px;height:200px}
+  .catering-card{grid-template-columns:1fr}
+  .catering-img{height:300px}
+  .footer-top{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .mobile-cta-bar{display:block}
+  .hero-title{font-size:clamp(48px,12vw,80px)}
+  .menu-card{flex:0 0 220px}
+  .gallery-grid img{flex:0 0 220px;height:220px}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo"><img src="https://menufyproduction.imgix.net/637896258653673412+824617.png?w=200&auto=format" alt="Tacos El Patrón"></a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#locations-order">Locations</a>
+    <a href="#catering">Catering</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://www.tacoselpatronfl.com/order" target="_blank" class="nav-cta">Order Now</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" class="mob-link">About</a>
+  <a href="#menu" class="mob-link">Menu</a>
+  <a href="#locations-order" class="mob-link">Locations</a>
+  <a href="#catering" class="mob-link">Catering</a>
+  <a href="#faq" class="mob-link">FAQ</a>
+  <a href="https://www.tacoselpatronfl.com/order" target="_blank" class="btn-gold mob-cta">Order Now</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=1800&q=80&auto=format&fit=crop" alt="Authentic Mexican Tacos">
+  </div>
+  <div class="hero-content">
+    <div class="hero-tag" style="opacity:0;animation:fadeUp .6s .3s forwards">
+      <span>Authentic Mexican Taquería · 3 Locations in Florida</span>
+    </div>
+    <h1 class="hero-title" style="opacity:0;animation:fadeUp .6s .5s forwards">REAL TACOS.<br><em>REAL FLAVOR.</em></h1>
+    <p class="hero-sub" style="opacity:0;animation:fadeUp .6s .7s forwards">From food truck to three locations — handmade tortillas, slow-cooked meats, and salsas made fresh daily. <strong style="color:#fff">This is authentic Mexican street food.</strong></p>
+    <div class="hero-btns" style="opacity:0;animation:fadeUp .6s .9s forwards">
+      <a href="https://www.tacoselpatronfl.com/order" target="_blank" class="btn-gold">Order Online →</a>
+      <a href="#menu" class="btn-ghost">View Menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- SCROLLING BANNER -->
+<div class="scroll-banner">
+  <div class="scroll-banner-track">
+    <span>TACOS</span><span class="sep">✻</span>
+    <span>BURRITOS</span><span class="sep">✻</span>
+    <span>QUESADILLAS</span><span class="sep">✻</span>
+    <span>SOPES</span><span class="sep">✻</span>
+    <span>TAMALES</span><span class="sep">✻</span>
+    <span>NACHOS</span><span class="sep">✻</span>
+    <span>TORTAS</span><span class="sep">✻</span>
+    <span>CHURROS</span><span class="sep">✻</span>
+    <span>TACOS</span><span class="sep">✻</span>
+    <span>BURRITOS</span><span class="sep">✻</span>
+    <span>QUESADILLAS</span><span class="sep">✻</span>
+    <span>SOPES</span><span class="sep">✻</span>
+    <span>TAMALES</span><span class="sep">✻</span>
+    <span>NACHOS</span><span class="sep">✻</span>
+    <span>TORTAS</span><span class="sep">✻</span>
+    <span>CHURROS</span><span class="sep">✻</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-text reveal">
+      <h2>AUTHENTICITY<br>YOU CAN <em>TASTE</em></h2>
+      <p>What started as a <strong>single food truck in 2019</strong> has grown into three locations across Florida — Wesley Chapel, Dade City, and the Tampa Premium Outlets in Lutz.</p>
+      <p>At Tacos El Patrón, every tortilla is made by hand, every salsa is made from scratch, and every meal is prepared with the same passion and pride that's been passed down through generations of Mexican cooking.</p>
+      <p>From our signature <strong>Birria Tacos</strong> to our slow-cooked <strong>Carnitas</strong> and freshly grilled <strong>Asada</strong> — this is the real deal. No shortcuts. No compromises.</p>
+      <a href="#menu" class="about-badge">🌮 Explore Our Menu</a>
+    </div>
+    <div class="about-img reveal reveal-delay-1">
+      <img src="https://images.unsplash.com/photo-1613514785940-daed07799d9b?w=700&q=80&auto=format&fit=crop" alt="Fresh tacos being prepared">
+      <div class="about-img-badge">
+        <div class="num">3</div>
+        <div class="label">Locations in FL</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS + ORDER -->
+<section id="locations-order">
+  <div class="lo-split">
+    <div class="lo-left reveal">
+      <div class="lo-blob">
+        <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=500&q=80&auto=format&fit=crop" alt="Tacos El Patron restaurant interior">
+      </div>
+      <div class="lo-content">
+        <h2 class="lo-title">LOCATIONS</h2>
+        <p class="lo-text">Finding us is easy, and it's always worth the trip. Three locations across Central Florida — our tacos are more than just food, they're an experience. Come visit and discover your new favorite place!</p>
+        <a href="https://www.tacoselpatronfl.com/locations" target="_blank" class="btn-white">Browse Locations →</a>
+      </div>
+    </div>
+    <div class="lo-right reveal reveal-delay-1">
+      <div class="lo-content">
+        <h2 class="lo-title">ORDER</h2>
+        <p class="lo-text">Craving tacos? Order now and enjoy Tacos El Patrón's authentic Mexican flavors at home. Pickup or delivery from all three locations.</p>
+        <a href="https://www.tacoselpatronfl.com/order" target="_blank" class="btn-dark">Order Food →</a>
+      </div>
+      <div class="lo-blob">
+        <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=500&q=80&auto=format&fit=crop" alt="Tacos El Patron food spread">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU HIGHLIGHTS -->
+<section id="menu">
+  <div class="menu-header reveal">
+    <div>
+      <h2>BITE INTO<br><em>MEXICO</em></h2>
+    </div>
+    <p>Taste beloved Mexican classics — from Tacos al Pastor and Birria to handmade quesadillas. There's something for everyone.</p>
+  </div>
+  <div class="menu-scroll">
+    <div class="menu-card">
+      <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=500&q=80&auto=format&fit=crop" alt="Birria Tacos"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">BIRRIA TACOS</div>
+        <div class="menu-card-desc">Slow-braised beef birria, melted cheese, served with consommé for dipping.</div>
+        <div class="menu-card-price">$14.00</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=500&q=80&auto=format&fit=crop" alt="Street Tacos"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">STREET TACOS (3)</div>
+        <div class="menu-card-desc">Asada, Pastor, Pollo, Carnitas, Chorizo — served with cilantro & onions.</div>
+        <div class="menu-card-price">$11.50+</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1618040996337-56904b7850b9?w=500&q=80&auto=format&fit=crop" alt="Burrito"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">BURRITOS</div>
+        <div class="menu-card-desc">Rice, beans, lettuce, cheese, tomatoes & sour cream. Choose your meat.</div>
+        <div class="menu-card-price">$13.95+</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1583003874852-ca79e3024e9b?w=500&q=80&auto=format&fit=crop" alt="Quesadilla"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">QUESADILLAS</div>
+        <div class="menu-card-desc">Melted cheese with your choice of meat, served with lettuce, tomatoes & sour cream.</div>
+        <div class="menu-card-price">$13.95+</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=500&q=80&auto=format&fit=crop" alt="Nachos"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">NACHOS SUPREME</div>
+        <div class="menu-card-desc">Loaded with your choice of meat, cheese, onions, cilantro & all the fixings.</div>
+        <div class="menu-card-price">$14.95+</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=500&q=80&auto=format&fit=crop" alt="Tamales"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">TAMALES</div>
+        <div class="menu-card-desc">Steamed corn husk wrap filled with shredded pork. Homemade daily.</div>
+        <div class="menu-card-price">$3.75</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1625938145744-533e82846e2c?w=500&q=80&auto=format&fit=crop" alt="Elote"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">ELOTE</div>
+        <div class="menu-card-desc">Corn in a cup topped with mayo, grated cheese & chili powder. A street food classic.</div>
+        <div class="menu-card-price">$5.75</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1548861216-17dd1ec50786?w=500&q=80&auto=format&fit=crop" alt="Churros"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">CHURROS</div>
+        <div class="menu-card-desc">Crispy, cinnamon-sugar coated. The perfect sweet finish.</div>
+        <div class="menu-card-price">$6.50</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=500&q=80&auto=format&fit=crop" alt="Shrimp Tacos"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">SHRIMP TACOS (3)</div>
+        <div class="menu-card-desc">Seasoned shrimp on handmade tortillas with cilantro & onions.</div>
+        <div class="menu-card-price">$15.00+</div>
+      </div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-card-img"><img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=500&q=80&auto=format&fit=crop" alt="Sopes"></div>
+      <div class="menu-card-body">
+        <div class="menu-card-name">SOPES</div>
+        <div class="menu-card-desc">Thick corn base with beans, lettuce, cheese, tomatoes & sour cream. Any meat.</div>
+        <div class="menu-card-price">$5.95+</div>
+      </div>
+    </div>
+  </div>
+  <div class="menu-full-link reveal">
+    <a href="https://wesleychapel.tacoselpatronfl.com" target="_blank" class="btn-gold">See Full Menu & Order →</a>
+  </div>
+</section>
+
+<!-- CATERING -->
+<section id="catering">
+  <div class="catering-card reveal">
+    <div class="catering-text">
+      <div style="font-size:28px;margin-bottom:12px">🎉</div>
+      <h2>CATERING FOR YOUR NEXT FIESTA</h2>
+      <p>From corporate lunches to private parties — bring the full Tacos El Patrón experience to your next event. Taco bars, family platters, and custom menus available.</p>
+      <a href="https://www.tacoselpatronfl.com/contact" target="_blank" class="btn-white">Get a Quote →</a>
+    </div>
+    <div class="catering-img">
+      <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&q=80&auto=format&fit=crop" alt="Catering spread of tacos">
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section id="gallery">
+  <div class="gallery-grid">
+    <img src="https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?w=500&q=80&auto=format&fit=crop" alt="Restaurant interior">
+    <img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=500&q=80&auto=format&fit=crop" alt="Birria tacos">
+    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=500&q=80&auto=format&fit=crop" alt="Mexican food spread">
+    <img src="https://images.unsplash.com/photo-1582234372722-50d7ccc30ebd?w=500&q=80&auto=format&fit=crop" alt="Fresh salsa">
+    <img src="https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=500&q=80&auto=format&fit=crop" alt="Tacos al pastor">
+    <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=500&q=80&auto=format&fit=crop" alt="Mexican drinks">
+    <img src="https://images.unsplash.com/photo-1625938145744-533e82846e2c?w=500&q=80&auto=format&fit=crop" alt="Elote corn">
+  </div>
+  <div class="gallery-social">
+    <p>Follow us for daily specials and behind-the-scenes <a href="https://www.instagram.com/tacoselpatronfl/" target="_blank">@tacoselpatronfl</a></p>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/tacoselpatronfl/" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="https://www.facebook.com/tacoselpatronfl" target="_blank" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SCROLLING BANNER 2 -->
+<div class="scroll-banner-2">
+  <div class="scroll-banner-track">
+    <span>HANDMADE TORTILLAS</span><span class="sep">✻</span>
+    <span>FRESH SALSAS</span><span class="sep">✻</span>
+    <span>SLOW-COOKED MEATS</span><span class="sep">✻</span>
+    <span>AUTHENTIC RECIPES</span><span class="sep">✻</span>
+    <span>3 FLORIDA LOCATIONS</span><span class="sep">✻</span>
+    <span>HANDMADE TORTILLAS</span><span class="sep">✻</span>
+    <span>FRESH SALSAS</span><span class="sep">✻</span>
+    <span>SLOW-COOKED MEATS</span><span class="sep">✻</span>
+    <span>AUTHENTIC RECIPES</span><span class="sep">✻</span>
+    <span>3 FLORIDA LOCATIONS</span><span class="sep">✻</span>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-inner">
+    <div class="faq-header reveal">
+      <h2>YOUR QUESTIONS<br><em>ANSWERED</em></h2>
+      <p>First time at Tacos El Patrón? Here's everything you need to know.</p>
+    </div>
+    <div id="faqGrid"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo"><img src="https://menufyproduction.imgix.net/637896258653673412+824617.png?w=200&auto=format" alt="Tacos El Patrón"></div>
+      <p>From food truck to three locations — authentic Mexican street food made fresh daily in Wesley Chapel, Dade City & Lutz, Florida.</p>
+      <div style="display:flex;gap:10px">
+        <a href="https://www.tacoselpatronfl.com/order" target="_blank" class="btn-gold" style="font-size:10px;padding:8px 16px;letter-spacing:1px">Order Now</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Menu</h5>
+      <ul>
+        <li><a href="#menu">Tacos</a></li>
+        <li><a href="#menu">Burritos</a></li>
+        <li><a href="#menu">Quesadillas</a></li>
+        <li><a href="#menu">Nachos</a></li>
+        <li><a href="#menu">Sopes & Tortas</a></li>
+        <li><a href="#menu">Drinks & Sides</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#locations-order">Locations</a></li>
+        <li><a href="#catering">Catering</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://www.tacoselpatronfl.com/careers" target="_blank">Careers</a></li>
+        <li><a href="https://www.tacoselpatronfl.com/contact" target="_blank">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Wesley Chapel Hours</h5>
+      <div class="footer-hours">
+        <div class="hours-row"><span class="day">Mon–Thu</span><span>11AM – 9PM</span></div>
+        <div class="hours-row"><span class="day">Fri–Sat</span><span>11AM – 10PM</span></div>
+        <div class="hours-row"><span class="day">Sunday</span><span>11AM – 7PM</span></div>
+      </div>
+      <div style="margin-top:20px">
+        <a href="tel:8134065964" style="color:var(--gold);font-size:14px;font-weight:700">(813) 406-5964</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-left">© 2026 Tacos El Patrón · Wesley Chapel · Dade City · Lutz, FL · All rights reserved</div>
+    <div class="footer-certs">
+      <div class="cert">4.1 ★ Google</div>
+      <div class="cert">251 Reviews</div>
+      <div class="cert">Est. 2019</div>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE CTA BAR -->
+<a href="https://www.tacoselpatronfl.com/order" target="_blank" class="mobile-cta-bar">🌮 Order Now — Pickup & Delivery</a>
+
+<!-- DEMO BADGE -->
+<div class="demo-badge" id="demoBadge">
+  <button class="demo-badge-close" onclick="document.getElementById('demoBadge').style.display='none'">×</button>
+  <strong>This is a Zellyfi Demo</strong>
+  <p>Custom-built to show what your restaurant brand could look like.</p>
+  <a href="https://zellyfi.com" target="_blank">Want this for your restaurant? →</a>
+</div>
+
+<script>
+// HAMBURGER
+const ham=document.getElementById('hamburger');
+const mob=document.getElementById('mobileMenu');
+ham.addEventListener('click',()=>{
+  ham.classList.toggle('open');
+  mob.classList.toggle('open');
+  document.body.style.overflow=mob.classList.contains('open')?'hidden':'';
+});
+document.querySelectorAll('.mob-link,.mob-cta').forEach(a=>{
+  a.addEventListener('click',()=>{
+    ham.classList.remove('open');
+    mob.classList.remove('open');
+    document.body.style.overflow='';
+  });
+});
+
+// SCROLL REVEAL
+const revealObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObserver.unobserve(e.target)}});
+},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+
+// FAQ
+const faqs=[
+  {q:'What meat options do you have?',a:'We offer Asada (grilled steak), Pollo (chicken), Pastor (marinated pork with pineapple), Carnitas (slow-cooked pork), Chorizo (Mexican sausage), Lengua (beef tongue), Cabeza (beef head), and Shrimp. Vegetarian options available too.'},
+  {q:'Are your tortillas handmade?',a:'Yes! All our corn tortillas are made fresh in-house daily. We also offer flour tortillas for burritos and quesadillas.'},
+  {q:'Do you offer delivery?',a:'Yes — all three locations offer delivery through our online ordering system. Free delivery on orders of $15 or more. You can also order through our website for carryout.'},
+  {q:'Do you cater events?',a:'Absolutely! We cater corporate events, private parties, weddings, and more. From taco bars to family platters — contact us for a custom quote.'},
+  {q:'Which location is closest to me?',a:'We have three locations: Wesley Chapel (5841 Goldview Pkwy), Dade City (36108 State Rd 52), and Lutz at the Tampa Premium Outlets (2382 Grand Cypress Dr). Each location has its own hours and online ordering.'},
+  {q:'Do you have vegetarian options?',a:'Yes! We offer rice and beans burritos, cheese quesadillas, rice and beans sopes, and can customize most items without meat. Our salsas, guacamole, and chips are all vegetarian.'},
+  {q:'What are your most popular dishes?',a:'Our Birria Tacos are the fan favorite — slow-braised beef with melted cheese and consommé for dipping. Street Tacos al Pastor and our loaded Nachos Supreme are also huge sellers.'},
+];
+const faqGrid=document.getElementById('faqGrid');
+faqs.forEach(f=>{
+  const item=document.createElement('div');
+  item.className='faq-item';
+  item.innerHTML=`<button class="faq-question" onclick="toggleFaq(this)"><span>${f.q}</span><span class="faq-icon">+</span></button><div class="faq-answer"><p>${f.a}</p></div>`;
+  faqGrid.appendChild(item);
+});
+function toggleFaq(btn){
+  const ans=btn.nextElementSibling;
+  const isOpen=btn.classList.contains('open');
+  document.querySelectorAll('.faq-question.open').forEach(b=>{b.classList.remove('open');b.nextElementSibling.classList.remove('open')});
+  if(!isOpen){btn.classList.add('open');ans.classList.add('open')}
+}
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const target=document.querySelector(a.getAttribute('href'));
+    if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth'})}
+  });
+});
+</script>
+</body>
+</html>
