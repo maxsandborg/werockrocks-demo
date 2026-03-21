@@ -7,12 +7,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Righteous&family=Titan+One&family=JetBrains+Mono:wght@400;500&family=Modak&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:#0a0612;--bg2:#0f0a1a;--card:#160f24;--card2:#1e1530;
-  --border:rgba(255,180,255,0.07);--border2:rgba(255,180,255,0.14);
-  --text:#f5e8ff;--text2:#b89ed4;--text3:#7a5f99;
-  --hotpink:#ff2d8a;--orange:#ff6b2b;--acid:#b8ff2d;--violet:#c44dff;
-  --gold:#ffd342;--teal:#2dffc8;--coral:#ff5c6b;--magenta:#ff2dce;
-  --deepviolet:#8b2dff;--rose:#ff79a8;--peach:#ffb37b;
+  --bg:#0e0a14;--bg2:#120e1a;--card:#1a1424;--card2:#221a30;
+  --border:rgba(220,180,160,0.08);--border2:rgba(220,180,160,0.15);
+  --text:#f0e6d8;--text2:#c4a882;--text3:#8a7060;
+  --hotpink:#d94f7a;--orange:#e87830;--acid:#8aad3a;--violet:#9b6dc8;
+  --gold:#e8b830;--teal:#5aab8a;--coral:#d96055;--magenta:#c45a9e;
+  --deepviolet:#7a52b0;--rose:#d88090;--peach:#daa060;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -23,10 +23,10 @@ a{color:inherit;text-decoration:none}
 .grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.025;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 .scanlines{position:fixed;inset:0;pointer-events:none;z-index:9998;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.03) 2px,rgba(0,0,0,0.03) 4px);opacity:0.5}
 
-body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 20% 50%,rgba(196,77,255,0.06) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(255,45,138,0.05) 0%,transparent 50%),radial-gradient(ellipse at 50% 80%,rgba(255,107,43,0.04) 0%,transparent 50%);animation:bgPulse 12s ease-in-out infinite}
-@keyframes bgPulse{0%,100%{opacity:1;filter:hue-rotate(0deg)}50%{opacity:0.7;filter:hue-rotate(30deg)}}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 20% 50%,rgba(155,109,200,0.04) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(217,79,122,0.035) 0%,transparent 50%),radial-gradient(ellipse at 50% 80%,rgba(232,120,48,0.03) 0%,transparent 50%);animation:bgPulse 15s ease-in-out infinite}
+@keyframes bgPulse{0%,100%{opacity:1;filter:hue-rotate(0deg)}50%{opacity:0.8;filter:hue-rotate(15deg)}}
 
-#cursor{position:fixed;width:500px;height:500px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(255,45,138,0.08) 0%,rgba(196,77,255,0.04) 40%,transparent 70%);transform:translate(-50%,-50%);transition:opacity 0.3s}
+#cursor{position:fixed;width:500px;height:500px;border-radius:50%;pointer-events:none;z-index:1;background:radial-gradient(circle,rgba(217,79,122,0.05) 0%,rgba(155,109,200,0.025) 40%,transparent 70%);transform:translate(-50%,-50%);transition:opacity 0.3s}
 
 .eq-bars{display:flex;align-items:flex-end;gap:3px;height:40px}
 .eq-bar{width:4px;border-radius:2px;animation:eqPulse var(--d,1s) ease-in-out infinite alternate;background:var(--c,var(--hotpink))}
@@ -34,10 +34,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s;background:transparent}
 nav.scrolled{background:rgba(10,6,18,0.88);backdrop-filter:blur(24px) saturate(1.4);border-bottom:1px solid var(--border)}
-.nav-brand{font-family:'Modak','Titan One','Righteous',cursive;font-size:20px;font-weight:400;letter-spacing:1px;background:linear-gradient(135deg,var(--magenta),var(--violet),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:300% 300%;animation:psychTitle 8s ease-in-out infinite;filter:drop-shadow(0 0 12px rgba(196,77,255,0.3))}
+.nav-brand{font-family:'Modak','Titan One','Righteous',cursive;font-size:20px;font-weight:400;letter-spacing:1px;background:linear-gradient(135deg,var(--coral),var(--peach),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:300% 300%;animation:psychTitle 10s ease-in-out infinite;filter:drop-shadow(0 0 8px rgba(217,96,85,0.15))}
 .nav-links{display:flex;gap:28px}
 .nav-links a{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text3);transition:all 0.3s;position:relative}
-.nav-links a:hover{color:var(--hotpink);text-shadow:0 0 20px rgba(255,45,138,0.4)}
+.nav-links a:hover{color:var(--hotpink);text-shadow:0 0 15px rgba(217,79,122,0.2)}
 .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:linear-gradient(90deg,var(--hotpink),var(--orange));transition:width 0.3s;border-radius:1px}
 .nav-links a:hover::after{width:100%}
 .nav-eq{display:flex;align-items:flex-end;gap:2px;height:16px}
@@ -50,7 +50,7 @@ nav.scrolled{background:rgba(10,6,18,0.88);backdrop-filter:blur(24px) saturate(1
 .hero-vinyl-inner{width:100%;height:100%;animation:vinylSpin 16s linear infinite;position:relative}
 
 /* THE DISC — layered for realism */
-.vinyl-disc{width:100%;height:100%;border-radius:50%;position:relative;background:radial-gradient(circle at 50% 50%,#111 0%,#0d0d0d 20%,#080808 40%,#0a0a0a 60%,#070707 80%,#0d0d0d 100%);box-shadow:0 0 0 4px #1a1a1a,0 0 0 6px #0a0a0a,0 8px 40px rgba(0,0,0,0.8),0 0 120px rgba(255,45,138,0.08),inset 0 0 100px rgba(0,0,0,0.4)}
+.vinyl-disc{width:100%;height:100%;border-radius:50%;position:relative;background:radial-gradient(circle at 50% 50%,#111 0%,#0d0d0d 20%,#080808 40%,#0a0a0a 60%,#070707 80%,#0d0d0d 100%);box-shadow:0 0 0 4px #1a1a1a,0 0 0 6px #0a0a0a,0 8px 40px rgba(0,0,0,0.8),0 0 100px rgba(155,109,200,0.04),inset 0 0 100px rgba(0,0,0,0.4)}
 
 /* Groove rings — fine concentric lines */
 .vinyl-disc::before{content:'';position:absolute;inset:0;border-radius:50%;background:
@@ -133,7 +133,7 @@ nav.scrolled{background:rgba(10,6,18,0.88);backdrop-filter:blur(24px) saturate(1
 .vinyl-deadwax{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,255,255,0.03);box-shadow:inset 0 0 0 12px rgba(0,0,0,0.15),inset 0 0 0 14px rgba(255,255,255,0.012);pointer-events:none}
 
 /* Label */
-.vinyl-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:34%;height:34%;border-radius:50%;overflow:hidden;z-index:2;box-shadow:0 0 0 3px rgba(20,15,30,0.9),0 0 30px rgba(0,0,0,0.6),0 0 60px rgba(255,45,138,0.06)}
+.vinyl-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:34%;height:34%;border-radius:50%;overflow:hidden;z-index:2;box-shadow:0 0 0 3px rgba(20,15,30,0.9),0 0 30px rgba(0,0,0,0.6),0 0 60px rgba(155,109,200,0.03)}
 .vinyl-label img{width:100%;height:100%;object-fit:cover;border-radius:50%;filter:saturate(1.15) brightness(1.05)}
 .vinyl-label::before{content:'';position:absolute;inset:0;border-radius:50%;background:linear-gradient(135deg,rgba(255,255,255,0.1) 0%,transparent 50%);z-index:1;pointer-events:none}
 
@@ -144,7 +144,7 @@ nav.scrolled{background:rgba(10,6,18,0.88);backdrop-filter:blur(24px) saturate(1
 .vinyl-edge{position:absolute;inset:-4px;border-radius:50%;z-index:5;pointer-events:none;background:transparent;border:4px solid transparent;box-shadow:inset 0 2px 4px rgba(255,255,255,0.04),inset 0 -2px 4px rgba(0,0,0,0.3),0 2px 6px rgba(0,0,0,0.5)}
 
 /* Ambient glow behind */
-.vinyl-glow{position:absolute;inset:-60px;border-radius:50%;z-index:-1;background:radial-gradient(circle,rgba(255,45,138,0.05) 20%,rgba(196,77,255,0.03) 40%,rgba(45,255,200,0.015) 60%,transparent 70%);animation:vinylGlow 5s ease-in-out infinite alternate;filter:blur(20px)}
+.vinyl-glow{position:absolute;inset:-60px;border-radius:50%;z-index:-1;background:radial-gradient(circle,rgba(217,79,122,0.035) 20%,rgba(155,109,200,0.02) 40%,rgba(90,171,138,0.01) 60%,transparent 70%);animation:vinylGlow 5s ease-in-out infinite alternate;filter:blur(20px)}
 
 /* Tonearm */
 .vinyl-tonearm{position:absolute;top:8%;right:18%;width:3px;height:42%;transform-origin:top center;transform:rotate(22deg);z-index:6;pointer-events:none;opacity:0;animation:tonearmReveal 1s ease forwards 2.5s}
@@ -160,10 +160,10 @@ nav.scrolled{background:rgba(10,6,18,0.88);backdrop-filter:blur(24px) saturate(1
 @media(max-width:768px){.hero-vinyl{width:400px;height:400px;right:-22%}.vinyl-tonearm{display:none}@keyframes vinylReveal{0%{opacity:0;transform:translateY(-50%) scale(0.9)}100%{opacity:0.2;transform:translateY(-50%) scale(1)}}}
 .hero-orbs{position:absolute;inset:0;overflow:hidden;pointer-events:none}
 .hero-orb{position:absolute;border-radius:50%;filter:blur(120px);animation:orbFloat 8s ease-in-out infinite}
-.hero-orb:nth-child(1){width:600px;height:600px;background:rgba(255,45,138,0.12);top:-15%;left:-15%;animation-duration:11s}
-.hero-orb:nth-child(2){width:500px;height:500px;background:rgba(255,107,43,0.10);bottom:-20%;right:-15%;animation-duration:13s;animation-delay:-5s}
-.hero-orb:nth-child(3){width:450px;height:450px;background:rgba(196,77,255,0.10);top:25%;right:15%;animation-duration:9s;animation-delay:-2s}
-.hero-orb:nth-child(4){width:350px;height:350px;background:rgba(45,255,200,0.06);bottom:10%;left:20%;animation-duration:14s;animation-delay:-7s}
+.hero-orb:nth-child(1){width:600px;height:600px;background:rgba(217,79,122,0.07);top:-15%;left:-15%;animation-duration:11s}
+.hero-orb:nth-child(2){width:500px;height:500px;background:rgba(232,120,48,0.06);bottom:-20%;right:-15%;animation-duration:13s;animation-delay:-5s}
+.hero-orb:nth-child(3){width:450px;height:450px;background:rgba(155,109,200,0.06);top:25%;right:15%;animation-duration:9s;animation-delay:-2s}
+.hero-orb:nth-child(4){width:350px;height:350px;background:rgba(90,171,138,0.04);bottom:10%;left:20%;animation-duration:14s;animation-delay:-7s}
 @keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(40px,-50px) scale(1.08)}50%{transform:translate(-30px,40px) scale(0.92)}75%{transform:translate(20px,-20px) scale(1.05)}}
 
 .hero-top-label{display:flex;align-items:center;gap:12px;margin-bottom:30px;opacity:0;animation:fadeUp 0.8s ease forwards 0.2s}
@@ -185,27 +185,27 @@ nav.scrolled{background:rgba(10,6,18,0.88);backdrop-filter:blur(24px) saturate(1
 }
 .hero h1 .grad{
   background:linear-gradient(135deg,
-    #ff3344 0%,
-    #ff6b2b 12%,
-    #ffcc33 24%,
-    #33cc55 36%,
-    #22aadd 48%,
-    #6644cc 60%,
-    #cc33aa 72%,
-    #ff3344 84%,
-    #ff6b2b 100%
+    #d94040 0%,
+    #e87830 12%,
+    #e8b830 24%,
+    #6a9e45 36%,
+    #5090aa 48%,
+    #7a52b0 60%,
+    #b85a8a 72%,
+    #d94040 84%,
+    #e87830 100%
   );
   background-size:500% 500%;
-  animation:psychTitle 10s linear infinite;
+  animation:psychTitle 12s linear infinite;
   -webkit-background-clip:text;
   background-clip:text;
   -webkit-text-fill-color:transparent;
-  -webkit-text-stroke:1.5px rgba(255,255,255,0.07);
+  -webkit-text-stroke:1px rgba(255,255,255,0.05);
   paint-order:stroke fill;
   filter:
-    drop-shadow(0 0 25px rgba(255,51,68,0.35))
-    drop-shadow(0 0 60px rgba(102,68,204,0.25))
-    drop-shadow(0 0 120px rgba(204,51,170,0.15));
+    drop-shadow(0 0 20px rgba(217,64,64,0.2))
+    drop-shadow(0 0 50px rgba(122,82,176,0.15))
+    drop-shadow(0 0 100px rgba(184,90,138,0.08));
 }
 @keyframes psychTitle{
   0%{background-position:0% 50%}
@@ -222,7 +222,7 @@ nav.scrolled{background:rgba(10,6,18,0.88);backdrop-filter:blur(24px) saturate(1
   font-size:clamp(72px,13vw,180px);
   font-weight:400;letter-spacing:2px;line-height:0.9;
   text-transform:uppercase;
-  background:linear-gradient(135deg,#33cc55,#22aadd,#6644cc,#cc33aa);
+  background:linear-gradient(135deg,#6a9e45,#5090aa,#7a52b0,#b85a8a);
   -webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;
   filter:blur(45px);
@@ -244,7 +244,7 @@ nav.scrolled{background:rgba(10,6,18,0.88);backdrop-filter:blur(24px) saturate(1
   font-size:clamp(72px,13vw,180px);
   font-weight:400;letter-spacing:2px;line-height:0.9;
   text-transform:uppercase;
-  background:linear-gradient(135deg,#ff3344,#ff6b2b,#ffcc33);
+  background:linear-gradient(135deg,#d94040,#e87830,#e8b830);
   -webkit-background-clip:text;background-clip:text;
   -webkit-text-fill-color:transparent;
   filter:blur(55px);
@@ -264,8 +264,8 @@ nav.scrolled{background:rgba(10,6,18,0.88);backdrop-filter:blur(24px) saturate(1
 .now-playing{display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,rgba(22,15,36,0.9),rgba(30,21,48,0.9));border:1px solid rgba(255,45,138,0.2);border-radius:60px;padding:10px 24px 10px 10px;opacity:0;animation:fadeUp 0.8s ease forwards 0.8s;z-index:2;cursor:pointer;transition:all 0.4s;position:relative;overflow:hidden}
 .now-playing::before{content:'';position:absolute;inset:-1px;border-radius:60px;padding:1px;background:linear-gradient(135deg,var(--hotpink),var(--violet),var(--orange));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:0.5;transition:opacity 0.4s}
 .now-playing:hover::before{opacity:1}
-.now-playing:hover{box-shadow:0 0 30px rgba(255,45,138,0.15),0 0 60px rgba(196,77,255,0.08)}
-.np-vinyl{width:48px;height:48px;border-radius:50%;background:conic-gradient(from 0deg,#1a1a2e,#2a1a3e,#1a1a2e,#2e1a2a,#1a1a2e);animation:spin 3s linear infinite;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 15px rgba(255,45,138,0.2);overflow:hidden;position:relative}
+.now-playing:hover{box-shadow:0 0 25px rgba(217,79,122,0.1),0 0 50px rgba(155,109,200,0.05)}
+.np-vinyl{width:48px;height:48px;border-radius:50%;background:conic-gradient(from 0deg,#1a1a2e,#2a1a3e,#1a1a2e,#2e1a2a,#1a1a2e);animation:spin 3s linear infinite;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 10px rgba(217,79,122,0.12);overflow:hidden;position:relative}
 .np-vinyl img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .np-vinyl::after{content:'';width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,var(--hotpink),var(--orange));position:absolute;z-index:2}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -309,14 +309,14 @@ section{padding:100px 40px;position:relative}
 .album-card{background:rgba(22,15,36,0.6);backdrop-filter:blur(12px);border:1px solid var(--border);border-radius:16px;overflow:hidden;cursor:pointer;transition:all 0.5s cubic-bezier(0.23,1,0.32,1);position:relative}
 .album-card::before{content:'';position:absolute;inset:-1px;border-radius:16px;padding:1px;background:linear-gradient(135deg,var(--hotpink),var(--violet),var(--orange),var(--gold));background-size:300% 300%;animation:psychGrad 8s ease infinite;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:0;transition:opacity 0.5s;z-index:1}
 .album-card:hover::before{opacity:0.8}
-.album-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 24px 80px rgba(255,45,138,0.15),0 0 60px rgba(196,77,255,0.1),0 0 120px rgba(255,45,138,0.05)}
+.album-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 24px 80px rgba(217,79,122,0.08),0 0 60px rgba(155,109,200,0.05),0 0 120px rgba(217,79,122,0.025)}
 .album-art{aspect-ratio:1;position:relative;overflow:hidden}
 .album-art-bg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:64px;font-family:'Righteous',cursive;font-weight:400;color:rgba(255,255,255,0.1)}
 .album-art-bg img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s cubic-bezier(0.23,1,0.32,1),filter 0.6s}
 .album-card:hover .album-art-bg img{transform:scale(1.08);filter:brightness(1.1) saturate(1.2)}
 .album-art .play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,6,18,0.6);opacity:0;transition:opacity 0.3s;z-index:2}
 .album-card:hover .play-overlay{opacity:1}
-.play-btn{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--hotpink),var(--orange));display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(255,45,138,0.5)}
+.play-btn{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--hotpink),var(--orange));display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(217,79,122,0.3)}
 .play-btn::after{content:'';width:0;height:0;border-left:18px solid white;border-top:11px solid transparent;border-bottom:11px solid transparent;margin-left:4px}
 .album-info{padding:16px}
 .album-year{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;background:linear-gradient(90deg,var(--hotpink),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -369,7 +369,7 @@ section{padding:100px 40px;position:relative}
 .collab-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;transition:all 0.4s;cursor:pointer;text-align:center;position:relative;overflow:hidden}
 .collab-card::before{content:'';position:absolute;inset:-1px;border-radius:12px;padding:1px;background:linear-gradient(135deg,var(--hotpink),var(--violet),var(--teal));-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:0;transition:opacity 0.4s}
 .collab-card:hover::before{opacity:0.6}
-.collab-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(255,45,138,0.1)}
+.collab-card:hover{transform:translateY(-5px);box-shadow:0 15px 40px rgba(217,79,122,0.06)}
 .collab-icon{font-size:32px;margin-bottom:10px}
 .collab-artist{font-size:14px;font-weight:700;margin-bottom:4px}
 .collab-song{font-size:12px;background:linear-gradient(90deg,var(--hotpink),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -566,21 +566,21 @@ function animateVinylParallax(){
 
 /* ── FLOATING PARTICLES: notes + flowers ── */
 const noteChars=['\u266A','\u266B','\u266C','\u2669'];
-const noteColors=['#ff2d8a','#ff6b2b','#ffd342','#b8ff2d','#2dffc8','#c44dff','#ff2dce'];
+const noteColors=['#d94f7a','#e87830','#e8b830','#8aad3a','#5aab8a','#9b6dc8','#c45a9e'];
 for(let i=0;i<10;i++){const n=document.createElement('div');n.className='note';n.textContent=noteChars[Math.floor(Math.random()*noteChars.length)];n.style.left=Math.random()*100+'%';n.style.setProperty('--d',(10+Math.random()*18)+'s');n.style.animationDelay=(-Math.random()*18)+'s';n.style.fontSize=(12+Math.random()*20)+'px';n.style.color=noteColors[Math.floor(Math.random()*noteColors.length)];document.body.appendChild(n)}
 const flowerChars=['\u2740','\u2741','\u2742','\u2743','\u273F','\uD83C\uDF38','\uD83C\uDF3A','\uD83C\uDF3B','\uD83C\uDF39','\uD83C\uDF3C','\uD83C\uDF37'];
-const flowerColors=['#ff79a8','#ffb37b','#ff2d8a','#ffd342','#c44dff','#2dffc8','#ff6b2b','#b8ff2d','#ff2dce','#ff5c6b'];
+const flowerColors=['#d88090','#daa060','#d94f7a','#e8b830','#9b6dc8','#5aab8a','#e87830','#8aad3a','#c45a9e','#d96055'];
 for(let i=0;i<28;i++){const f=document.createElement('div');f.className='flower';f.textContent=flowerChars[Math.floor(Math.random()*flowerChars.length)];f.style.left=Math.random()*100+'%';f.style.setProperty('--d',(12+Math.random()*22)+'s');f.style.animationDelay=(-Math.random()*22)+'s';f.style.fontSize=(14+Math.random()*28)+'px';f.style.color=flowerColors[Math.floor(Math.random()*flowerColors.length)];document.body.appendChild(f)}
 
 /* ── RAINBOW SPECTRUM ── */
 const specEl=document.getElementById('spectrum');
-const specColors=['#ff2d8a','#ff6b2b','#ffd342','#b8ff2d','#2dffc8','#4facfe','#8b2dff','#c44dff','#ff2dce'];
+const specColors=['#d94f7a','#e87830','#e8b830','#8aad3a','#5aab8a','#5090aa','#7a52b0','#9b6dc8','#c45a9e'];
 for(let i=0;i<60;i++){const b=document.createElement('div');b.className='spectrum-bar';const center=Math.abs(i-30)/30;const maxH=60-center*40;const ci=Math.floor((i/60)*specColors.length);const ni=Math.min(ci+1,specColors.length-1);b.style.background='linear-gradient(to top,'+specColors[ci]+','+specColors[ni]+')';b.style.setProperty('--h1',(4+Math.random()*8)+'px');b.style.setProperty('--h2',(maxH*0.5+Math.random()*maxH*0.5)+'px');b.style.setProperty('--d',(0.3+Math.random()*0.5)+'s');b.style.animationDelay=(-Math.random()*2)+'s';specEl.appendChild(b)}
 
 /* ── WAVEFORM CANVAS ── */
 const canvas=document.getElementById('waveCanvas');const ctx=canvas.getContext('2d');let waveTime=0;
 function resizeCanvas(){canvas.width=canvas.offsetWidth*2;canvas.height=canvas.offsetHeight*2}resizeCanvas();window.addEventListener('resize',resizeCanvas);
-function drawWave(){ctx.clearRect(0,0,canvas.width,canvas.height);const w=canvas.width,h=canvas.height;const wc=[{s:'rgba(255,45,138,0.5)',e:'rgba(255,107,43,0.2)'},{s:'rgba(196,77,255,0.4)',e:'rgba(255,45,206,0.15)'},{s:'rgba(45,255,200,0.3)',e:'rgba(184,255,45,0.1)'}];wc.forEach((c,idx)=>{const grad=ctx.createLinearGradient(0,0,w,0);grad.addColorStop(0,c.s);grad.addColorStop(0.5,c.e);grad.addColorStop(1,c.s);ctx.beginPath();ctx.moveTo(0,h);for(let x=0;x<=w;x+=3){const y=h/2+Math.sin(x*0.003+waveTime+idx*2.5)*(25+idx*18)+Math.sin(x*0.008+waveTime*0.6+idx*1.5)*15+Math.cos(x*0.002+waveTime*1.3)*10;ctx.lineTo(x,y)}ctx.lineTo(w,h);ctx.closePath();ctx.fillStyle=grad;ctx.fill()});waveTime+=0.018;requestAnimationFrame(drawWave)}drawWave();
+function drawWave(){ctx.clearRect(0,0,canvas.width,canvas.height);const w=canvas.width,h=canvas.height;const wc=[{s:'rgba(217,79,122,0.35)',e:'rgba(232,120,48,0.15)'},{s:'rgba(155,109,200,0.3)',e:'rgba(196,90,158,0.1)'},{s:'rgba(90,171,138,0.2)',e:'rgba(138,173,58,0.08)'}];wc.forEach((c,idx)=>{const grad=ctx.createLinearGradient(0,0,w,0);grad.addColorStop(0,c.s);grad.addColorStop(0.5,c.e);grad.addColorStop(1,c.s);ctx.beginPath();ctx.moveTo(0,h);for(let x=0;x<=w;x+=3){const y=h/2+Math.sin(x*0.003+waveTime+idx*2.5)*(25+idx*18)+Math.sin(x*0.008+waveTime*0.6+idx*1.5)*15+Math.cos(x*0.002+waveTime*1.3)*10;ctx.lineTo(x,y)}ctx.lineTo(w,h);ctx.closePath();ctx.fillStyle=grad;ctx.fill()});waveTime+=0.018;requestAnimationFrame(drawWave)}drawWave();
 
 /* ── NAV SCROLL ── */
 const nav=document.querySelector('nav');
