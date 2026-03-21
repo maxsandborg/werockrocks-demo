@@ -58,7 +58,7 @@ nav.scrolled{background:rgba(8,8,8,.96);backdrop-filter:blur(12px);border-bottom
 /* HERO */
 #hero{position:relative;height:100vh;min-height:700px;display:flex;align-items:center;overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:70% top;transform:scaleX(-1)}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,8,8,.93) 40%,rgba(8,8,8,.65) 70%,rgba(8,8,8,.35) 100%)}
 .hero-bg::before{content:'';position:absolute;inset:0;z-index:1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4;pointer-events:none}
 .hero-content{position:relative;z-index:1;max-width:1300px;margin:0 auto;padding:0 5%;width:100%}
@@ -397,7 +397,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08)}
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg">
-    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1800&q=80&auto=format&fit=crop" alt="Personal Training Session">
+    <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/f4ac8ca7-7f86-4c07-9656-60e712519ad7.jpg/:/rs=w:1800,m" alt="Phil Clahar - Structured Fitness Inc">
   </div>
   <div class="hero-content">
     <div class="hero-tag">
@@ -618,8 +618,8 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08)}
     <div class="transform-grid" id="transformGrid">
       <div class="transform-card reveal" data-category="weight-loss">
         <div class="transform-imgs">
-          <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=400&q=80&auto=format&fit=crop" alt="Before">
-          <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=400&q=80&auto=format&fit=crop" alt="After">
+          <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/IMG_20180815_001056_521.jpg/:/rs=w:400,m" alt="Before">
+          <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/19724-e566474.jpg/:/rs=w:400,m" alt="After">
           <div class="transform-badge">BEFORE / AFTER</div>
         </div>
         <div class="transform-info">
@@ -631,8 +631,8 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08)}
       </div>
       <div class="transform-card reveal reveal-delay-1" data-category="muscle">
         <div class="transform-imgs">
-          <img src="https://images.unsplash.com/photo-1534367507873-d2d7e24c797f?w=400&q=80&auto=format&fit=crop" alt="Before">
-          <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=400&q=80&auto=format&fit=crop" alt="After">
+          <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/df9f2b8a-2562-45ba-9680-d88e01225a13.jpg/:/rs=w:400,m" alt="Before">
+          <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/86623b40-b22f-4db8-9539-5f6faba061eb.jpg/:/rs=w:400,m" alt="After">
           <div class="transform-badge">BEFORE / AFTER</div>
         </div>
         <div class="transform-info">
@@ -644,8 +644,8 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08)}
       </div>
       <div class="transform-card reveal reveal-delay-2" data-category="athletic">
         <div class="transform-imgs">
-          <img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=400&q=80&auto=format&fit=crop" alt="Before">
-          <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80&auto=format&fit=crop" alt="After">
+          <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/FB_IMG_1573175543209.jpg/:/rs=w:400,m" alt="Before">
+          <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/FB_IMG_1573175528165.jpg/:/rs=w:400,m" alt="After">
           <div class="transform-badge">BEFORE / AFTER</div>
         </div>
         <div class="transform-info">
@@ -657,8 +657,8 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08)}
       </div>
       <div class="transform-card reveal reveal-delay-3" data-category="rehab">
         <div class="transform-imgs">
-          <img src="https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=400&q=80&auto=format&fit=crop" alt="Before">
-          <img src="https://images.unsplash.com/photo-1616803689943-5601631c7fec?w=400&q=80&auto=format&fit=crop" alt="After">
+          <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/Screenshot_20211028-083718_Outlook.jpg/:/rs=w:400,m" alt="Before">
+          <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/956e5494-2851-47db-b39d-bc51f47822b5.jpg/:/rs=w:400,m" alt="After">
           <div class="transform-badge">BEFORE / AFTER</div>
         </div>
         <div class="transform-info">
@@ -670,8 +670,8 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08)}
       </div>
       <div class="transform-card reveal reveal-delay-4" data-category="weight-loss">
         <div class="transform-imgs">
-          <img src="https://images.unsplash.com/photo-1549476464-37392f717541?w=400&q=80&auto=format&fit=crop" alt="Before">
-          <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=400&q=80&auto=format&fit=crop" alt="After">
+          <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/IMG-20191107-WA0000.jpg/:/rs=w:400,m" alt="Before">
+          <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/be2c91a6-5d8a-4a71-be4b-199077005540.jpg/:/rs=w:400,m" alt="After">
           <div class="transform-badge">BEFORE / AFTER</div>
         </div>
         <div class="transform-info">
@@ -683,8 +683,8 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08)}
       </div>
       <div class="transform-card reveal reveal-delay-5" data-category="muscle">
         <div class="transform-imgs">
-          <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=400&q=80&auto=format&fit=crop" alt="Before">
-          <img src="https://images.unsplash.com/photo-1597452485677-d661670d9640?w=400&q=80&auto=format&fit=crop" alt="After">
+          <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/36ccbbcf-3ae4-47eb-a8f9-3bce1d5aa446.jpg/:/rs=w:400,m" alt="Before">
+          <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/783a28b8-a359-4034-b6df-b70a3b025ca6.jpg/:/rs=w:400,m" alt="After">
           <div class="transform-badge">BEFORE / AFTER</div>
         </div>
         <div class="transform-info">
@@ -703,7 +703,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08)}
   <div class="section-inner">
     <div class="trainer-layout">
       <div class="trainer-img-wrap reveal">
-        <img src="https://images.unsplash.com/photo-1548690312-e3b507d8c110?w=700&q=80&auto=format&fit=crop" alt="Phil Clahar - Head Trainer">
+        <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/20be1f74-4644-4dbc-bc95-a5f9a24c90c3.jpg/:/rs=w:700,m" alt="Phil Clahar - IFBB Pro Bodybuilder on Stage">
         <div class="trainer-badge">
           <div class="trainer-badge-title">PHIL "THE JAMAICAN TANK" CLAHAR</div>
           <div class="trainer-badge-sub">IFBB Pro · Mr. Olympia Competitor · 6'4" 265 lbs</div>
@@ -882,19 +882,19 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08)}
   </div>
   <div class="facility-grid reveal">
     <div class="facility-img wide">
-      <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80&auto=format&fit=crop" alt="Main Training Floor">
+      <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/34c79497-ae3f-41fa-b955-5b6369f624bc.jpg/:/rs=w:800,m" alt="Phil Clahar Training Client">
     </div>
     <div class="facility-img">
-      <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400&q=80&auto=format&fit=crop" alt="Free Weights">
+      <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/4b4304db-0853-4644-a2b0-7b203fdbe86e.jpg/:/rs=w:400,m" alt="Boxing & Self-Defense Training">
     </div>
     <div class="facility-img">
-      <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80&auto=format&fit=crop" alt="Training Session">
+      <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/IMG_20220314_140221_294.jpg/:/rs=w:400,m" alt="Phil Clahar Portrait">
     </div>
     <div class="facility-img">
-      <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=400&q=80&auto=format&fit=crop" alt="Cardio Equipment">
+      <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/9811494f-77a9-4e02-8918-cd5f168338be.jpg/:/rs=w:400,m" alt="Team Clahar at Competition">
     </div>
     <div class="facility-img">
-      <img src="https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=400&q=80&auto=format&fit=crop" alt="Strength Training">
+      <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/f4ac8ca7-7f86-4c07-9656-60e712519ad7.jpg/:/rs=w:400,m" alt="Phil Clahar Personal Training">
     </div>
   </div>
 </section>
@@ -1087,7 +1087,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08)}
     <div class="blog-grid">
       <div class="blog-card reveal">
         <div class="blog-img">
-          <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80&auto=format&fit=crop" alt="Nutrition">
+          <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/988f117c-8671-4335-b9b4-f40e5bacafe5.jpg/:/rs=w:600,m" alt="Nutrition">
         </div>
         <div class="blog-body">
           <div class="blog-cat">Nutrition</div>
@@ -1098,7 +1098,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08)}
       </div>
       <div class="blog-card reveal reveal-delay-1">
         <div class="blog-img">
-          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80&auto=format&fit=crop" alt="Training">
+          <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/f24226fe-4616-46b6-b437-4438714e2faf.jpg/:/rs=w:600,m" alt="Training">
         </div>
         <div class="blog-body">
           <div class="blog-cat">Training Science</div>
@@ -1109,7 +1109,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08)}
       </div>
       <div class="blog-card reveal reveal-delay-2">
         <div class="blog-img">
-          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80&auto=format&fit=crop" alt="Recovery">
+          <img src="https://img1.wsimg.com/isteam/ip/13806e3d-9833-40f1-a21c-3828d701ebb7/4b32e161-97c2-4e6d-977b-7292f795317f.jpg/:/rs=w:600,m" alt="Recovery">
         </div>
         <div class="blog-body">
           <div class="blog-cat">Recovery</div>
