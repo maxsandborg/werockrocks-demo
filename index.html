@@ -8,24 +8,78 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Inter',sans-serif;background:#09090b;color:#fafafa;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 1.5rem}
+    body{font-family:'Inter',sans-serif;background:#09090b;color:#fafafa;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2.5rem 1.5rem 3rem}
     .logo{font-size:0.7rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:rgba(250,250,250,0.4);margin-bottom:1rem}
     h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:0.5rem;text-align:center;letter-spacing:-0.5px}
     h1 span{background:linear-gradient(135deg,#3b82f6,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-    .subtitle{color:rgba(250,250,250,0.45);font-size:0.95rem;margin-bottom:3rem;text-align:center;max-width:400px;line-height:1.6}
+    .subtitle{color:rgba(250,250,250,0.45);font-size:0.95rem;margin-bottom:2rem;text-align:center;max-width:500px;line-height:1.6}
+
+    /* Filter bar */
+    .filter-bar{display:flex;gap:6px;margin-bottom:2rem;flex-wrap:wrap;justify-content:center}
+    .fbtn{padding:6px 16px;border-radius:20px;font-size:0.72rem;font-weight:600;border:1px solid rgba(255,255,255,0.1);background:transparent;color:rgba(250,250,250,0.4);cursor:pointer;transition:all 0.2s;letter-spacing:0.5px}
+    .fbtn:hover{border-color:rgba(139,92,246,0.4);color:rgba(250,250,250,0.7)}
+    .fbtn.active{background:rgba(139,92,246,0.15);border-color:rgba(139,92,246,0.4);color:#a78bfa}
+
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.2rem;width:100%;max-width:740px}
-    .card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:2rem;transition:all 0.3s;text-decoration:none;color:#fafafa;position:relative;overflow:hidden}
-    .card:hover{border-color:rgba(139,92,246,0.3);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,0.4)}
+
+    /* Cards */
+    .card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:1.5rem 1.5rem 1rem;transition:all 0.3s;color:#fafafa;position:relative;overflow:hidden;cursor:grab}
+    .card:hover{border-color:rgba(139,92,246,0.3);transform:translateY(-2px);box-shadow:0 20px 50px rgba(0,0,0,0.4)}
     .card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#3b82f6,#8b5cf6);opacity:0;transition:opacity 0.3s}
     .card:hover::before{opacity:1}
-    .card-badge{display:inline-block;padding:0.25rem 0.7rem;border-radius:20px;font-size:0.6rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:1rem}
+    .card.dragging{opacity:0.3;border-color:#8b5cf6;transform:scale(0.96)}
+    .card.drag-over{border-color:#8b5cf6;box-shadow:0 0 0 2px rgba(139,92,246,0.4)}
+
+    .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px}
+    .card h2{font-size:1.2rem;font-weight:800;margin:0}
+    .card p{font-size:0.82rem;color:rgba(250,250,250,0.4);line-height:1.5;margin-bottom:10px}
+
+    /* Badges */
+    .card-badge{display:inline-block;padding:0.2rem 0.6rem;border-radius:20px;font-size:0.58rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px}
     .badge-live{background:rgba(34,197,94,0.1);color:#22c55e;border:1px solid rgba(34,197,94,0.2)}
-    .badge-soon{background:rgba(250,204,21,0.1);color:#facc15;border:1px solid rgba(250,204,21,0.2)}
-    .card h2{font-size:1.3rem;font-weight:800;margin-bottom:0.5rem}
-    .card p{font-size:0.85rem;color:rgba(250,250,250,0.45);line-height:1.6;margin-bottom:1.2rem}
-    .card-link{font-size:0.78rem;font-weight:600;color:#8b5cf6;display:inline-flex;align-items:center;gap:0.4rem}
-    .card:hover .card-link{color:#a78bfa}
-    .footer{margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.06);font-size:0.72rem;color:rgba(250,250,250,0.25);text-align:center;width:100%;max-width:740px;display:flex;flex-direction:column;gap:0.6rem}
+
+    /* Status */
+    .status-badge{padding:3px 10px;border-radius:12px;font-size:0.6rem;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;flex-shrink:0}
+    .status-badge:hover{filter:brightness(1.3)}
+    .st-new{background:rgba(120,120,140,0.15);color:#9898a8;border:1px solid rgba(120,120,140,0.25)}
+    .st-sent{background:rgba(59,130,246,0.12);color:#60a5fa;border:1px solid rgba(59,130,246,0.25)}
+    .st-interested{background:rgba(250,204,21,0.12);color:#facc15;border:1px solid rgba(250,204,21,0.25)}
+    .st-meeting{background:rgba(139,92,246,0.12);color:#a78bfa;border:1px solid rgba(139,92,246,0.25)}
+    .st-proposal{background:rgba(236,72,153,0.12);color:#f472b6;border:1px solid rgba(236,72,153,0.25)}
+    .st-won{background:rgba(34,197,94,0.12);color:#22c55e;border:1px solid rgba(34,197,94,0.25)}
+    .st-lost{background:rgba(239,68,68,0.12);color:#ef4444;border:1px solid rgba(239,68,68,0.25)}
+
+    /* Status dropdown */
+    .status-dropdown{display:none;position:absolute;top:100%;right:0;background:#1a1a2e;border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:4px;z-index:100;min-width:140px;box-shadow:0 12px 40px rgba(0,0,0,0.6)}
+    .status-dropdown.open{display:block}
+    .status-opt{display:block;width:100%;padding:7px 12px;border:none;background:transparent;color:rgba(250,250,250,0.7);font-size:0.72rem;font-weight:600;cursor:pointer;border-radius:6px;text-align:left;font-family:inherit;transition:background 0.15s}
+    .status-opt:hover{background:rgba(255,255,255,0.06);color:#fafafa}
+
+    /* Card actions */
+    .card-actions{display:flex;gap:6px;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.05)}
+    .card-link{font-size:0.72rem;font-weight:600;color:#8b5cf6;text-decoration:none;display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:6px;border:1px solid rgba(139,92,246,0.2);transition:all 0.2s;background:transparent}
+    .card-link:hover{background:rgba(139,92,246,0.1);border-color:rgba(139,92,246,0.4)}
+    .comment-btn{font-size:0.72rem;font-weight:600;color:rgba(250,250,250,0.4);padding:4px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);cursor:pointer;background:transparent;font-family:inherit;transition:all 0.2s;display:inline-flex;align-items:center;gap:4px}
+    .comment-btn:hover{border-color:rgba(255,255,255,0.15);color:rgba(250,250,250,0.7)}
+    .comment-count{background:rgba(139,92,246,0.2);color:#a78bfa;padding:1px 6px;border-radius:8px;font-size:0.6rem;font-weight:700}
+
+    /* Comments panel */
+    .comments-panel{display:none;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.05)}
+    .comments-panel.open{display:block}
+    .comment-input{display:flex;gap:6px;margin-bottom:8px}
+    .comment-input input{flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:7px 10px;font-size:0.75rem;color:#fafafa;font-family:inherit;outline:none}
+    .comment-input input:focus{border-color:rgba(139,92,246,0.4)}
+    .comment-input input::placeholder{color:rgba(250,250,250,0.25)}
+    .comment-input button{background:#8b5cf6;border:none;color:#fff;padding:7px 14px;border-radius:8px;font-size:0.72rem;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap}
+    .comment-input button:hover{filter:brightness(1.15)}
+    .comment-list{display:flex;flex-direction:column;gap:6px;max-height:200px;overflow-y:auto}
+    .comment-entry{background:rgba(255,255,255,0.03);border-radius:8px;padding:8px 10px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+    .comment-text{font-size:0.75rem;color:rgba(250,250,250,0.65);line-height:1.4;flex:1}
+    .comment-time{font-size:0.6rem;color:rgba(250,250,250,0.2);white-space:nowrap;margin-top:2px}
+    .comment-del{background:none;border:none;color:rgba(250,250,250,0.15);cursor:pointer;font-size:14px;padding:0 2px;transition:color 0.15s;flex-shrink:0}
+    .comment-del:hover{color:#ef4444}
+
+    .footer{margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.06);font-size:0.72rem;color:rgba(250,250,250,0.25);text-align:center;width:100%;max-width:740px;display:flex;flex-direction:column;gap:0.6rem}
     .footer a{color:rgba(250,250,250,0.4);text-decoration:none}
     .footer a:hover{color:#8b5cf6}
     .footer-note{font-size:0.65rem;color:rgba(250,250,250,0.15);line-height:1.5}
@@ -35,78 +89,275 @@
 <body>
   <div class="logo">Zellyfi</div>
   <h1>Client <span>Demo Hub</span></h1>
-  <p class="subtitle">Live website demos built by Zellyfi. Click a project to view the full experience.</p>
-  <div class="grid">
-    <a href="/werockrocks/" class="card">
-      <span class="card-badge badge-live">Live</span>
-      <h2>We Rock Rocks</h2>
-      <p>Crystal, mineral & gemstone retail business in Tampa Bay, FL. Full storefront with SEO content package.</p>
-      <span class="card-link">View Demo &rarr;</span>
-    </a>
-    <a href="/exoticsmokes/" class="card">
-      <span class="card-badge badge-live">Live</span>
-      <h2>Exotic Smokes</h2>
-      <p>24/7 premium smoke shop, hookah lounge & kava bar. Three locations across Tampa Bay with online store.</p>
-      <span class="card-link">View Demo &rarr;</span>
-    </a>
-    <a href="/peppajak/" class="card">
-      <span class="card-badge badge-live">Live</span>
-      <h2>PeppaJak</h2>
-      <p>Bold burgers, crispy wings & tenders at The KRATE in Wesley Chapel. Fresh Angus beef, signature sauces.</p>
-      <span class="card-link">View Demo &rarr;</span>
-    </a>
-    <a href="/blushwineroom/" class="card">
-      <span class="card-badge badge-live">Live</span>
-      <h2>Blush Wine Room</h2>
-      <p>Intimate wine bar with wine on tap, craft cocktails & gourmet small plates at The KRATE, Wesley Chapel.</p>
-      <span class="card-link">View Demo &rarr;</span>
-    </a>
-    <a href="/tasty-ramen/" class="card">
-      <span class="card-badge badge-live">Live</span>
-      <h2>Tasty Ramen</h2>
-      <p>Wesley Chapel's #1 ramen spot. Authentic Japanese ramen, hibachi & appetizers at KRATE at the Grove.</p>
-      <span class="card-link">View Demo &rarr;</span>
-    </a>
-    <a href="/rebellious-hippie/" class="card">
-      <span class="card-badge badge-live">Live</span>
-      <h2>The Rebellious Hippie</h2>
-      <p>Holistic wellness & lifestyle shop with an urban edge. Handcrafted body products, medicinal plants & organic herbs at KRATE.</p>
-      <span class="card-link">View Demo &rarr;</span>
-    </a>
-    <a href="/laceleaf-medspa/" class="card">
-      <span class="card-badge badge-live">Live</span>
-      <h2>Laceleaf MedSpa</h2>
-      <p>Luxury medical spa in Wesley Chapel, FL. Botox, fillers, laser treatments, microneedling, IV therapy, and advanced skincare — with online booking.</p>
-      <span class="card-link">View Demo &rarr;</span>
-    </a>
-    <a href="/structured-fitness/" class="card">
-      <span class="card-badge badge-live">Live</span>
-      <h2>Structured Fitness Inc</h2>
-      <p>Elite personal training by IFBB Pro Bodybuilder & Olympian Phil Clahar. 30+ years of transformations in Wesley Chapel, FL.</p>
-      <span class="card-link">View Demo &rarr;</span>
-    </a>
-    <a href="/jts-pressure-washing/" class="card">
-      <span class="card-badge badge-live">Live</span>
-      <h2>JT's Pressure Washing</h2>
-      <p>Wesley Chapel's 5-star rated pressure washing company. House washing, driveways, roof cleaning, pool decks & commercial — serving Pasco & Hillsborough Counties.</p>
-      <span class="card-link">View Demo &rarr;</span>
-    </a>
-    <a href="/maty-noyes/" class="card">
-      <span class="card-badge badge-live">Live</span>
-      <h2>Maty Noyes</h2>
-      <p>Psychedelic editorial content hub for singer-songwriter Maty Noyes. 950M+ streams, retro flower power design with animated vinyl record.</p>
-      <span class="card-link">View Demo &rarr;</span>
-    </a>
-    <a href="/tacos-el-patron/" class="card">
-      <span class="card-badge badge-live">Live</span>
-      <h2>Tacos El Patron</h2>
-      <p>Authentic Mexican taquería with 3 locations across Central Florida. Birria tacos, handmade tortillas & full catering — inspired by laneta.se design.</p>
-      <span class="card-link">View Demo &rarr;</span>
-    </a>
-  </div>
+  <p class="subtitle">Live website demos built by Zellyfi. Drag cards to reorder, click status to update, and add comments.</p>
+  <div class="filter-bar" id="filterBar"></div>
+  <div class="grid" id="grid"></div>
   <div class="footer">
     <span>&copy; 2026 <a href="https://zellyfi.com" target="_blank">Zellyfi</a> &mdash; Web Design &amp; Digital Growth</span>
     <span class="footer-note">These demos are confidential, proprietary presentations created by Zellyfi for invited clients only. All designs, code, content, and intellectual property remain the exclusive property of Zellyfi AB. Unauthorized reproduction, distribution, or use of any material on this site is strictly prohibited and may be subject to legal action. Access to these demos does not constitute a license or transfer of rights.</span>
   </div>
+
+<script>
+const demos = [
+  {id:"werockrocks", name:"We Rock Rocks", url:"/werockrocks/", desc:"Crystal, mineral & gemstone retail business in Tampa Bay, FL. Full storefront with SEO content package."},
+  {id:"exoticsmokes", name:"Exotic Smokes", url:"/exoticsmokes/", desc:"24/7 premium smoke shop, hookah lounge & kava bar. Three locations across Tampa Bay with online store."},
+  {id:"peppajak", name:"PeppaJak", url:"/peppajak/", desc:"Bold burgers, crispy wings & tenders at The KRATE in Wesley Chapel. Fresh Angus beef, signature sauces."},
+  {id:"blushwineroom", name:"Blush Wine Room", url:"/blushwineroom/", desc:"Intimate wine bar with wine on tap, craft cocktails & gourmet small plates at The KRATE, Wesley Chapel."},
+  {id:"tasty-ramen", name:"Tasty Ramen", url:"/tasty-ramen/", desc:"Wesley Chapel's #1 ramen spot. Authentic Japanese ramen, hibachi & appetizers at KRATE at the Grove."},
+  {id:"rebellious-hippie", name:"The Rebellious Hippie", url:"/rebellious-hippie/", desc:"Holistic wellness & lifestyle shop with an urban edge. Handcrafted body products, medicinal plants & organic herbs at KRATE."},
+  {id:"laceleaf-medspa", name:"Laceleaf MedSpa", url:"/laceleaf-medspa/", desc:"Luxury medical spa in Wesley Chapel, FL. Botox, fillers, laser treatments, microneedling, IV therapy, and advanced skincare — with online booking."},
+  {id:"structured-fitness", name:"Structured Fitness Inc", url:"/structured-fitness/", desc:"Elite personal training by IFBB Pro Bodybuilder & Olympian Phil Clahar. 30+ years of transformations in Wesley Chapel, FL."},
+  {id:"jts-pressure-washing", name:"JT's Pressure Washing", url:"/jts-pressure-washing/", desc:"Wesley Chapel's 5-star rated pressure washing company. House washing, driveways, roof cleaning, pool decks & commercial — serving Pasco & Hillsborough Counties."},
+  {id:"maty-noyes", name:"Maty Noyes", url:"/maty-noyes/", desc:"Psychedelic editorial content hub for singer-songwriter Maty Noyes. 950M+ streams, retro flower power design with animated vinyl record."},
+  {id:"tacos-el-patron", name:"Tacos El Patron", url:"/tacos-el-patron/", desc:"Authentic Mexican taquería with 3 locations across Central Florida. Birria tacos, handmade tortillas & full catering."},
+];
+
+const STATUSES = [
+  {id:"new", label:"New", cls:"st-new"},
+  {id:"sent", label:"Demo Sent", cls:"st-sent"},
+  {id:"interested", label:"Interested", cls:"st-interested"},
+  {id:"meeting", label:"Meeting", cls:"st-meeting"},
+  {id:"proposal", label:"Proposal", cls:"st-proposal"},
+  {id:"won", label:"Won", cls:"st-won"},
+  {id:"lost", label:"Lost", cls:"st-lost"},
+];
+
+const DEFAULT_CATEGORIES = [
+  {id:"restaurant", label:"Restaurant", color:"#f97316"},
+  {id:"retail", label:"Retail", color:"#8b5cf6"},
+  {id:"services", label:"Services", color:"#3b82f6"},
+  {id:"medspa", label:"Med Spa", color:"#ec4899"},
+  {id:"fitness", label:"Fitness", color:"#22c55e"},
+  {id:"entertainment", label:"Entertainment", color:"#facc15"},
+  {id:"music", label:"Music/Artist", color:"#f472b6"},
+];
+
+// State from localStorage
+let cardOrder = JSON.parse(localStorage.getItem('zh_order') || 'null') || demos.map(d => d.id);
+let cardStatuses = JSON.parse(localStorage.getItem('zh_statuses') || '{}');
+let cardComments = JSON.parse(localStorage.getItem('zh_comments') || '{}');
+let cardCategories = JSON.parse(localStorage.getItem('zh_categories') || '{}');
+let customCategories = JSON.parse(localStorage.getItem('zh_custom_cats') || '[]');
+let currentFilter = 'all';
+let currentCatFilter = 'all';
+let dragId = null;
+
+function save(){
+  localStorage.setItem('zh_order', JSON.stringify(cardOrder));
+  localStorage.setItem('zh_statuses', JSON.stringify(cardStatuses));
+  localStorage.setItem('zh_comments', JSON.stringify(cardComments));
+  localStorage.setItem('zh_categories', JSON.stringify(cardCategories));
+  localStorage.setItem('zh_custom_cats', JSON.stringify(customCategories));
+}
+
+function getAllCategories(){ return [...DEFAULT_CATEGORIES, ...customCategories]; }
+function getCategory(id){ return cardCategories[id] || null; }
+function setCategory(id, catId){ cardCategories[id] = catId; save(); render(); }
+function getCatObj(catId){ return getAllCategories().find(c => c.id === catId); }
+
+function addCustomCategory(){
+  const name = prompt('Category name:');
+  if(!name || !name.trim()) return;
+  const id = name.trim().toLowerCase().replace(/[^a-z0-9]/g,'-');
+  if(getAllCategories().find(c => c.id === id)) return;
+  const colors = ['#f97316','#8b5cf6','#3b82f6','#ec4899','#22c55e','#facc15','#06b6d4','#ef4444','#84cc16','#a855f7'];
+  const color = colors[customCategories.length % colors.length];
+  customCategories.push({id, label:name.trim(), color});
+  save();
+  render();
+}
+
+function getStatus(id){ return cardStatuses[id] || 'new'; }
+function getComments(id){ return cardComments[id] || []; }
+
+function setCardStatus(id, status){
+  cardStatuses[id] = status;
+  save();
+  render();
+}
+
+function addComment(id){
+  const input = document.getElementById('ci-'+id);
+  const text = input.value.trim();
+  if(!text) return;
+  if(!cardComments[id]) cardComments[id] = [];
+  cardComments[id].push({text, time: new Date().toLocaleString('sv-SE',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'})});
+  save();
+  input.value = '';
+  render();
+  // Re-open comments panel
+  setTimeout(()=>{
+    const panel = document.getElementById('cp-'+id);
+    if(panel) panel.classList.add('open');
+  },10);
+}
+
+function deleteComment(id, idx){
+  if(cardComments[id]){
+    cardComments[id].splice(idx,1);
+    save();
+    render();
+    setTimeout(()=>{
+      const panel = document.getElementById('cp-'+id);
+      if(panel) panel.classList.add('open');
+    },10);
+  }
+}
+
+function toggleComments(id){
+  const panel = document.getElementById('cp-'+id);
+  if(panel) panel.classList.toggle('open');
+}
+
+function toggleStatusDropdown(e, id){
+  e.stopPropagation();
+  document.querySelectorAll('.status-dropdown').forEach(d => d.classList.remove('open'));
+  const dd = document.getElementById('sd-'+id);
+  if(dd) dd.classList.toggle('open');
+}
+
+function toggleCatDropdown(e, id){
+  e.stopPropagation();
+  document.querySelectorAll('.status-dropdown').forEach(d => d.classList.remove('open'));
+  const dd = document.getElementById('cd-'+id);
+  if(dd) dd.classList.toggle('open');
+}
+
+// Close dropdowns on outside click
+document.addEventListener('click', ()=>{
+  document.querySelectorAll('.status-dropdown').forEach(d => d.classList.remove('open'));
+});
+
+function renderFilters(){
+  const bar = document.getElementById('filterBar');
+  let html = '<button class="fbtn'+(currentFilter==='all'&&currentCatFilter==='all'?' active':'')+'" onclick="setFilter(\'all\',\'all\')">All</button>';
+  html += '<span style="color:rgba(255,255,255,0.1);font-size:12px;display:flex;align-items:center">|</span>';
+  STATUSES.forEach(s => {
+    const count = demos.filter(d => getStatus(d.id) === s.id).length;
+    if(count > 0) html += `<button class="fbtn${currentFilter===s.id?' active':''}" onclick="setFilter('${s.id}','all')">${s.label} (${count})</button>`;
+  });
+  const usedCats = getAllCategories().filter(c => demos.some(d => getCategory(d.id) === c.id));
+  if(usedCats.length > 0){
+    html += '<span style="color:rgba(255,255,255,0.1);font-size:12px;display:flex;align-items:center">|</span>';
+    usedCats.forEach(c => {
+      const count = demos.filter(d => getCategory(d.id) === c.id).length;
+      html += `<button class="fbtn${currentCatFilter===c.id?' active':''}" style="${currentCatFilter===c.id?'background:'+c.color+'20;border-color:'+c.color+'60;color:'+c.color:''}" onclick="setFilter('all','${c.id}')">${c.label} (${count})</button>`;
+    });
+  }
+  bar.innerHTML = html;
+}
+
+function setFilter(status, cat){
+  currentFilter = status;
+  currentCatFilter = cat;
+  render();
+}
+
+function render(){
+  renderFilters();
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+
+  // Ensure new demos are in order
+  demos.forEach(d => { if(!cardOrder.includes(d.id)) cardOrder.push(d.id); });
+  cardOrder = cardOrder.filter(id => demos.find(d => d.id === id));
+
+  let ordered = cardOrder.map(id => demos.find(d => d.id === id)).filter(Boolean);
+  if(currentFilter !== 'all') ordered = ordered.filter(d => getStatus(d.id) === currentFilter);
+  if(currentCatFilter !== 'all') ordered = ordered.filter(d => getCategory(d.id) === currentCatFilter);
+
+  ordered.forEach(demo => {
+    const status = STATUSES.find(s => s.id === getStatus(demo.id)) || STATUSES[0];
+    const comments = getComments(demo.id);
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.draggable = true;
+    card.dataset.id = demo.id;
+
+    card.addEventListener('dragstart', e => {
+      dragId = demo.id;
+      setTimeout(() => card.classList.add('dragging'), 0);
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    card.addEventListener('dragend', () => {
+      card.classList.remove('dragging');
+      document.querySelectorAll('.card').forEach(c => c.classList.remove('drag-over'));
+      dragId = null;
+    });
+    card.addEventListener('dragover', e => {
+      e.preventDefault();
+      if(dragId && dragId !== demo.id) card.classList.add('drag-over');
+    });
+    card.addEventListener('dragleave', () => card.classList.remove('drag-over'));
+    card.addEventListener('drop', e => {
+      e.preventDefault();
+      card.classList.remove('drag-over');
+      if(!dragId || dragId === demo.id) return;
+      const fromIdx = cardOrder.indexOf(dragId);
+      const toIdx = cardOrder.indexOf(demo.id);
+      cardOrder.splice(fromIdx, 1);
+      cardOrder.splice(toIdx, 0, dragId);
+      save();
+      dragId = null;
+      render();
+    });
+
+    const statusOpts = STATUSES.map(s =>
+      `<button class="status-opt" onclick="event.stopPropagation();setCardStatus('${demo.id}','${s.id}')">${s.label}</button>`
+    ).join('');
+
+    const catObj = getCatObj(getCategory(demo.id));
+    const catOpts = getAllCategories().map(c =>
+      `<button class="status-opt" onclick="event.stopPropagation();setCategory('${demo.id}','${c.id}')" style="color:${c.color}">${c.label}</button>`
+    ).join('') + `<button class="status-opt" onclick="event.stopPropagation();setCategory('${demo.id}',null)" style="color:rgba(250,250,250,0.3)">— None —</button><button class="status-opt" onclick="event.stopPropagation();addCustomCategory()" style="color:rgba(250,250,250,0.5)">+ New Category</button>`;
+
+    card.innerHTML = `
+      <div class="card-top">
+        <div>
+          <div style="display:flex;gap:6px;align-items:center;margin-bottom:6px;flex-wrap:wrap">
+            <span class="card-badge badge-live">Live</span>
+            ${catObj ? `<span style="padding:2px 8px;border-radius:12px;font-size:0.58rem;font-weight:700;letter-spacing:0.8px;background:${catObj.color}18;color:${catObj.color};border:1px solid ${catObj.color}35;cursor:pointer" onclick="event.stopPropagation();toggleCatDropdown(event,'${demo.id}')">${catObj.label}</span>` : `<span style="padding:2px 8px;border-radius:12px;font-size:0.58rem;font-weight:600;background:rgba(255,255,255,0.03);color:rgba(250,250,250,0.25);border:1px solid rgba(255,255,255,0.06);cursor:pointer;letter-spacing:0.5px" onclick="event.stopPropagation();toggleCatDropdown(event,'${demo.id}')">+ Category</span>`}
+            <div style="position:relative;display:inline-block">
+              <div class="status-dropdown" id="cd-${demo.id}" style="top:4px;left:0">${catOpts}</div>
+            </div>
+          </div>
+          <h2>${demo.name}</h2>
+        </div>
+        <div style="position:relative">
+          <span class="status-badge ${status.cls}" onclick="toggleStatusDropdown(event,'${demo.id}')">${status.label}</span>
+          <div class="status-dropdown" id="sd-${demo.id}">${statusOpts}</div>
+        </div>
+      </div>
+      <p>${demo.desc}</p>
+      <div class="card-actions">
+        <a href="${demo.url}" class="card-link" onclick="event.stopPropagation()">View Demo &rarr;</a>
+        <button class="comment-btn" onclick="event.stopPropagation();toggleComments('${demo.id}')">
+          💬 Comments ${comments.length > 0 ? '<span class="comment-count">'+comments.length+'</span>' : ''}
+        </button>
+      </div>
+      <div class="comments-panel" id="cp-${demo.id}">
+        <div class="comment-input">
+          <input type="text" id="ci-${demo.id}" placeholder="Add a comment..." onkeydown="if(event.key==='Enter'){event.stopPropagation();addComment('${demo.id}')}">
+          <button onclick="event.stopPropagation();addComment('${demo.id}')">Add</button>
+        </div>
+        <div class="comment-list">
+          ${comments.map((c,i) => `
+            <div class="comment-entry">
+              <div>
+                <div class="comment-text">${c.text}</div>
+                <div class="comment-time">${c.time}</div>
+              </div>
+              <button class="comment-del" onclick="event.stopPropagation();deleteComment('${demo.id}',${i})">&times;</button>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+render();
+</script>
 </body>
 </html>
