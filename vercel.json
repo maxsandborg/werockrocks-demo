@@ -31,11 +31,13 @@
     { "source": "/lux-sales-platform-1", "destination": "/lux-sales-platform-1/index.html" },
     { "source": "/lux-sales-platform-1/", "destination": "/lux-sales-platform-1/index.html" },
     { "source": "/lux-sales-platform-2", "destination": "/lux-sales-platform-2/index.html" },
-    { "source": "/lux-sales-platform-2/", "destination": "/lux-sales-platform-2/index.html" }
+    { "source": "/lux-sales-platform-2/", "destination": "/lux-sales-platform-2/index.html" },
+    { "source": "/dashboard", "destination": "/dashboard/index.html" },
+    { "source": "/dashboard/", "destination": "/dashboard/index.html" }
   ],
   "headers": [
     {
-      "source": "/(werockrocks|exoticsmokes|peppajak|blushwineroom|tasty-ramen|rebellious-hippie|laceleaf-medspa|structured-fitness|jts-pressure-washing|maty-noyes|tacos-el-patron|meridian-yachts|meridian-yachts-v6|meridian-yachts-v7|lux-sales-platform-1|lux-sales-platform-2)/(.*)",
+      "source": "/(werockrocks|exoticsmokes|peppajak|blushwineroom|tasty-ramen|rebellious-hippie|laceleaf-medspa|structured-fitness|jts-pressure-washing|maty-noyes|tacos-el-patron|meridian-yachts|meridian-yachts-v6|meridian-yachts-v7|lux-sales-platform-1|lux-sales-platform-2|dashboard)/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" },
         { "key": "X-Content-Type-Options", "value": "nosniff" }

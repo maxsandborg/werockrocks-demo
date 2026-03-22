@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Zellyfi HQ">
+<title>Zellyfi Command Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#050508;--bg2:#0a0a10;--card:rgba(14,14,22,0.8);--card-hover:rgba(22,22,36,0.9);--border:rgba(255,255,255,0.06);--border-hover:rgba(255,255,255,0.12);--text:#e8e8f0;--dim:#6b6b82;--dimmer:#3e3e52;--blue:#4f8ff7;--green:#34d399;--pink:#e91e8c;--orange:#f59e0b;--red:#ef4444;--purple:#a78bfa;--cyan:#06b6d4}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.ambient{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.ambient-orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:0.07;animation:float 20s ease-in-out infinite}
+.orb1{width:600px;height:600px;background:var(--blue);top:-200px;left:-100px}
+.orb2{width:500px;height:500px;background:var(--pink);bottom:-200px;right:-100px;animation-delay:-7s}
+.orb3{width:400px;height:400px;background:var(--purple);top:50%;left:50%;transform:translate(-50%,-50%);animation-delay:-14s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}25%{transform:translate(30px,-40px) scale(1.05)}50%{transform:translate(-20px,30px) scale(0.95)}75%{transform:translate(40px,20px) scale(1.02)}}
+.grid-bg{position:fixed;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0}
+.app{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:20px 24px 40px}
+
+/* Header */
+.header{display:flex;justify-content:space-between;align-items:center;padding:0 0 20px;margin-bottom:4px}
+.header-left{display:flex;align-items:center;gap:14px}
+.logo-mark{width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;color:white;box-shadow:0 4px 20px rgba(79,143,247,0.3)}
+.header h1{font-size:20px;font-weight:700;letter-spacing:-0.5px}
+.header h1 span{background:linear-gradient(135deg,var(--blue),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.greeting{font-size:12px;color:var(--dim);margin-top:1px}
+.header-right{display:flex;align-items:center;gap:12px}
+.live-badge{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--green);font-weight:600;background:rgba(52,211,153,0.08);border:1px solid rgba(52,211,153,0.15);padding:5px 12px;border-radius:20px}
+.live-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(52,211,153,0.4)}50%{box-shadow:0 0 0 8px rgba(52,211,153,0)}}
+.clock{font-size:13px;color:var(--dim);font-weight:500;font-variant-numeric:tabular-nums}
+.fs-btn{background:var(--card);border:1px solid var(--border);color:var(--dim);width:34px;height:34px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s}
+.fs-btn:hover{background:var(--card-hover);color:var(--text);border-color:var(--border-hover)}
+
+/* Quick Links */
+.qlinks{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.ql{display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:8px;font-size:11px;font-weight:600;color:var(--dim);background:var(--card);border:1px solid var(--border);cursor:pointer;text-decoration:none;transition:all 0.25s}
+.ql:hover{background:var(--card-hover);color:var(--text);border-color:var(--border-hover);transform:translateY(-1px)}
+.ql svg{width:14px;height:14px;opacity:0.6}
+
+/* KPI Row */
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:20px}
+.kpi{background:var(--card);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:16px;padding:18px 20px;transition:all 0.3s;position:relative;overflow:hidden}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity 0.3s}
+.kpi:hover{transform:translateY(-3px);border-color:var(--border-hover);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
+.kpi:hover::before{opacity:1}
+.kpi:nth-child(1)::before{background:linear-gradient(90deg,var(--blue),var(--cyan))}
+.kpi:nth-child(2)::before{background:linear-gradient(90deg,var(--green),var(--cyan))}
+.kpi:nth-child(3)::before{background:linear-gradient(90deg,var(--pink),var(--purple))}
+.kpi:nth-child(4)::before{background:linear-gradient(90deg,var(--orange),var(--red))}
+.kpi:nth-child(5)::before{background:linear-gradient(90deg,var(--purple),var(--blue))}
+.kpi-l{font-size:10px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.kpi-v{font-size:32px;font-weight:800;letter-spacing:-1.5px;line-height:1}
+.kpi-s{font-size:10px;color:var(--dim);margin-top:6px}
+
+/* Tabs */
+.tabs{display:flex;gap:2px;margin-bottom:20px;background:var(--card);border-radius:14px;padding:4px;border:1px solid var(--border)}
+.tab{flex:1;padding:10px 12px;border:none;background:transparent;color:var(--dim);font-family:inherit;font-size:12px;font-weight:600;border-radius:10px;cursor:pointer;transition:all 0.25s;position:relative}
+.tab.active{background:linear-gradient(135deg,rgba(79,143,247,0.15),rgba(167,139,250,0.15));color:var(--text);box-shadow:0 2px 12px rgba(79,143,247,0.15)}
+.tab:hover:not(.active){background:rgba(255,255,255,0.03);color:var(--text)}
+.tb{position:absolute;top:6px;right:12px;width:16px;height:16px;border-radius:50%;background:var(--red);color:white;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.pnl{display:none}.pnl.active{display:block}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.full{grid-column:1/-1}
+
+/* Cards */
+.card{background:var(--card);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:16px;padding:20px;transition:all 0.3s}
+.card:hover{border-color:var(--border-hover)}
+.ch{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.ct{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px}
+.ct .d{width:8px;height:8px;border-radius:50%}
+.bg{font-size:9px;font-weight:700;padding:3px 10px;border-radius:6px;text-transform:uppercase;letter-spacing:0.5px}
+.bg-g{background:rgba(52,211,153,0.1);color:var(--green);border:1px solid rgba(52,211,153,0.15)}
+.bg-b{background:rgba(79,143,247,0.1);color:var(--blue);border:1px solid rgba(79,143,247,0.15)}
+
+/* Site Cards */
+.sc{display:flex;align-items:center;padding:14px 16px;border-radius:12px;margin-bottom:8px;background:rgba(255,255,255,0.02);border:1px solid transparent;transition:all 0.25s;cursor:pointer}
+.sc:last-child{margin-bottom:0}
+.sc:hover{background:rgba(255,255,255,0.04);border-color:var(--border);transform:translateX(4px)}
+.sl{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;margin-right:14px;flex-shrink:0}
+.si{flex:1}.sn{font-size:14px;font-weight:700;margin-bottom:2px}.su{font-size:11px;color:var(--dim)}
+.sm{display:flex;gap:20px;align-items:center}
+.smv{font-size:18px;font-weight:800;text-align:right}.sml{font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:0.5px;text-align:right}
+
+/* Stat boxes for sites */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:0}
+.st{text-align:center;padding:14px 8px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid var(--border)}
+.stv{font-size:24px;font-weight:800;margin-bottom:2px}
+.stl{font-size:9px;color:var(--dim);text-transform:uppercase;letter-spacing:0.8px}
+
+/* Deploy */
+.dp{display:flex;align-items:center;padding:10px 14px;border-radius:10px;margin-bottom:4px;background:rgba(255,255,255,0.015);transition:all 0.2s}
+.dp:hover{background:rgba(255,255,255,0.035)}
+.dd{width:10px;height:10px;border-radius:50%;margin-right:12px;flex-shrink:0}
+.dd.ok{background:var(--green);box-shadow:0 0 10px rgba(52,211,153,0.4)}
+.dd.err{background:var(--red);box-shadow:0 0 10px rgba(239,68,68,0.4)}
+.dd.skip{background:var(--dimmer)}
+.di{flex:1;min-width:0}.dm{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ds{font-size:10px;color:var(--dim)}
+.dt{font-size:11px;color:var(--dim);flex-shrink:0;margin-left:12px;font-variant-numeric:tabular-nums}
+
+/* Email */
+.em{display:flex;align-items:flex-start;padding:12px 14px;border-radius:12px;margin-bottom:4px;background:rgba(255,255,255,0.015);transition:all 0.25s;cursor:pointer;border-left:3px solid transparent}
+.em:hover{background:rgba(255,255,255,0.04);border-left-color:var(--blue)}
+.ed{width:8px;height:8px;border-radius:50%;background:var(--blue);margin-right:12px;margin-top:5px;flex-shrink:0;box-shadow:0 0 8px rgba(79,143,247,0.3)}
+.eb{flex:1;min-width:0}
+.ef{font-size:13px;font-weight:700;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.es{font-size:12px;color:rgba(232,232,240,0.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
+.esnip{font-size:11px;color:var(--dimmer);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.et{font-size:11px;color:var(--dim);font-variant-numeric:tabular-nums;flex-shrink:0;margin-left:12px}
+.star{color:var(--orange);font-size:12px}
+
+.scroll{max-height:360px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--dimmer) transparent}
+.scroll::-webkit-scrollbar{width:3px}.scroll::-webkit-scrollbar-thumb{background:var(--dimmer);border-radius:3px}
+
+@media(max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){.g2{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.kpis{grid-template-columns:repeat(2,1fr)}.app{padding:14px 16px 30px}.qlinks{display:none}}
+:fullscreen .app{max-width:100%;padding:24px 32px}:fullscreen .kpis{grid-template-columns:repeat(5,1fr)}:fullscreen .g2{grid-template-columns:1fr 1fr}
+</style>
+</head>
+<body>
+<div class="ambient"><div class="ambient-orb orb1"></div><div class="ambient-orb orb2"></div><div class="ambient-orb orb3"></div></div>
+<div class="grid-bg"></div>
+
+<div class="app">
+  <header class="header">
+    <div class="header-left">
+      <div class="logo-mark">Z</div>
+      <div><h1><span>Command Center</span></h1><div class="greeting" id="greeting"></div></div>
+    </div>
+    <div class="header-right">
+      <div class="live-badge"><span class="live-dot"></span> LIVE</div>
+      <div class="clock" id="clock"></div>
+      <button class="fs-btn" onclick="toggleFS()" title="Fullscreen"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></button>
+    </div>
+  </header>
+
+  <div class="qlinks">
+    <a class="ql" href="https://app.ahrefs.com/dashboard" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>Ahrefs</a>
+    <a class="ql" href="https://mail.google.com/mail/u/0/#inbox" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Gmail</a>
+    <a class="ql" href="https://vercel.com/maxsandborg-4186s-projects" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 19.5h20L12 2z"/></svg>Vercel</a>
+    <a class="ql" href="https://search.google.com/search-console" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>GSC</a>
+    <a class="ql" href="https://www.swedishcrave.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>SwedishCrave</a>
+    <a class="ql" href="https://www.fieldsalestools.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>FieldSalesTools</a>
+    <a class="ql" href="https://af.uppromote.com/the-swedish-candy" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Mums Affiliate</a>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="kpi-l">Besokare idag</div><div class="kpi-v" style="color:var(--blue)"><span class="ctr" data-t="21">0</span></div><div class="kpi-s">Alla 3 sajter</div></div>
+    <div class="kpi"><div class="kpi-l">Sidvisningar</div><div class="kpi-v" style="color:var(--green)"><span class="ctr" data-t="181">0</span></div><div class="kpi-s">Senaste 24h</div></div>
+    <div class="kpi"><div class="kpi-l">Sessioner</div><div class="kpi-v" style="color:var(--pink)"><span class="ctr" data-t="33">0</span></div><div class="kpi-s">8 SC &middot; 7 FST &middot; 18 ZF</div></div>
+    <div class="kpi"><div class="kpi-l">Olasta mejl</div><div class="kpi-v" style="color:var(--orange)"><span class="ctr" data-t="10">0</span></div><div class="kpi-s">max@zellyfi.com</div></div>
+    <div class="kpi"><div class="kpi-l">Deploys</div><div class="kpi-v" style="color:var(--purple)">4/4 <span style="font-size:14px;color:var(--green)">&#10003;</span></div><div class="kpi-s">Alla projekt live</div></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="go('ov')">Oversikt</button>
+    <button class="tab" onclick="go('si')">Sajter</button>
+    <button class="tab" onclick="go('dp')">Vercel</button>
+    <button class="tab" onclick="go('in')">Inbox <span class="tb">10</span></button>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="pnl active" id="p-ov">
+    <div class="g2">
+      <div class="card">
+        <div class="ch"><div class="ct">Hemsidor</div><span class="bg bg-b">3 aktiva</span></div>
+        <div class="sc" onclick="go('si')">
+          <div class="sl" style="background:linear-gradient(135deg,#e91e8c,#f472b6);color:#fff">SC</div>
+          <div class="si"><div class="sn">SwedishCrave</div><div class="su">swedishcrave.com</div></div>
+          <div class="sm"><div><div class="smv" style="color:var(--pink)">8</div><div class="sml">besokare</div></div><div><div class="smv">11</div><div class="sml">sidvisn.</div></div></div>
+        </div>
+        <div class="sc" onclick="go('si')">
+          <div class="sl" style="background:linear-gradient(135deg,#4f8ff7,#93bbfc);color:#fff">FS</div>
+          <div class="si"><div class="sn">FieldSalesTools</div><div class="su">fieldsalestools.com</div></div>
+          <div class="sm"><div><div class="smv" style="color:var(--blue)">7</div><div class="sml">besokare</div></div><div><div class="smv">7</div><div class="sml">sidvisn.</div></div></div>
+        </div>
+        <div class="sc" onclick="go('si')">
+          <div class="sl" style="background:linear-gradient(135deg,#a78bfa,#c4b5fd);color:#fff">ZF</div>
+          <div class="si"><div class="sn">Zellyfi</div><div class="su">zellyfi.com</div></div>
+          <div class="sm"><div><div class="smv" style="color:var(--purple)">6</div><div class="sml">besokare</div></div><div><div class="smv">163</div><div class="sml">sidvisn.</div></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ch"><div class="ct"><span class="d" style="background:var(--green)"></span> Senaste deploys</div><span class="bg bg-g">Vercel</span></div>
+        <div class="scroll" id="ov-dep"></div>
+      </div>
+      <div class="card full">
+        <div class="ch"><div class="ct"><span class="d" style="background:var(--orange)"></span> Senaste mejlen</div><span class="bg" style="background:rgba(245,158,11,0.1);color:var(--orange);border:1px solid rgba(245,158,11,0.15)">10 olasta</span></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px" id="ov-em"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SITES -->
+  <div class="pnl" id="p-si">
+    <div class="g2">
+      <div class="card">
+        <div class="ch"><div class="ct" style="color:var(--pink)"><span class="d" style="background:var(--pink)"></span> SwedishCrave</div><span class="bg" style="background:rgba(233,30,140,0.1);color:var(--pink);border:1px solid rgba(233,30,140,0.15)">swedishcrave.com</span></div>
+        <div class="stats">
+          <div class="st"><div class="stv" style="color:var(--pink)">8</div><div class="stl">Besokare</div></div>
+          <div class="st"><div class="stv">11</div><div class="stl">Sidvisn.</div></div>
+          <div class="st"><div class="stv">87%</div><div class="stl">Bounce</div></div>
+          <div class="st"><div class="stv">19s</div><div class="stl">Session</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ch"><div class="ct" style="color:var(--blue)"><span class="d" style="background:var(--blue)"></span> FieldSalesTools</div><span class="bg" style="background:rgba(79,143,247,0.1);color:var(--blue);border:1px solid rgba(79,143,247,0.15)">fieldsalestools.com</span></div>
+        <div class="stats">
+          <div class="st"><div class="stv" style="color:var(--blue)">7</div><div class="stl">Besokare</div></div>
+          <div class="st"><div class="stv">7</div><div class="stl">Sidvisn.</div></div>
+          <div class="st"><div class="stv">100%</div><div class="stl">Bounce</div></div>
+          <div class="st"><div class="stv">0s</div><div class="stl">Session</div></div>
+        </div>
+      </div>
+      <div class="card full">
+        <div class="ch"><div class="ct" style="color:var(--purple)"><span class="d" style="background:var(--purple)"></span> Zellyfi</div><span class="bg" style="background:rgba(167,139,250,0.1);color:var(--purple);border:1px solid rgba(167,139,250,0.15)">zellyfi.com</span></div>
+        <div class="stats">
+          <div class="st"><div class="stv" style="color:var(--purple)">6</div><div class="stl">Besokare</div></div>
+          <div class="st"><div class="stv">163</div><div class="stl">Sidvisn.</div></div>
+          <div class="st"><div class="stv">39%</div><div class="stl">Bounce</div></div>
+          <div class="st"><div class="stv">22m</div><div class="stl">Session</div></div>
+        </div>
+      </div>
+      <!-- Amazon Countdown -->
+      <div class="card full" style="border-color:rgba(245,158,11,0.15)">
+        <div class="ch"><div class="ct" style="color:var(--orange)"><span class="d" style="background:var(--orange)"></span> Amazon Associates Deadline</div><span class="bg" style="background:rgba(245,158,11,0.1);color:var(--orange);border:1px solid rgba(245,158,11,0.15)">3 sales needed</span></div>
+        <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+          <div style="flex:1;min-width:200px">
+            <div style="font-size:12px;color:var(--dim);margin-bottom:8px">Tid kvar att na 3 kvalificerande kop</div>
+            <div style="font-size:36px;font-weight:900;color:var(--orange);letter-spacing:-1px" id="acd"></div>
+            <div style="font-size:11px;color:var(--dim);margin-top:4px">Start: 14 mars 2026 &mdash; Deadline: ~10 sep 2026</div>
+          </div>
+          <div style="display:flex;gap:16px">
+            <div style="text-align:center;padding:12px 20px;border-radius:12px;background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.12)"><div style="font-size:28px;font-weight:900;color:var(--orange)">0</div><div style="font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px">Kop hittills</div></div>
+            <div style="text-align:center;padding:12px 20px;border-radius:12px;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.12)"><div style="font-size:28px;font-weight:900;color:var(--red)">3</div><div style="font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px">Kvar</div></div>
+          </div>
+        </div>
+        <div style="margin-top:14px;background:rgba(255,255,255,0.04);border-radius:8px;height:8px;overflow:hidden"><div id="abar" style="width:4%;height:100%;background:linear-gradient(90deg,var(--orange),var(--red));border-radius:8px;transition:width 0.5s"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--dimmer);margin-top:4px"><span>14 mar</span><span>10 sep</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEPLOYS -->
+  <div class="pnl" id="p-dp">
+    <div class="g2">
+      <div class="card"><div class="ch"><div class="ct"><span class="d" style="background:var(--pink)"></span> sc-build</div><span class="bg bg-g">Ready</span></div><div class="scroll" id="d-sc"></div></div>
+      <div class="card"><div class="ch"><div class="ct"><span class="d" style="background:var(--blue)"></span> fieldsalesstack</div><span class="bg bg-g">Ready</span></div><div class="scroll" id="d-fst"></div></div>
+      <div class="card"><div class="ch"><div class="ct"><span class="d" style="background:var(--purple)"></span> zellyfi</div><span class="bg bg-g">Ready</span></div><div class="scroll" id="d-zf"></div></div>
+      <div class="card"><div class="ch"><div class="ct"><span class="d" style="background:var(--cyan)"></span> zellyfidemo</div><span class="bg bg-g">Ready</span></div><div class="scroll" id="d-dm"></div></div>
+    </div>
+  </div>
+
+  <!-- INBOX -->
+  <div class="pnl" id="p-in">
+    <div class="g2"><div class="card full" style="max-width:900px"><div class="ch"><div class="ct"><span class="d" style="background:var(--orange)"></span> Zellyfi Inbox</div><span class="bg" style="background:rgba(245,158,11,0.1);color:var(--orange);border:1px solid rgba(245,158,11,0.15)">10 olasta</span></div><div class="scroll" id="em-full"></div></div></div>
+  </div>
+</div>
+
+<script>
+// Clock
+function tick(){const n=new Date();document.getElementById('clock').textContent=n.toLocaleString('sv-SE',{weekday:'short',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',second:'2-digit'});const h=n.getHours();document.getElementById('greeting').textContent=(h<6?'God natt':h<12?'God morgon':h<18?'God eftermiddag':'God kvall')+', Max'}
+setInterval(tick,1000);tick();
+
+// Amazon Countdown
+function acd(){const dl=new Date('2026-09-10'),n=new Date(),d=dl-n;if(d<=0){document.getElementById('acd').textContent='DEADLINE';return}document.getElementById('acd').textContent=Math.floor(d/864e5)+'d '+Math.floor(d%864e5/36e5)+'h '+Math.floor(d%36e5/6e4)+'m';const s=new Date('2026-03-14'),t=dl-s,e=n-s;document.getElementById('abar').style.width=Math.min(Math.round(e/t*100),100)+'%'}
+setInterval(acd,60000);acd();
+
+// Tabs
+function go(id){document.querySelectorAll('.pnl').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById('p-'+id).classList.add('active');['ov','si','dp','in'].forEach((t,i)=>{if(t===id)document.querySelectorAll('.tab')[i].classList.add('active')})}
+
+// Fullscreen
+function toggleFS(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen().catch(()=>{})}
+
+// Counters
+setTimeout(()=>{document.querySelectorAll('.ctr').forEach(el=>{const t=+el.dataset.t,dur=1200,s=performance.now();(function f(ts){const p=Math.min((ts-s)/dur,1);el.textContent=Math.round(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)})(s)})},300);
+
+// Deploys
+const D={sc:[{m:"Merge branch 'main'",s:'ok',t:'1d'},{m:'Delete swedish-fish.jpg',s:'ok',t:'1d'},{m:'Delete marshmallow-mix.jpg',s:'ok',t:'1d'},{m:'Delete bubs-candy-mix.jpg',s:'skip',t:'1d'},{m:'upload',s:'ok',t:'2d'},{m:'Add analytics tracking',s:'ok',t:'2d'}],fst:[{m:'Delete TOOL_RESEARCH.md',s:'ok',t:'1d'},{m:'Delete SEO-Audit-SwedishCrave',s:'skip',t:'1d'},{m:'Delete FST_SEO_Audit_MASTER',s:'ok',t:'1d'},{m:'tools',s:'ok',t:'2d'},{m:'Replace mailto form',s:'ok',t:'6d'}],zf:[{m:'Update globals.css',s:'ok',t:'10h'},{m:'Update page.tsx',s:'ok',t:'10h'},{m:'Update page.tsx',s:'err',t:'11h'},{m:'Add powered-by tool stack',s:'ok',t:'12h'},{m:'Dark mode toggle',s:'ok',t:'1d'},{m:'Fix grain animation',s:'ok',t:'1d'}],dm:[{m:'sales platsforms',s:'ok',t:'5h'},{m:'yach sales',s:'ok',t:'6h'},{m:'Update index.html',s:'ok',t:'7h'},{m:'Add Maty Noyes demo',s:'ok',t:'1d'},{m:'Add Rebellious Hippie demo',s:'ok',t:'1d'},{m:'Copyright protection',s:'ok',t:'2d'}]};
+function rD(id,l){document.getElementById(id).innerHTML=l.map(d=>`<div class="dp"><div class="dd ${d.s}"></div><div class="di"><div class="dm">${d.m}</div><div class="ds">${d.s==='ok'?'READY':d.s==='err'?'ERROR':'CANCELED'}</div></div><div class="dt">${d.t}</div></div>`).join('')}
+rD('d-sc',D.sc);rD('d-fst',D.fst);rD('d-zf',D.zf);rD('d-dm',D.dm);
+// Overview deploys (latest across all)
+document.getElementById('ov-dep').innerHTML=[...D.dm.slice(0,2),...D.zf.slice(0,2),...D.sc.slice(0,1),...D.fst.slice(0,1)].map(d=>`<div class="dp"><div class="dd ${d.s}"></div><div class="di"><div class="dm">${d.m}</div><div class="ds">${d.s==='ok'?'READY':d.s==='err'?'ERROR':'CANCELED'}</div></div><div class="dt">${d.t}</div></div>`).join('');
+
+// Emails
+const E=[{f:'Google Workspace Team',s:'Welcome to Google Workspace',t:'18:28',star:0,sn:'Do your best work with better tools.'},{f:'Plausible Analytics',s:'No traffic recorded yet',t:'18:00',star:0,sn:"We haven't recorded traffic for zellyfi.com."},{f:'Google Workspace Team',s:'Billing information received',t:'14:56',star:0,sn:'Thanks for providing your billing info.'},{f:'Supabase',s:'Add social logins in minutes',t:'14:55',star:0,sn:'Google, GitHub, Twitter, Apple, and more.'},{f:'Glenn Frowall',s:'Wat Thai Norrtalje',t:'20:10',star:1,sn:'Link till facebook sidan...'},{f:'Indeed',s:'Regional VP of Pro Sales',t:'15:27',star:0,sn:'$141,900 - $222,860 a year.'},{f:'TurboTax',s:'How much time to pay your balance?',t:'15:18',star:0,sn:'TurboTax offers you more flexibility.'},{f:'Notion Team',s:'Sluta dela din uppmarksamhet',t:'15:03',star:0,sn:'AI-antecknaren fangar upp varje detalj.'},{f:'Apollo',s:'Everything starts with a search',t:'07:28',star:0,sn:'One search to find Prospects.'},{f:'Amazon Associates',s:'Share your faves with your audience',t:'04:04',star:0,sn:'How to link and share.'}];
+function eml(e){return`<div class="em"><div class="ed"></div><div class="eb"><div class="ef">${e.star?'<span class="star">&#9733;</span> ':''}${e.f}</div><div class="es">${e.s}</div><div class="esnip">${e.sn}</div></div><div class="et">${e.t}</div></div>`}
+document.getElementById('ov-em').innerHTML=E.slice(0,4).map(eml).join('');
+document.getElementById('em-full').innerHTML=E.map(eml).join('');
+</script>
+</body>
+</html>
